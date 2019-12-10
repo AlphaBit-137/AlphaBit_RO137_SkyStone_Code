@@ -32,18 +32,20 @@ package org.firstinspires.ftc.teamcode.drive.opmode;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.util.ElapsedTime;
 import com.qualcomm.robotcore.util.Range;
 
-@TeleOp(name="OPMode_Principal", group="Linear Opmode")
+@TeleOp(name="Legacy_opmode_RoverRuckus", group="Linear Opmode")
 
-public class OPMode_Principal extends LinearOpMode {
+public class Legacy_opmode_RoverRuckus extends LinearOpMode {
 
     // Declaram obiectul robot cu clasa hardware si timpul de rulare
-
+    public DcMotor BackLeftMotor = null;
+    public DcMotor FrontRightMotor = null;
+    public DcMotor FrontLeftMotor = null;
+    public DcMotor BackRightMotor = null;
     private ElapsedTime runtime = new ElapsedTime();
-    Hardware robot = new Hardware();
-
 
     //Constante
     private static double MAX_POWER = 1.0, MIN_POWER = -1.0, NULL_POWER = 0.0;
@@ -51,7 +53,26 @@ public class OPMode_Principal extends LinearOpMode {
     @Override
     public void runOpMode() {
 
-        robot.init(hardwareMap);
+        BackLeftMotor = hardwareMap.get(DcMotor.class, "Left_Back");
+        FrontRightMotor = hardwareMap.get(DcMotor.class, "Right_Front");
+        FrontLeftMotor = hardwareMap.get(DcMotor.class, "Left_Front");
+        BackRightMotor = hardwareMap.get(DcMotor.class, "Right_Back");
+
+        BackLeftMotor.setDirection(DcMotor.Direction.FORWARD);
+        FrontRightMotor.setDirection(DcMotor.Direction.REVERSE);
+        FrontLeftMotor.setDirection(DcMotor.Direction.FORWARD);
+        BackRightMotor.setDirection(DcMotor.Direction.REVERSE);
+
+        BackLeftMotor.setPower(0);
+        FrontRightMotor.setPower(0);
+        FrontLeftMotor.setPower(0);
+        BackRightMotor.setPower(0);
+
+        BackLeftMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        FrontRightMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        FrontLeftMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        BackRightMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+
         runtime.reset();
         waitForStart();
 
@@ -85,10 +106,10 @@ public class OPMode_Principal extends LinearOpMode {
     }
 
     void MS(double x1, double x2, double x3, double x4){
-        robot.BackLeftMotor.setPower(x1);
-        robot.FrontRightMotor.setPower(x2);
-        robot.FrontLeftMotor.setPower(x3);
-        robot.BackRightMotor.setPower(x4);
+        BackLeftMotor.setPower(x1);
+        FrontRightMotor.setPower(x2);
+        FrontLeftMotor.setPower(x3);
+        BackRightMotor.setPower(x4);
     }
 
 }
