@@ -3,19 +3,12 @@ package org.firstinspires.ftc.teamcode;
 import com.disnodeteam.dogecv.detectors.skystone.SkystoneDetector;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
-
 import org.openftc.easyopencv.OpenCvCamera;
 import org.openftc.easyopencv.OpenCvCameraRotation;
 import org.openftc.easyopencv.OpenCvInternalCamera;
 
 import java.util.Locale;
 
-/*
- * Thanks to EasyOpenCV for the great API (and most of the example)
- *
- * Original Work Copright(c) 2019 OpenFTC Team
- * Derived Work Copyright(c) 2019 DogeDevs
- */
 @TeleOp(name = "Skystone Detector OpMode", group="DogeCV")
 
 public class DogeCV extends LinearOpMode {
@@ -64,16 +57,11 @@ public class DogeCV extends LinearOpMode {
          */
         phoneCam.startStreaming(320, 240, OpenCvCameraRotation.SIDEWAYS_LEFT);
 
-        /*
-         * Wait for the user to press start on the Driver Station
-         */
         waitForStart();
 
         while (opModeIsActive())
         {
-            /*
-             * Send some stats to the telemetry
-             */
+
             telemetry.addData("Stone Position X", skyStoneDetector.getScreenPosition().x);
             telemetry.addData("Stone Position Y", skyStoneDetector.getScreenPosition().y);
             telemetry.addData("Frame Count", phoneCam.getFrameCount());
