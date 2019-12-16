@@ -14,7 +14,7 @@ import java.util.Locale;
 public class DogeCV extends LinearOpMode {
     private OpenCvCamera phoneCam;
     private SkystoneDetector skyStoneDetector;
-//test
+
     @Override
     public void runOpMode() {
         /*
