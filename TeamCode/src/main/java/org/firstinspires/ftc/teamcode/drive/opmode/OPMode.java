@@ -37,7 +37,7 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.util.ElapsedTime;
 import com.qualcomm.robotcore.util.Range;
 
-@TeleOp(name="Legacy_opmode_RoverRuckus", group="Linear Opmode")
+@TeleOp(name="Op_Mode", group="Linear Opmode")
 
 public class OPMode extends LinearOpMode {
 
@@ -57,6 +57,23 @@ public class OPMode extends LinearOpMode {
         // Atata timp cat OpMode-ul este activ va rula pana la oprire urmatorul cod
 
         while (opModeIsActive()) {
+            double Front, Turn, Sum, Diff, Side, Drive1, Drive2, Drive3, Drive4;
+
+            //Primirea datelor de la joystick-uri
+            Front = gamepad1.left_stick_y;
+            Turn = gamepad1.right_stick_x;
+            Side = gamepad1.left_stick_x;
+
+            //Calcularea puterii redate motoarelor
+            Sum = Range.clip(Front + Side, -1.0, 1.0);
+            Diff = Range.clip(Front - Side, -1.0, 1.0);
+
+            Drive1 = Range.clip(Sum + 2*Turn, -1.0, 1.0);
+            Drive2 = Range.clip(Diff + 2*Turn, -1.0, 1.0);
+            Drive3 = Range.clip(Sum - 2*Turn, -1.0, 1.0);
+            Drive4 = Range.clip(Diff - 2*Turn, -1.0, 1.0);
+
+
             if(gamepad1.a){
                 DriveTrain.switchToFast();
             }
@@ -65,9 +82,18 @@ public class OPMode extends LinearOpMode {
             }
 
 
-            telemetry.addData("Motors", "BackLeft (%.2f), FrontRight (%.2f), FrontLeft (%.2f), BackRight (%.2f)", DriveTrain.LeftFrontPower, DriveTrain.LeftBackPower);
+            if(DriveTrain.RobotChasis == Chassis.ChassisModes.SLOW){
+                telemetry.addData("Chassis", "1");
+            }
+            if(DriveTrain.RobotChasis == Chassis.ChassisModes.FAST){
+                telemetry.addData("Chassis", "2");
+            }
+
+            DriveTrain.update(Drive1, Drive2, Drive3, Drive4);
+
+
+
             telemetry.update();
-            DriveTrain.update();
         }
     }
 

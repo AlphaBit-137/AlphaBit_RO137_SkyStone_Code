@@ -29,6 +29,7 @@
 
 package org.firstinspires.ftc.teamcode.drive.opmode;
 
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
@@ -37,7 +38,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 import com.qualcomm.robotcore.util.Range;
 
 @TeleOp(name="Legacy_opmode_RoverRuckus", group="Linear Opmode")
-
+@Disabled
 public class Legacy_opmode_RoverRuckus extends LinearOpMode {
 
     // Declaram obiectul robot cu clasa hardware si timpul de rulare

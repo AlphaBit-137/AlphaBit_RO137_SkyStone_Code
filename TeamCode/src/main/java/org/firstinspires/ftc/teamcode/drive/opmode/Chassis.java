@@ -35,6 +35,10 @@ import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.robot.Robot;
 import com.qualcomm.robotcore.util.ElapsedTime;
 import com.qualcomm.robotcore.util.Range;
+import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+import org.firstinspires.ftc.teamcode.drive.opmode.OPMode;
 
 import java.security.KeyStore;
 
@@ -47,35 +51,27 @@ public class Chassis
     public DcMotor  LeftBack = null;        //Config: 2
     public DcMotor  LeftFront = null;       //Config: 3
 
-    boolean IS_DISABLED = false;
+    public OPMode test;
+
 
     public ChassisModes  RobotChasis = ChassisModes.FAST;
 
-
-    private enum ChassisModes{
+    public enum ChassisModes{
             FAST,
             SLOW,
     }
 
-    public double RightFrontPower = 0;
-    public double RightBackPower = 0;
-    public double LeftBackPower = 0;
-    public double LeftFrontPower = 0;
-
     /* local OpMode members. */
     HardwareMap hwMap           =  null;
     private ElapsedTime period  = new ElapsedTime();
-
     /* Constructor */
     public Chassis(){
 
     }
-
     /* Initialize standard Hardware interfaces */
     public void init(HardwareMap ahwMap) {
         // Save reference to Hardware map
         hwMap = ahwMap;
-
         // Define and Initialize Motors
         LeftBack = hwMap.get(DcMotor.class, "Left_Back");
         RightFront = hwMap.get(DcMotor.class, "Right_Front");
@@ -101,28 +97,33 @@ public class Chassis
 
     }
 
-    public void update() {
-        if (IS_DISABLED)
-            return;
-        switch (RobotChasis){
-            case FAST:{
-                Range.clip(LeftFrontPower, -1, 1);
-                Range.clip(LeftFrontPower, -1, 1);
-                Range.clip(RightBackPower, -1, 1);
-                Range.clip(RightFrontPower, -1, 1);
-                MotorSetter(LeftFrontPower, LeftBackPower, RightBackPower, RightFrontPower);
-                break;
-            }
-            case SLOW:{
-                Range.clip(LeftFrontPower, -0.2, 0.2);
-                Range.clip(LeftFrontPower, -0.2, 0.2);
-                Range.clip(RightBackPower, -0.2, 0.2);
-                Range.clip(RightFrontPower, -0.2, 0.2);
-                MotorSetter(LeftFrontPower, LeftBackPower, RightBackPower, RightFrontPower);
-                break;
+    public void update(double D1, double D2, double D3, double D4) {
+        double RightFrontPower = 0;
+        double RightBackPower = 0;
+        double LeftBackPower = 0;
+        double LeftFrontPower = 0;
 
+
+
+        switch (RobotChasis) {
+                case FAST: {
+                   LeftFrontPower = Range.clip(D1, -1, 1);
+                   LeftBackPower = Range.clip(D2, -1, 1);
+                   RightBackPower = Range.clip(D3, -1, 1);
+                   RightFrontPower = Range.clip(D4, -1, 1);
+                    MotorSetter(LeftFrontPower, LeftBackPower, RightBackPower, RightFrontPower);
+                    break;
+                }
+                case SLOW: {
+                    LeftFrontPower = Range.clip(D1, -0.2, 0.2);
+                    LeftBackPower = Range.clip(D2, -0.2, 0.2);
+                    RightBackPower = Range.clip(D3, -0.2, 0.2);
+                    RightFrontPower = Range.clip(D4, -0.2,0.2);
+                    MotorSetter(LeftFrontPower, LeftBackPower, RightBackPower, RightFrontPower);
+                    break;
+
+                }
             }
-        }
     }
 
     public void switchToFast(){
@@ -133,11 +134,13 @@ public class Chassis
     }
 
 
+
+
     public void MotorSetter(double x1, double x2, double x3, double x4){
         LeftFront.setPower(x1);
-        LeftBack.setPower(x1);
-        RightBack.setPower(x1);
-        RightFront.setPower(x1);
+        LeftBack.setPower(x2);
+        RightBack.setPower(x3);
+        RightFront.setPower(x4);
 
     }
 
