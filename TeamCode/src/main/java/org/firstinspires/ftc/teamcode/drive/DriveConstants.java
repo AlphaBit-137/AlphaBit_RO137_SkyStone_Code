@@ -5,7 +5,11 @@ import com.acmerobotics.roadrunner.control.PIDCoefficients;
 import com.acmerobotics.roadrunner.trajectory.constraints.DriveConstraints;
 import com.qualcomm.hardware.motors.GoBILDA5202Series;
 import com.qualcomm.hardware.motors.NeveRest20Gearmotor;
+import com.qualcomm.robotcore.hardware.configuration.annotations.MotorType;
 import com.qualcomm.robotcore.hardware.configuration.typecontainers.MotorConfigurationType;
+
+import org.firstinspires.ftc.robotcore.external.navigation.Rotation;
+import org.firstinspires.ftc.teamcode.structure.GoBILDA5205Series_435RPM;
 
 /*
  * Constants shared between multiple drive types.
@@ -28,14 +32,14 @@ public class DriveConstants {
      * @DeviceProperties and @MotorType annotations.
      */
     private static final MotorConfigurationType MOTOR_CONFIG =
-            MotorConfigurationType.getMotorType(GoBILDA5202Series.class);
+            MotorConfigurationType.getMotorType(GoBILDA5205Series_435RPM.class);
 
     /*
      * Set the first flag appropriately. If using the built-in motor velocity PID, update
      * MOTOR_VELO_PID with the tuned coefficients from DriveVelocityPIDTuner.
      */
     public static final boolean RUN_USING_ENCODER = true;
-    public static final PIDCoefficients MOTOR_VELO_PID = null;
+    public static final PIDCoefficients MOTOR_VELO_PID = new PIDCoefficients(35.0,0.0,0.0);
 
     /*
      * These are physical constants that can be determined from your robot (including the track
@@ -50,7 +54,7 @@ public class DriveConstants {
     public static double TRACK_WIDTH = 1;
 
     /*
-     * These are the feedforward parameters used to model the drive motor behavior. If you are using
+     * These are the feedforward parameters used to model the drive moto r behavior. If you are using
      * the built-in velocity PID, *these values are fine as is*. However, if you do not have drive
      * motor encoders or have elected not to use them for velocity control, these values should be
      * empirically tuned.
