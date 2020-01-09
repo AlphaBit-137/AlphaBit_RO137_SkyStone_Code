@@ -20,19 +20,26 @@ public class SplineTest extends LinearOpMode {
 
         if (isStopRequested()) return;
 
+
         drive.followTrajectorySync(
                 drive.trajectoryBuilder()
-                        .splineTo(new Pose2d(30, 30, 0))
+                        .splineTo(new Pose2d(15, 15, 90))
+                        .splineTo(new Pose2d(0, 30, 135))
+                        .splineTo(new Pose2d(-15, 15, 225))
+                        .splineTo(new Pose2d(0,0, 360))
                         .build()
         );
 
         sleep(2000);
 
-        drive.followTrajectorySync(
+      /*drive.followTrajectorySync(
                 drive.trajectoryBuilder()
-                        .reverse()
-                        .splineTo(new Pose2d(0, 0, 0))
+                        .splineTo(new Pose2d(0, 0, 180))
                         .build()
         );
+
+    */
+
+
     }
 }
