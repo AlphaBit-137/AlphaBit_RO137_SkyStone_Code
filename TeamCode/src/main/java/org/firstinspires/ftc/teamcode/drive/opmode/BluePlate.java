@@ -1,7 +1,6 @@
 package org.firstinspires.ftc.teamcode.drive.opmode;
 
 import com.acmerobotics.roadrunner.geometry.Pose2d;
-import com.acmerobotics.roadrunner.geometry.Vector2d;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
@@ -11,8 +10,8 @@ import org.firstinspires.ftc.teamcode.drive.mecanum.SampleMecanumDriveREV;
 /*
  * This is an example of a more complex path to really test the tuning.
  */
-@Autonomous(group = "RedPlate")
-public class RedPlate extends LinearOpMode {
+@Autonomous(group = "BluePlate")
+public class BluePlate extends LinearOpMode {
     @Override
     public void runOpMode() throws InterruptedException {
         SampleMecanumDriveBase drive = new SampleMecanumDriveREV(hardwareMap);
@@ -29,7 +28,7 @@ public class RedPlate extends LinearOpMode {
         drive.followTrajectorySync(
 
                 drive.trajectoryBuilder()
-                        .splineTo(new Pose2d(20, -20, 4.2))
+                        .splineTo(new Pose2d(20, 17, 2))
                         .reverse()
                         .build()
         );
@@ -41,7 +40,7 @@ public class RedPlate extends LinearOpMode {
 
                 drive.trajectoryBuilder()
                         .reverse()
-                        .splineTo(new Pose2d(-10, 30,4.8))
+                        .splineTo(new Pose2d(-5, -30,1.5))
                         .build()
         );
 

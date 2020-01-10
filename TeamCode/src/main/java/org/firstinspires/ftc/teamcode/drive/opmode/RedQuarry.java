@@ -13,12 +13,12 @@ import org.firstinspires.ftc.teamcode.drive.mecanum.SampleMecanumDriveREV;
 /*
  * This is an example of a more complex path to really test the tuning.
  */
-@Autonomous(group = "Auto")
-public class Auto extends LinearOpMode {
+@Autonomous(group = "RedQuarry")
+public class RedQuarry extends LinearOpMode {
     @Override
     public void runOpMode() throws InterruptedException {
         SampleMecanumDriveBase drive = new SampleMecanumDriveREV(hardwareMap);
-
+       // drive.setPoseEstimate(new Pose2d(30.00, 30.00, 0.00));
 
         waitForStart();
 
@@ -131,7 +131,7 @@ public class Auto extends LinearOpMode {
 
         );
 
-        
+
 
 
         drive.followTrajectorySync(
