@@ -12,12 +12,10 @@ import org.firstinspires.ftc.teamcode.drive.mecanum.SampleMecanumDriveREV;
  * This is an example of a more complex path to really test the tuning.
  */
 @Autonomous(group = "Blue_Quarry_Incomplete")
-public class EnchancedBlueQuarry extends LinearOpMode {
+public class BlueQuarryDoua extends LinearOpMode {
     @Override
     public void runOpMode() throws InterruptedException {
         SampleMecanumDriveBase drive = new SampleMecanumDriveREV(hardwareMap);
-
-
         waitForStart();
 
         if (isStopRequested()) return;
@@ -94,26 +92,7 @@ public class EnchancedBlueQuarry extends LinearOpMode {
         drive.followTrajectorySync(
 
                 drive.trajectoryBuilder()
-                        .lineTo(new Vector2d(30, -18))
-                        .build()
-
-        );
-
-
-
-
-        //Trajectory_8
-        drive.followTrajectorySync(
-
-                drive.trajectoryBuilder()
-                        .reverse()
-                        .lineTo(new Vector2d(30, 5))
-                        .splineTo(new Pose2d(65, 5,3.4))
-                        .setReversed(false)
-                        .splineTo(new Pose2d( 30, -30, 4.5 ))
-                       // .splineTo(new Pose2d( 40, 27, 135 ))
-                        //.splineTo(new Pose2d(28, -20,5.05))
-
+                        .lineTo(new Vector2d(30, 50))
                         .build()
 
         );
@@ -122,43 +101,10 @@ public class EnchancedBlueQuarry extends LinearOpMode {
 
                 drive.trajectoryBuilder()
                         .reverse()
-
-
-
-
+                        .lineTo(new Vector2d(30, 25))
                         .build()
 
         );
-
-
-       /* drive.turnSync(Math.toRadians(9));
-
-        drive.followTrajectorySync(
-
-                drive.trajectoryBuilder()
-                        .lineTo(new Vector2d(28,-60))
-                        .reverse()
-                        .lineTo(new Vector2d(28,-30))
-                        .build()
-
-        );
-
-
-
-        drive.followTrajectorySync(
-
-                drive.trajectoryBuilder()
-                        .reverse()
-                        .lineTo(new Vector2d(28,-30))
-                        .build()
-
-        );
-
-        */
-
-
-
-
 
     }
 }
