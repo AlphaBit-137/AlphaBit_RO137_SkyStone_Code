@@ -48,10 +48,10 @@ public class Chassis
 {
     /* Public OpMode members. */
 
-    public DcMotor  RightFront   = null;    //Config: 0
-    public DcMotor  RightBack  = null;      //Config: 1
-    public DcMotor  LeftBack = null;        //Config: 2
-    public DcMotor  LeftFront = null;       //Config: 3
+    public DcMotor  RightFront   = null;    //Config: 0 vechi FR
+    public DcMotor  RightBack  = null;      //Config: 1 vechi BR
+    public DcMotor  LeftBack = null;        //Config: 2 vechi BL
+    public DcMotor  LeftFront = null;       //Config: 3 vechi FL
 
     public OPMode test;
 
@@ -75,20 +75,21 @@ public class Chassis
         // Save reference to Hardware map
         hwMap = ahwMap;
         // Define and Initialize Motors
-        LeftBack = hwMap.get(DcMotor.class, "Left_Back");
-        RightFront = hwMap.get(DcMotor.class, "Right_Front");
-        LeftFront = hwMap.get(DcMotor.class, "Left_Front");
-        RightBack = hwMap.get(DcMotor.class, "Right_Back");
+        LeftBack = hwMap.get(DcMotor.class, "Back_Left");
+        RightFront = hwMap.get(DcMotor.class, "Front_Right");
+        LeftFront = hwMap.get(DcMotor.class, "Front_Left");
+        RightBack = hwMap.get(DcMotor.class, "Back_Right");
 
         LeftBack.setDirection(DcMotor.Direction.FORWARD);
         RightFront.setDirection(DcMotor.Direction.REVERSE);
         LeftFront.setDirection(DcMotor.Direction.FORWARD);
         RightBack.setDirection(DcMotor.Direction.REVERSE);
-
+      
         LeftBack.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         RightFront.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         LeftFront.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         RightBack.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+
 
 
         // Set all motors to zero power
