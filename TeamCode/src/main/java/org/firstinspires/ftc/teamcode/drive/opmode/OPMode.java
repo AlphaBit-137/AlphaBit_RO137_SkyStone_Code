@@ -73,7 +73,6 @@ public class OPMode extends LinearOpMode {
             Drive3 = Range.clip(Sum - 2*Turn, -1.0, 1.0);
             Drive4 = Range.clip(Diff - 2*Turn, -1.0, 1.0);
 
-
             if(gamepad1.a){
                 DriveTrain.switchToFast();
             }

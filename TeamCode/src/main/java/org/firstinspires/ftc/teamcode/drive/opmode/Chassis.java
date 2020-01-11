@@ -29,7 +29,9 @@
 
 package org.firstinspires.ftc.teamcode.drive.opmode;
 
+import com.qualcomm.robotcore.eventloop.opmode.OpModeManager;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.Gamepad;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.robot.Robot;
@@ -82,11 +84,13 @@ public class Chassis
         RightFront.setDirection(DcMotor.Direction.REVERSE);
         LeftFront.setDirection(DcMotor.Direction.FORWARD);
         RightBack.setDirection(DcMotor.Direction.REVERSE);
-
-        LeftFront.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+      
         LeftBack.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        RightBack.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         RightFront.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        LeftFront.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        RightBack.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+
+
 
         // Set all motors to zero power
         LeftBack.setPower(0);
@@ -116,7 +120,7 @@ public class Chassis
                    LeftBackPower = Range.clip(D2, -1, 1);
                    RightBackPower = Range.clip(D3, -1, 1);
                    RightFrontPower = Range.clip(D4, -1, 1);
-                    MotorSetter(LeftFrontPower, LeftBackPower, RightBackPower, RightFrontPower);
+                   MotorSetter(LeftFrontPower, LeftBackPower, RightBackPower, RightFrontPower);
                     break;
                 }
                 case SLOW: {
