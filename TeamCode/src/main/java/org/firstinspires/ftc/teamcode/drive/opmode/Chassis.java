@@ -40,36 +40,43 @@ import com.qualcomm.robotcore.util.Range;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+
+import org.firstinspires.ftc.robotcore.external.Telemetry;
 import org.firstinspires.ftc.teamcode.drive.opmode.OPMode;
 
 import java.security.KeyStore;
 
-public class Chassis
-{
+public class Chassis {
     /* Public OpMode members. */
 
-    public DcMotor  RightFront   = null;    //Config: 0 vechi FR
-    public DcMotor  RightBack  = null;      //Config: 1 vechi BR
-    public DcMotor  LeftBack = null;        //Config: 2 vechi BL
-    public DcMotor  LeftFront = null;       //Config: 3 vechi FL
+    public DcMotor RightFront = null;    //Config: 0 vechi FR
+    public DcMotor RightBack = null;      //Config: 1 vechi BR
+    public DcMotor LeftBack = null;        //Config: 2 vechi BL
+    public DcMotor LeftFront = null;       //Config: 3 vechi FL
 
     public OPMode test;
 
 
-    public ChassisModes  RobotChasis = ChassisModes.FAST;
+    public ChassisModes RobotChasis = ChassisModes.FAST;
 
-    public enum ChassisModes{
-            FAST,
-            SLOW,
+    public enum ChassisModes {
+        FAST,
+        SLOW,
     }
 
     /* local OpMode members. */
-    HardwareMap hwMap           =  null;
-    private ElapsedTime period  = new ElapsedTime();
-    /* Constructor */
-    public Chassis(){
+    HardwareMap hwMap = null;
+    private ElapsedTime period = new ElapsedTime();
 
+    private Gamepad gamepad;
+    private Telemetry telemetry;
+
+    /* Constructor */
+    public Chassis(Gamepad gamepad, Telemetry telemetry) {
+        this.gamepad = gamepad;
+        this.telemetry = telemetry;
     }
+
     /* Initialize standard Hardware interfaces */
     public void init(HardwareMap ahwMap) {
         // Save reference to Hardware map
@@ -84,12 +91,11 @@ public class Chassis
         RightFront.setDirection(DcMotor.Direction.REVERSE);
         LeftFront.setDirection(DcMotor.Direction.FORWARD);
         RightBack.setDirection(DcMotor.Direction.REVERSE);
-      
+
         LeftBack.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         RightFront.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         LeftFront.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         RightBack.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-
 
 
         // Set all motors to zero power
@@ -106,46 +112,90 @@ public class Chassis
 
     }
 
-    public void update(double D1, double D2, double D3, double D4) {
+    public void update() {
+        double NULL_POWER = 0d;
+
+        //Primirea datelor de la joystick-uri
+        double front = gamepad.left_stick_y;
+        double turn = gamepad.right_stick_x;
+        double strafeLeft = gamepad.left_trigger;
+        double strafeRight = gamepad.right_trigger;
+
+        //Calcularea puterii redate motoarelor
+        if (gamepad.left_stick_y != 0f || gamepad.right_stick_x != 0f) {
+            double Drive1 = Range.clip(front - turn, -1.0, 1.0);
+            double Drive2 = Range.clip(front - turn, -1.0, 1.0);
+            double Drive3 = Range.clip(front + turn, -1.0, 1.0);
+            double Drive4 = Range.clip(front + turn, -1.0, 1.0);
+            update(Drive1, Drive2, Drive3, Drive4);
+
+        } else if (gamepad.left_trigger != 0f || gamepad.right_trigger != 0f) {
+            if (gamepad.left_trigger != 0f) {
+                update(strafeLeft, -strafeLeft, strafeLeft, -strafeLeft);
+            }
+            if (gamepad.right_trigger != 0f) {
+                update(-strafeRight, strafeRight, -strafeRight, strafeRight);
+            }
+        } else {
+            update(NULL_POWER, NULL_POWER, NULL_POWER, NULL_POWER);
+        }
+
+
+        if(gamepad.a){
+            this.switchToFast();
+        }
+        if(gamepad.b){
+            this.switchToSlow();
+        }
+
+        if(RobotChasis == Chassis.ChassisModes.SLOW){
+            telemetry.addData("Chassis", "SLOW");
+        }
+        if(RobotChasis == Chassis.ChassisModes.FAST){
+            telemetry.addData("Chassis", "FAST");
+        }
+
+
+    }
+
+    private void update(double D1, double D2, double D3, double D4) {
         double RightFrontPower;
         double RightBackPower;
         double LeftBackPower;
         double LeftFrontPower;
 
 
-
         switch (RobotChasis) {
-                case FAST: {
-                   LeftFrontPower = Range.clip(D1, -1, 1);
-                   LeftBackPower = Range.clip(D2, -1, 1);
-                   RightBackPower = Range.clip(D3, -1, 1);
-                   RightFrontPower = Range.clip(D4, -1, 1);
-                   MotorSetter(LeftFrontPower, LeftBackPower, RightBackPower, RightFrontPower);
-                    break;
-                }
-                case SLOW: {
-                    LeftFrontPower = Range.clip(D1, -0.2, 0.2);
-                    LeftBackPower = Range.clip(D2, -0.2, 0.2);
-                    RightBackPower = Range.clip(D3, -0.2, 0.2);
-                    RightFrontPower = Range.clip(D4, -0.2,0.2);
-                    MotorSetter(LeftFrontPower, LeftBackPower, RightBackPower, RightFrontPower);
-                    break;
-
-                }
+            case FAST: {
+                LeftFrontPower = Range.clip(D1, -1, 1);
+                LeftBackPower = Range.clip(D2, -1, 1);
+                RightBackPower = Range.clip(D3, -1, 1);
+                RightFrontPower = Range.clip(D4, -1, 1);
+                MotorSetter(LeftFrontPower, LeftBackPower, RightBackPower, RightFrontPower);
+                break;
             }
+            case SLOW: {
+                LeftFrontPower = Range.clip(D1, -0.2, 0.2);
+                LeftBackPower = Range.clip(D2, -0.2, 0.2);
+                RightBackPower = Range.clip(D3, -0.2, 0.2);
+                RightFrontPower = Range.clip(D4, -0.2, 0.2);
+                MotorSetter(LeftFrontPower, LeftBackPower, RightBackPower, RightFrontPower);
+                break;
+
+            }
+        }
     }
 
-    public void switchToFast(){
-        RobotChasis=ChassisModes.FAST;
-    }
-    public void switchToSlow(){
-        RobotChasis=ChassisModes.SLOW;
+    public void switchToFast() {
+        RobotChasis = ChassisModes.FAST;
     }
 
+    public void switchToSlow() {
+        RobotChasis = ChassisModes.SLOW;
+    }
 
 
-
-    public void MotorSetter(double x1, double x2, double x3, double x4){
+    public void MotorSetter(double x1, double x2, double x3, double x4) {
         LeftFront.setPower(x1);
         LeftBack.setPower(x2);
         RightBack.setPower(x3);
@@ -154,6 +204,5 @@ public class Chassis
     }
 
 
-
- }
+}
 

@@ -23,7 +23,7 @@ public class RedPlate extends LinearOpMode {
         if (isStopRequested()) return;
 
 
-        sleep(24000);
+        //sleep(24000);
 
         //Trajectory 1
         drive.followTrajectorySync(
@@ -42,6 +42,13 @@ public class RedPlate extends LinearOpMode {
                 drive.trajectoryBuilder()
                         .reverse()
                         .splineTo(new Pose2d(-10, 30,4.8))
+                        .build()
+        );
+
+        drive.followTrajectorySync(
+
+                drive.trajectoryBuilder()
+                        .strafeRight(8)
                         .build()
         );
 

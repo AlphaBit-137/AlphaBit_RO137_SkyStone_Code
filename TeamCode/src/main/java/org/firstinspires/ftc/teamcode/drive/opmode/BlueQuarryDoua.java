@@ -101,7 +101,7 @@ public class BlueQuarryDoua extends LinearOpMode {
 
                 drive.trajectoryBuilder()
                         .reverse()
-                        .lineTo(new Vector2d(30, 25))
+                        .lineTo(new Vector2d(30, 35))
                         .build()
 
         );

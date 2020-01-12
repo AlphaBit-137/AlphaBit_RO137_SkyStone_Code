@@ -34,74 +34,27 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.util.ElapsedTime;
 import com.qualcomm.robotcore.util.Range;
 
-@TeleOp(name="Op_Mode_Bun", group="Linear Opmode")
+import org.firstinspires.ftc.teamcode.structure.Robot;
+
+@TeleOp(name = "Op_Mode_Bun", group = "Linear Opmode")
 
 public class OPModeBun extends LinearOpMode {
 
     // Declaram obiectul robot cu clasa hardware si timpul de rulare
-
     private ElapsedTime runtime = new ElapsedTime();
-    Chassis DriveTrain = new Chassis();
+    private Robot robot = new Robot(gamepad1, telemetry);
 
     //Constante
     private static double MAX_POWER = 1.0, MIN_POWER = -1.0, NULL_POWER = 0.0;
 
     @Override
     public void runOpMode() {
-        DriveTrain.init(hardwareMap);
+        robot.init(hardwareMap);
         waitForStart();
 
         // Atata timp cat OpMode-ul este activ va rula pana la oprire urmatorul cod
-
         while (opModeIsActive()) {
-            double Front, Turn, Drive1, Drive2, Drive3, Drive4, strafeLeft, strafeRight;
-
-            //Primirea datelor de la joystick-uri
-            Front = gamepad1.left_stick_y;
-            Turn = gamepad1.right_stick_x;
-            strafeLeft = gamepad1.left_trigger;
-            strafeRight = gamepad1.right_trigger;
-
-
-            Drive1 = Range.clip(Front - Turn, -1.0, 1.0);
-            Drive2 = Range.clip(Front - Turn, -1.0, 1.0);
-            Drive3 = Range.clip(Front + Turn, -1.0, 1.0);
-            Drive4 = Range.clip(Front + Turn, -1.0, 1.0);
-
-
-            //Calcularea puterii redate motoarelor
-            if(gamepad1.left_stick_y != 0f || gamepad1.right_stick_x  != 0f)
-            {
-                DriveTrain.update(Drive1, Drive2, Drive3, Drive4);
-            }else if(gamepad1.left_trigger != 0f || gamepad1.right_trigger != 0f){
-
-                    if(gamepad1.left_trigger != 0f){
-                        DriveTrain.update(strafeLeft, -strafeLeft, strafeLeft, -strafeLeft);
-                    }
-
-                    if(gamepad1.right_trigger != 0f){
-                        DriveTrain.update(-strafeRight, strafeRight, -strafeRight, strafeRight);
-                    }
-            }else{
-                DriveTrain.update(NULL_POWER, NULL_POWER, NULL_POWER, NULL_POWER);
-            }
-
-
-            if(gamepad1.a){
-                DriveTrain.switchToFast();
-            }
-            if(gamepad1.b){
-                DriveTrain.switchToSlow();
-            }
-
-
-            if(DriveTrain.RobotChasis == Chassis.ChassisModes.SLOW){
-                telemetry.addData("Chassis", "SLOW");
-            }
-            if(DriveTrain.RobotChasis == Chassis.ChassisModes.FAST){
-                telemetry.addData("Chassis", "FAST");
-            }
-
+            robot.update();
             telemetry.update();
         }
     }

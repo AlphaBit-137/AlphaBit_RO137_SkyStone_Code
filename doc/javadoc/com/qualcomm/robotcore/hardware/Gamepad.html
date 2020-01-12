@@ -128,10 +128,10 @@ extends RobocolParsableBase</pre>
  Buttons are boolean values. They will be true if the button is pressed, otherwise they will be
  false.
  <p>
- The codes KEYCODE_BUTTON_SELECT and KEYCODE_BACK are both be handled as a "back" button event.
- Older Android devices (Kit Kat) map a Logitech F310 "back" button press to a KEYCODE_BUTTON_SELECT event.
- Newer Android devices (Marshmallow or greater) map this "back" button press to a KEYCODE_BACK event.
- Also, the REV Robotics Gamepad (REV-31-1159) has a "select" button instead of a "back" button on the gamepad.
+ The codes KEYCODE_BUTTON_SELECT and KEYCODE_BACK are both be handled as a "turn" button event.
+ Older Android devices (Kit Kat) map a Logitech F310 "turn" button press to a KEYCODE_BUTTON_SELECT event.
+ Newer Android devices (Marshmallow or greater) map this "turn" button press to a KEYCODE_BACK event.
+ Also, the REV Robotics Gamepad (REV-31-1159) has a "select" button instead of a "turn" button on the gamepad.
  <p>
  The dpad is represented as 4 buttons, dpad_up, dpad_down, dpad_left, and dpad_right</div>
 </li>
@@ -187,8 +187,8 @@ extends RobocolParsableBase</pre>
 </tr>
 <tr class="altColor">
 <td class="colFirst"><code>boolean</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/qualcomm/robotcore/hardware/Gamepad.html#back">back</a></span></code>
-<div class="block">button back</div>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../com/qualcomm/robotcore/hardware/Gamepad.html#turn">turn</a></span></code>
+<div class="block">button turn</div>
 </td>
 </tr>
 <tr class="rowColor">
@@ -684,14 +684,14 @@ extends RobocolParsableBase</pre>
 <div class="block">button start</div>
 </li>
 </ul>
-<a name="back">
+<a name="turn">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>back</h4>
-<pre>public&nbsp;boolean back</pre>
-<div class="block">button back</div>
+<h4>turn</h4>
+<pre>public&nbsp;boolean turn</pre>
+<div class="block">button turn</div>
 </li>
 </ul>
 <a name="left_bumper">
