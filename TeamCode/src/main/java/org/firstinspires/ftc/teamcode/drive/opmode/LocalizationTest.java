@@ -23,6 +23,7 @@ public class LocalizationTest extends LinearOpMode {
         telemetry = new MultipleTelemetry(telemetry, FtcDashboard.getInstance().getTelemetry());
 
         SampleMecanumDriveBase drive = new SampleMecanumDriveREV(hardwareMap);
+        drive.setPoseEstimate(new Pose2d(-37,-72,Math.toRadians(90)));
 
         waitForStart();
 
