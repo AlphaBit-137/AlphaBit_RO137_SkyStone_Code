@@ -12,7 +12,7 @@ import org.firstinspires.ftc.teamcode.drive.mecanum.SampleMecanumDriveREV;
  * This is an example of a more complex path to really test the tuning.
  */
 @Autonomous(group = "Blue_Quarry_Incomplete")
-public class BlueQuarryDoua extends LinearOpMode {
+public class Ichim_Blue extends LinearOpMode {
     @Override
     public void runOpMode() throws InterruptedException {
         SampleMecanumDriveBase drive = new SampleMecanumDriveREV(hardwareMap);
@@ -36,11 +36,12 @@ public class BlueQuarryDoua extends LinearOpMode {
         drive.followTrajectorySync(
 
                 drive.trajectoryBuilder()
-                        .splineTo(new Pose2d(25,22.5, 65))
+                        .splineTo(new Pose2d(25,30, 70.12))
+                        //69.989
                         .build()
         );
 
-        drive.turnSync(Math.toRadians(-44));
+        //drive.turnSync(Math.toRadians(-44));
 
 
 

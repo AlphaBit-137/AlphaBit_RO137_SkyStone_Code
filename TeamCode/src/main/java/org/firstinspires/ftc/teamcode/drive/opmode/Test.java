@@ -11,42 +11,49 @@ import org.firstinspires.ftc.teamcode.drive.mecanum.SampleMecanumDriveREV;
 /*
  * This is an example of a more complex path to really test the tuning.
  */
-@Autonomous(group = "RedPlate")
-public class RedPlate extends LinearOpMode {
+@Autonomous(group = "BluePlate")
+public class Test extends LinearOpMode {
     @Override
     public void runOpMode() throws InterruptedException {
         SampleMecanumDriveBase drive = new SampleMecanumDriveREV(hardwareMap);
 
+        drive.setPoseEstimate(new Pose2d(-37.0,72.0,Math.toRadians(270)));
 
         waitForStart();
 
         if (isStopRequested()) return;
 
-
-        //sleep(24000);
-
         //Trajectory 1
         drive.followTrajectorySync(
 
                 drive.trajectoryBuilder()
-                        .splineTo(new Pose2d(20, -20, 4.2))
-                        .reverse()
+                        .splineTo(new Pose2d(-30.0,25.0,Math.toRadians(270)))
                         .build()
         );
 
-
-        sleep(100);
+        drive.turnSync(Math.toRadians(180));
 
         drive.followTrajectorySync(
-
                 drive.trajectoryBuilder()
-                        .reverse()
-                        .splineTo(new Pose2d(-10, 30,4.8))
+                        .splineTo(new Pose2d(-20.0,45.0,Math.toRadians(0)))
                         .build()
         );
 
 
+        /*drive.followTrajectorySync(
+                drive.trajectoryBuilder()
+                        .splineTo(new Pose2d(-60.0,25.0,Math.toRadians(270)))
+                        .build()
+        );
 
+        drive.turnSync(Math.toRadians(90));
 
+        drive.followTrajectorySync(
+                drive.trajectoryBuilder()
+                        .splineTo(new Pose2d(0.0,38.0,Math.toRadians(180)))
+                        .lineTo(new Vector2d(12.0,38.0))
+                        .build()
+        );*/
     }
 }
+
