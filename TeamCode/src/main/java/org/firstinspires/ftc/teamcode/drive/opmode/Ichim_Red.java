@@ -13,7 +13,7 @@ import org.firstinspires.ftc.teamcode.drive.mecanum.SampleMecanumDriveREV;
 /*
  * This is an example of a more complex path to really test the tuning.
  */
-@Autonomous(group = "RedQuarry")
+@Autonomous(group = "Ichim_Red")
 public class Ichim_Red extends LinearOpMode {
     @Override
     public void runOpMode() throws InterruptedException {
@@ -94,12 +94,12 @@ public class Ichim_Red extends LinearOpMode {
 
         //  drive.turnSync(Math.toRadians(18));
 
-
+///de aici trebuie sa modific
         //Trajectory_7
         drive.followTrajectorySync(
 
                 drive.trajectoryBuilder()
-                        .lineTo(new Vector2d(22.5, 13))
+                        .lineTo(new Vector2d(0, 5))
                         .build()
         );
 
@@ -111,7 +111,7 @@ public class Ichim_Red extends LinearOpMode {
 
                 drive.trajectoryBuilder()
                         .reverse()
-                        .lineTo(new Vector2d(22.5, -2))
+                        .lineTo(new Vector2d(30, -8))
                         .splineTo(new Pose2d(60, -4,135))
                         .setReversed(false)
                         .splineTo(new Pose2d( 40, 27, 135 ))

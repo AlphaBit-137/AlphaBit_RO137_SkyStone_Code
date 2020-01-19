@@ -114,12 +114,12 @@ public class RedQuarry extends LinearOpMode {
                         .splineTo(new Pose2d(60, -4,135))
                         .setReversed(false)
                         .splineTo(new Pose2d( 40, 27, 135 ))
-                        .splineTo(new Pose2d(28, -20,5.05))
+                        .splineTo(new Pose2d(28, -6,5.05))
 
                         .build()
 
         );
-        drive.turnSync(Math.toRadians(9));
+     //   drive.turnSync(Math.toRadians(9));
 
         drive.followTrajectorySync(
 
@@ -134,7 +134,7 @@ public class RedQuarry extends LinearOpMode {
 
 
 
-        drive.followTrajectorySync(
+  /*      drive.followTrajectorySync(
 
                 drive.trajectoryBuilder()
                         .reverse()
@@ -143,7 +143,7 @@ public class RedQuarry extends LinearOpMode {
 
         );
 
-
+*/
 
 
 

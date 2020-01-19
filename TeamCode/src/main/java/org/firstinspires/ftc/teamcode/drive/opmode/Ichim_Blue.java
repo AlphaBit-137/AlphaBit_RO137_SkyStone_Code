@@ -12,7 +12,7 @@ import org.firstinspires.ftc.teamcode.drive.mecanum.SampleMecanumDriveREV;
  * This is an example of a more complex path to really test the tuning.
  */
 @Autonomous(group = "Blue_Quarry_Incomplete")
-public class Ichim extends LinearOpMode {
+public class Ichim_Blue extends LinearOpMode {
     @Override
     public void runOpMode() throws InterruptedException {
         SampleMecanumDriveBase drive = new SampleMecanumDriveREV(hardwareMap);

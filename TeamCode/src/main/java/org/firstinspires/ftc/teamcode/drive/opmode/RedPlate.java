@@ -23,7 +23,7 @@ public class RedPlate extends LinearOpMode {
         if (isStopRequested()) return;
 
 
-        sleep(24000);
+        //sleep(24000);
 
         //Trajectory 1
         drive.followTrajectorySync(
