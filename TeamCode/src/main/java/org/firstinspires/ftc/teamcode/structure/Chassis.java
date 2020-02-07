@@ -27,37 +27,29 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package org.firstinspires.ftc.teamcode.drive.opmode;
+package org.firstinspires.ftc.teamcode.structure;
 
-import com.qualcomm.robotcore.eventloop.opmode.OpModeManager;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.Gamepad;
 import com.qualcomm.robotcore.hardware.HardwareMap;
-import com.qualcomm.robotcore.hardware.Servo;
-import com.qualcomm.robotcore.robot.Robot;
+import com.qualcomm.robotcore.hardware.*;
 import com.qualcomm.robotcore.util.ElapsedTime;
 import com.qualcomm.robotcore.util.Range;
-import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
-import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
-import org.firstinspires.ftc.teamcode.drive.opmode.OPMode;
-
-import java.security.KeyStore;
 
 public class Chassis {
     /* Public OpMode members. */
 
-    public DcMotor RightFront = null;    //Config: 0 vechi FR
-    public DcMotor RightBack = null;      //Config: 1 vechi BR
-    public DcMotor LeftBack = null;        //Config: 2 vechi BL
-    public DcMotor LeftFront = null;       //Config: 3 vechi FL
-
-    public OPMode test;
+    public DcMotorEx rightFront = null;    //Config: 0 vechi FR
+    public DcMotorEx rightBack = null;      //Config: 1 vechi BR
+    public DcMotorEx leftBack = null;        //Config: 2 vechi BL
+    public DcMotorEx leftFront = null;       //Config: 3 vechi FL
 
 
-    public ChassisModes RobotChasis = ChassisModes.FAST;
+
+    public ChassisModes RobotChassis = ChassisModes.FAST;
 
     public enum ChassisModes {
         FAST,
@@ -66,14 +58,15 @@ public class Chassis {
 
     /* local OpMode members. */
     HardwareMap hwMap = null;
-    private ElapsedTime period = new ElapsedTime();
 
-    private Gamepad gamepad;
-    private Telemetry telemetry;
+    public Gamepad gamepadA;
+    public Gamepad gamepadB;
+    public Telemetry telemetry;
 
     /* Constructor */
-    public Chassis(Gamepad gamepad, Telemetry telemetry) {
-        this.gamepad = gamepad;
+    public Chassis(Gamepad gamepad1, Gamepad gamepad2 , Telemetry telemetry) {
+        this.gamepadA = gamepad1;
+        this.gamepadB = gamepad2;
         this.telemetry = telemetry;
     }
 
@@ -82,33 +75,33 @@ public class Chassis {
         // Save reference to Hardware map
         hwMap = ahwMap;
         // Define and Initialize Motors
-        LeftBack = hwMap.get(DcMotor.class, "Back_Left");
-        RightFront = hwMap.get(DcMotor.class, "Front_Right");
-        LeftFront = hwMap.get(DcMotor.class, "Front_Left");
-        RightBack = hwMap.get(DcMotor.class, "Back_Right");
+        leftBack = hwMap.get(DcMotorEx.class, "Back_Left");
+        rightFront = hwMap.get(DcMotorEx.class, "Front_Right");
+        leftFront = hwMap.get(DcMotorEx.class, "Front_Left");
+        rightBack = hwMap.get(DcMotorEx.class, "Back_Right");
 
-        LeftBack.setDirection(DcMotor.Direction.FORWARD);
-        RightFront.setDirection(DcMotor.Direction.REVERSE);
-        LeftFront.setDirection(DcMotor.Direction.FORWARD);
-        RightBack.setDirection(DcMotor.Direction.REVERSE);
+        leftBack.setDirection(DcMotor.Direction.FORWARD);
+        rightFront.setDirection(DcMotor.Direction.REVERSE);
+        leftFront.setDirection(DcMotor.Direction.FORWARD);
+        rightBack.setDirection(DcMotor.Direction.REVERSE);
 
-        LeftBack.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        RightFront.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        LeftFront.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        RightBack.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        leftBack.setZeroPowerBehavior(DcMotorEx.ZeroPowerBehavior.BRAKE);
+        rightFront.setZeroPowerBehavior(DcMotorEx.ZeroPowerBehavior.BRAKE);
+        leftFront.setZeroPowerBehavior(DcMotorEx.ZeroPowerBehavior.BRAKE);
+        rightBack.setZeroPowerBehavior(DcMotorEx.ZeroPowerBehavior.BRAKE);
 
 
         // Set all motors to zero power
-        LeftBack.setPower(0);
-        RightFront.setPower(0);
-        LeftFront.setPower(0);
-        RightBack.setPower(0);
+        leftBack.setPower(0);
+        rightFront.setPower(0);
+        leftFront.setPower(0);
+        rightBack.setPower(0);
         // Set all motors to run without encoders.
         // May want to use RUN_USING_ENCODERS if encoders are installed.
-        LeftBack.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-        RightFront.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-        LeftFront.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-        RightBack.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        leftBack.setMode(DcMotorEx.RunMode.RUN_WITHOUT_ENCODER);
+        rightFront.setMode(DcMotorEx.RunMode.RUN_WITHOUT_ENCODER);
+        leftFront.setMode(DcMotorEx.RunMode.RUN_WITHOUT_ENCODER);
+        rightBack.setMode(DcMotorEx.RunMode.RUN_WITHOUT_ENCODER);
 
     }
 
@@ -116,56 +109,56 @@ public class Chassis {
         double NULL_POWER = 0d;
 
         //Primirea datelor de la joystick-uri
-        double front = gamepad.left_stick_y;
-        double turn = gamepad.right_stick_x;
-        double strafeLeft = gamepad.left_trigger;
-        double strafeRight = gamepad.right_trigger;
+        double front = gamepadA.left_stick_y;
+        double turn = gamepadA.right_stick_x;
+        double strafeLeft = gamepadA.left_trigger;
+        double strafeRight = gamepadA.right_trigger;
 
         //Calcularea puterii redate motoarelor
-        if (gamepad.left_stick_y != 0f || gamepad.right_stick_x != 0f) {
+        if (gamepadA.left_stick_y != 0f || gamepadA.right_stick_x != 0f) {
             double Drive1 = Range.clip(front - turn, -1.0, 1.0);
             double Drive2 = Range.clip(front - turn, -1.0, 1.0);
             double Drive3 = Range.clip(front + turn, -1.0, 1.0);
             double Drive4 = Range.clip(front + turn, -1.0, 1.0);
-            update(Drive1, Drive2, Drive3, Drive4);
+            caseUpdate(Drive1, Drive2, Drive3, Drive4);
 
-        } else if (gamepad.left_trigger != 0f || gamepad.right_trigger != 0f) {
-            if (gamepad.left_trigger != 0f) {
-                update(strafeLeft, -strafeLeft, strafeLeft, -strafeLeft);
+        } else if (gamepadA.left_trigger != 0f || gamepadA.right_trigger != 0f) {
+            if (gamepadA.left_trigger != 0f) {
+                caseUpdate(strafeLeft, -strafeLeft, strafeLeft, -strafeLeft);
             }
-            if (gamepad.right_trigger != 0f) {
-                update(-strafeRight, strafeRight, -strafeRight, strafeRight);
+            if (gamepadA.right_trigger != 0f) {
+                caseUpdate(-strafeRight, strafeRight, -strafeRight, strafeRight);
             }
         } else {
-            update(NULL_POWER, NULL_POWER, NULL_POWER, NULL_POWER);
+            caseUpdate(NULL_POWER, NULL_POWER, NULL_POWER, NULL_POWER);
         }
 
 
-        if(gamepad.a){
+        if(gamepadA.a){
             this.switchToFast();
         }
-        if(gamepad.b){
+        if(gamepadA.b){
             this.switchToSlow();
         }
 
-        if(RobotChasis == Chassis.ChassisModes.SLOW){
+        if(RobotChassis == Chassis.ChassisModes.SLOW){
             telemetry.addData("Chassis", "SLOW");
         }
-        if(RobotChasis == Chassis.ChassisModes.FAST){
+        if(RobotChassis == Chassis.ChassisModes.FAST){
             telemetry.addData("Chassis", "FAST");
         }
 
 
     }
 
-    private void update(double D1, double D2, double D3, double D4) {
+    private void caseUpdate(double D1, double D2, double D3, double D4) {
         double RightFrontPower;
         double RightBackPower;
         double LeftBackPower;
         double LeftFrontPower;
 
 
-        switch (RobotChasis) {
+        switch (RobotChassis) {
             case FAST: {
                 LeftFrontPower = Range.clip(D1, -1, 1);
                 LeftBackPower = Range.clip(D2, -1, 1);
@@ -187,19 +180,16 @@ public class Chassis {
     }
 
     public void switchToFast() {
-        RobotChasis = ChassisModes.FAST;
+        RobotChassis = ChassisModes.FAST;
     }
-
-    public void switchToSlow() {
-        RobotChasis = ChassisModes.SLOW;
-    }
+    public void switchToSlow() { RobotChassis = ChassisModes.SLOW; }
 
 
     public void MotorSetter(double x1, double x2, double x3, double x4) {
-        LeftFront.setPower(x1);
-        LeftBack.setPower(x2);
-        RightBack.setPower(x3);
-        RightFront.setPower(x4);
+        leftFront.setPower(x1);
+        leftBack.setPower(x2);
+        rightBack.setPower(x3);
+        rightFront.setPower(x4);
 
     }
 

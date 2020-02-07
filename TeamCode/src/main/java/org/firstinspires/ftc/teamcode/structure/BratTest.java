@@ -27,70 +27,51 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package org.firstinspires.ftc.teamcode.drive.opmode;
+package org.firstinspires.ftc.teamcode.structure;
 
-import com.acmerobotics.roadrunner.drive.Drive;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.HardwareMap;
+import com.qualcomm.robotcore.hardware.DcMotorEx;
+import com.qualcomm.robotcore.hardware.PIDFCoefficients;
 import com.qualcomm.robotcore.util.ElapsedTime;
 import com.qualcomm.robotcore.util.Range;
 
-@TeleOp(name="Op_Mode", group="Linear Opmode")
+@TeleOp(name = "Brat_Test", group = "Linear Opmode")
 
-public class OPMode extends LinearOpMode {
+public class BratTest extends LinearOpMode {
 
     // Declaram obiectul robot cu clasa hardware si timpul de rulare
-
     private ElapsedTime runtime = new ElapsedTime();
-    Chassis DriveTrain = new Chassis();
+
+    public DcMotorEx arm = null;
+    public DcMotorEx lift = null;
+
 
     //Constante
-    private static double MAX_POWER = 1.0, MIN_POWER = -1.0, NULL_POWER = 0.0;
 
     @Override
     public void runOpMode() {
-        DriveTrain.init(hardwareMap);
+
+        lift = hardwareMap.get(DcMotorEx.class, "Lift");
+
+        lift.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+
+        lift.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+
+        lift.setZeroPowerBehavior(DcMotorEx.ZeroPowerBehavior.BRAKE);
+
+        lift.setVelocityPIDFCoefficients(1.174, 0.1174, 0, 11.74);
+        lift.setPositionPIDFCoefficients(5.0);
+
         waitForStart();
 
         // Atata timp cat OpMode-ul este activ va rula pana la oprire urmatorul cod
-
         while (opModeIsActive()) {
-            double Front, Turn, Sum, Diff, Side, Drive1, Drive2, Drive3, Drive4;
+            double power = Range.clip(gamepad1.left_stick_y, -1, 1);
+            lift.setPower(power);
 
-            //Primirea datelor de la joystick-uri
-            Front = gamepad1.left_stick_y;
-            Turn = gamepad1.right_stick_x;
-            Side = gamepad1.left_stick_x;
-
-            //Calcularea puterii redate motoarelor
-            Sum = Range.clip(Front + Side, -1.0, 1.0);
-            Diff = Range.clip(Front - Side, -1.0, 1.0);
-
-            Drive1 = Range.clip(Sum + 2*Turn, -1.0, 1.0);
-            Drive2 = Range.clip(Diff + 2*Turn, -1.0, 1.0);
-            Drive3 = Range.clip(Sum - 2*Turn, -1.0, 1.0);
-            Drive4 = Range.clip(Diff - 2*Turn, -1.0, 1.0);
-
-            if(gamepad1.a){
-                DriveTrain.switchToFast();
-            }
-            if(gamepad1.b){
-                DriveTrain.switchToSlow();
-            }
-
-
-            if(DriveTrain.RobotChasis == Chassis.ChassisModes.SLOW){
-                telemetry.addData("Chassis", "1");
-            }
-            if(DriveTrain.RobotChasis == Chassis.ChassisModes.FAST){
-                telemetry.addData("Chassis", "2");
-            }
-
-            DriveTrain.update(Drive1, Drive2, Drive3, Drive4);
-
-
+            telemetry.addData("Lift", lift.getCurrentPosition());
 
             telemetry.update();
         }

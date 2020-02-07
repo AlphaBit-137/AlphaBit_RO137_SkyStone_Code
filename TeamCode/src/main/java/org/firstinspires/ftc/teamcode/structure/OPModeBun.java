@@ -27,7 +27,7 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-package org.firstinspires.ftc.teamcode.drive.opmode;
+package org.firstinspires.ftc.teamcode.structure;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
@@ -42,10 +42,9 @@ public class OPModeBun extends LinearOpMode {
 
     // Declaram obiectul robot cu clasa hardware si timpul de rulare
     private ElapsedTime runtime = new ElapsedTime();
-    private Robot robot = new Robot(gamepad1, telemetry);
+    private Robot robot = new Robot(gamepad1, gamepad2, telemetry);
 
     //Constante
-    private static double MAX_POWER = 1.0, MIN_POWER = -1.0, NULL_POWER = 0.0;
 
     @Override
     public void runOpMode() {

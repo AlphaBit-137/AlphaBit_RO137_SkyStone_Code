@@ -4,18 +4,20 @@ import com.qualcomm.robotcore.hardware.Gamepad;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import org.firstinspires.ftc.robotcore.external.Telemetry;
-import org.firstinspires.ftc.teamcode.drive.opmode.Chassis;
+import org.firstinspires.ftc.teamcode.structure.Chassis;
 
 public class Robot {
 
     private Chassis chassis;
-//    private Arm arm;
+    private Intake intake;
+//    private arm arm;
 //    private WhateverTheFuck wtf;
 
-    public Robot(Gamepad gamepad, Telemetry telemetry) {
-        this.chassis = new Chassis(gamepad, telemetry);
-//        this.arm = new Arm(gamepad);
-//        this.wtf = new WhateverTheFuck(gamepad);
+    public Robot(Gamepad gamepadA, Gamepad gamepadB, Telemetry telemetry) {
+        this.chassis = new Chassis(gamepadA, gamepadB, telemetry);
+        this.intake = new Intake(gamepadA, gamepadB, telemetry);
+//      this.arm = new arm(gamepad);
+//      his.wtf = new WhateverTheFuck(gamepad);
     }
 
     public void init(HardwareMap hardwareMap) {
@@ -24,6 +26,7 @@ public class Robot {
 
     public void update() {
         chassis.update();
+        intake.update();
 
 //        arm.update();
 //        wtf.update();
