@@ -39,7 +39,7 @@ public class DriveConstants {
      * MOTOR_VELO_PID with the tuned coefficients from DriveVelocityPIDTuner.
      */
     public static final boolean RUN_USING_ENCODER = true;
-    public static final PIDCoefficients MOTOR_VELO_PID = new PIDCoefficients(13,0.6,5.0);
+    public static final PIDCoefficients MOTOR_VELO_PID = new PIDCoefficients(0, 0, 0);
 
     /*
      * These are physical constants that can be determined from your robot (including the track
@@ -49,9 +49,10 @@ public class DriveConstants {
      * angular distances although most angular parameters are wrapped in Math.toRadians() for
      * convenience. Make sure to exclude any gear ratio included in MOTOR_CONFIG from GEAR_RATIO.
      */
-    public static double WHEEL_RADIUS = 2;
-    public static double GEAR_RATIO = 0.5; // output (wheel) speed / input (motor) speed
-    public static double TRACK_WIDTH =  14.85; // 14,483
+    public static double WHEEL_RADIUS = 1.968503937;
+    public static double GEAR_RATIO = 0.5;
+    public static double TRACK_WIDTH = 13.228346456;
+
 
     /*
      * These are the feedforward parameters used to model the drive moto r behavior. If you are using
@@ -59,9 +60,14 @@ public class DriveConstants {
      * motor encoders or have elected not to use them for velocity control, these values should be
      * empirically tuned.
      */
-    public static double kV = 1.0 / rpmToVelocity(getMaxRpm());
-    public static double kA = 0;
-    public static double kStatic = 0;
+    public static double kV = 0.02171;
+    public static double kA = 0.05346;
+    public static double kStatic = 0.00027;
+
+
+    //kV = 0.02171, kStatic = 0.05346 (R^2 = 0.99)
+    //kA = 0.00027
+
 
     /*
      * These values are used to generate the trajectories for you robot. To ensure proper operation,
@@ -72,7 +78,7 @@ public class DriveConstants {
      * forces acceleration-limited profiling).
      */
     public static DriveConstraints BASE_CONSTRAINTS = new DriveConstraints(
-            70.0, 40.0, 0.0,
+            70, 60, 0.0,
             Math.toRadians(180.0), Math.toRadians(180.0), 0.0
     );
 

@@ -2,6 +2,8 @@ package org.firstinspires.ftc.teamcode.drive.opmode;
 
 import com.acmerobotics.roadrunner.geometry.Pose2d;
 import com.acmerobotics.roadrunner.geometry.Vector2d;
+import com.acmerobotics.roadrunner.path.heading.HeadingInterpolator;
+import com.acmerobotics.roadrunner.path.heading.LinearInterpolator;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
@@ -98,6 +100,16 @@ public class BlueQuarryDoua extends LinearOpMode {
 
         );
 
+        LinearInterpolator interp = new LinearInterpolator(Math.toRadians(30), Math.toRadians(60));
+
+        drive.followTrajectorySync(
+
+                drive.trajectoryBuilder()
+                        .lineTo( new Vector2d(50, 50), interp)
+                        .build()
+
+        );
+
         drive.followTrajectorySync(
 
                 drive.trajectoryBuilder()
@@ -108,4 +120,5 @@ public class BlueQuarryDoua extends LinearOpMode {
         );
 
     }
+
 }

@@ -37,7 +37,7 @@ import static org.firstinspires.ftc.teamcode.drive.DriveConstants.getMotorVeloci
  * satisfies the requirements, SampleMecanumDriveREVOptimized is highly recommended.
  */
 public class SampleMecanumDriveREV extends SampleMecanumDriveBase {
-    private DcMotorEx leftFront, leftRear, rightRear, rightFront;
+    public DcMotorEx leftFront, leftRear, rightRear, rightFront;
     private List<DcMotorEx> motors;
     private BNO055IMU imu;
 
@@ -59,6 +59,7 @@ public class SampleMecanumDriveREV extends SampleMecanumDriveBase {
         leftRear = hardwareMap.get(DcMotorEx.class, "Back_Left");
         rightRear = hardwareMap.get(DcMotorEx.class, "Back_Right");
         rightFront = hardwareMap.get(DcMotorEx.class, "Front_Right");
+
 
         motors = Arrays.asList(leftFront, leftRear, rightRear, rightFront);
 

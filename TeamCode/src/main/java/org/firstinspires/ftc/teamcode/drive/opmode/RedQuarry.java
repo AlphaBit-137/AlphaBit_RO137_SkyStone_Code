@@ -124,26 +124,12 @@ public class RedQuarry extends LinearOpMode {
         drive.followTrajectorySync(
 
                 drive.trajectoryBuilder()
-                        .lineTo(new Vector2d(28,-60))
+                        .lineTo(new Vector2d(28,-5))
                         .reverse()
                         .lineTo(new Vector2d(28,-30))
                         .build()
 
         );
-
-
-
-
-  /*      drive.followTrajectorySync(
-
-                drive.trajectoryBuilder()
-                        .reverse()
-                        .lineTo(new Vector2d(28,-30))
-                        .build()
-
-        );
-
-*/
 
 
 

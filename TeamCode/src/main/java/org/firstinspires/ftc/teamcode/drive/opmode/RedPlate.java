@@ -45,6 +45,13 @@ public class RedPlate extends LinearOpMode {
                         .build()
         );
 
+        drive.followTrajectorySync(
+
+                drive.trajectoryBuilder()
+                        .strafeRight(8)
+                        .build()
+        );
+
 
 
 
