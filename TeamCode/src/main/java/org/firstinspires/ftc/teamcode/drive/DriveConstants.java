@@ -9,7 +9,7 @@ import com.qualcomm.robotcore.hardware.configuration.annotations.MotorType;
 import com.qualcomm.robotcore.hardware.configuration.typecontainers.MotorConfigurationType;
 
 import org.firstinspires.ftc.robotcore.external.navigation.Rotation;
-import org.firstinspires.ftc.teamcode.structure.GoBILDA5205Series_435RPM;
+import org.firstinspires.ftc.teamcode.structure.GoBILDA5202Series_435RPM;
 
 /*
  * Constants shared between multiple drive types.
@@ -32,7 +32,7 @@ public class DriveConstants {
      * @DeviceProperties and @MotorType annotations.
      */
     private static final MotorConfigurationType MOTOR_CONFIG =
-            MotorConfigurationType.getMotorType(GoBILDA5205Series_435RPM.class);
+            MotorConfigurationType.getMotorType(GoBILDA5202Series_435RPM.class);
 
     /*
      * Set the first flag appropriately. If using the built-in motor velocity PID, update
@@ -52,6 +52,7 @@ public class DriveConstants {
     public static double WHEEL_RADIUS = 1.968503937;
     public static double GEAR_RATIO = 0.5;
     public static double TRACK_WIDTH = 13.228346456;
+
 
     /*
      * These are the feedforward parameters used to model the drive moto r behavior. If you are using
@@ -102,6 +103,6 @@ public class DriveConstants {
 
     public static double getMotorVelocityF() {
         // see https://docs.google.com/document/d/1tyWrXDfMidwYyP_5H4mZyVgaEswhOC35gvdmP-V-5hA/edit#heading=h.61g9ixenznbx
-        return 32767 / getTicksPerSec();
+        return 32767 / getTicksPerSec(); //F 11.782
     }
 }

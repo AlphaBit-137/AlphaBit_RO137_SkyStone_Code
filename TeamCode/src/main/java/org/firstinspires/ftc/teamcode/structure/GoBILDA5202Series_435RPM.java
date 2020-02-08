@@ -13,4 +13,4 @@ import org.firstinspires.ftc.robotcore.external.navigation.Rotation;
 @DistributorInfo(distributor="goBILDA_distributor", model="goBILDA-5202-435RPM", url="https://www.gobilda.com/5202-series-yellow-jacket-planetary-gear-motor-13-7-1-ratio-435-rpm-3-3-5v-encoder/")
 @ExpansionHubPIDFVelocityParams(P=2.0, I=0.5, F=11.1)
 @ExpansionHubPIDFPositionParams(P=5.0)
-public interface GoBILDA5205Series_435RPM{}
+public interface GoBILDA5202Series_435RPM{}

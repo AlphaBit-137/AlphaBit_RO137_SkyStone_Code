@@ -2,8 +2,6 @@ package org.firstinspires.ftc.teamcode.drive.opmode;
 
 import com.acmerobotics.roadrunner.geometry.Pose2d;
 import com.acmerobotics.roadrunner.geometry.Vector2d;
-import com.acmerobotics.roadrunner.trajectory.Trajectory;
-import com.acmerobotics.roadrunner.trajectory.TrajectoryBuilder;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
@@ -13,13 +11,11 @@ import org.firstinspires.ftc.teamcode.drive.mecanum.SampleMecanumDriveREV;
 /*
  * This is an example of a more complex path to really test the tuning.
  */
-@Autonomous(group = "RedQuarry")
-public class RedQuarry extends LinearOpMode {
+@Autonomous(group = "Blue_Quarry_Incomplete")
+public class Ichim_Blue extends LinearOpMode {
     @Override
     public void runOpMode() throws InterruptedException {
         SampleMecanumDriveBase drive = new SampleMecanumDriveREV(hardwareMap);
-        // drive.setPoseEstimate(new Pose2d(30.00, 30.00, 0.00));
-
         waitForStart();
 
         if (isStopRequested()) return;
@@ -28,23 +24,25 @@ public class RedQuarry extends LinearOpMode {
         drive.followTrajectorySync(
 
                 drive.trajectoryBuilder()
-                        .splineTo(new Pose2d(30, -4.3, 0))
-                        .splineTo(new Pose2d(45, -6, 0))
+                        .splineTo(new Pose2d(30, 4.3, 0))
+                        .splineTo(new Pose2d(45,6, 0))
                         .build()
         );
 
-        drive.turnSync(Math.toRadians(-180));
+        drive.turnSync(Math.toRadians(180));
 
 
         //Trajectory 2
         drive.followTrajectorySync(
 
                 drive.trajectoryBuilder()
-                        .splineTo(new Pose2d(25,-22.5, 67.5))
+                        .splineTo(new Pose2d(25,30, 70.12))
+                        //69.989
                         .build()
         );
 
-        drive.turnSync(Math.toRadians(15));
+        //drive.turnSync(Math.toRadians(-44));
+
 
 
 
@@ -52,7 +50,7 @@ public class RedQuarry extends LinearOpMode {
         drive.followTrajectorySync(
 
                 drive.trajectoryBuilder()
-                        .lineTo(new Vector2d(22.5, 9))
+                        .lineTo(new Vector2d(25, 50))
                         .build()
         );
 
@@ -64,74 +62,51 @@ public class RedQuarry extends LinearOpMode {
 
                 drive.trajectoryBuilder()
                         .reverse()
-                        .lineTo(new Vector2d(22.5, 10))
+                        .lineTo(new Vector2d(22.5, -8.5))
                         .build()
 
         );
 
-        drive.turnSync(Math.toRadians(90));
+
+        drive.turnSync(Math.toRadians(-88));
+
 
         //Trajectory_5
         drive.followTrajectorySync(
 
                 drive.trajectoryBuilder()
 
-                        .splineTo(new Pose2d(40, 6, 0))
+                        .splineTo(new Pose2d(45, -6, 0))
                         .build()
         );
 
 
-        drive.turnSync(Math.toRadians(-180));
-        //Trajectory 6
+        drive.turnSync(Math.toRadians(178));
+
         drive.followTrajectorySync(
 
                 drive.trajectoryBuilder()
-
-                        .splineTo(new Pose2d(30,-22.5, 67.5))
+                        .splineTo(new Pose2d(30,22.5, 70.3))
                         .build()
         );
 
-        drive.turnSync(Math.toRadians(18));
 
-
-        //Trajectory_7
         drive.followTrajectorySync(
 
                 drive.trajectoryBuilder()
-                        .lineTo(new Vector2d(22.5, 13))
+                        .lineTo(new Vector2d(30, 50))
                         .build()
+
         );
 
-        sleep(10);
-
-
-        //Trajectory_8
         drive.followTrajectorySync(
 
                 drive.trajectoryBuilder()
                         .reverse()
-                        .lineTo(new Vector2d(22.5, -2))
-                        .splineTo(new Pose2d(60, -4,135))
-                        .setReversed(false)
-                        .splineTo(new Pose2d( 40, 27, 135 ))
-                        .splineTo(new Pose2d(28, -6,5.05))
-
+                        .lineTo(new Vector2d(30, 35))
                         .build()
 
         );
-     //   drive.turnSync(Math.toRadians(9));
-
-        drive.followTrajectorySync(
-
-                drive.trajectoryBuilder()
-                        .lineTo(new Vector2d(28,-5))
-                        .reverse()
-                        .lineTo(new Vector2d(28,-30))
-                        .build()
-
-        );
-
-
 
     }
 }
