@@ -31,7 +31,10 @@ package org.firstinspires.ftc.teamcode.structure;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.util.ElapsedTime;
+import com.qualcomm.robotcore.util.Range;
 
 @TeleOp(name="FNSTest", group="Linear Opmode")
 
@@ -42,12 +45,28 @@ public class FNSTest extends LinearOpMode {
     private ElapsedTime runtime = new ElapsedTime();
     Outtake outtake = new Outtake();
 
+
+    DcMotorEx leftWing = null;
+    DcMotorEx rightWing = null;
+
     //Constante
 
     @Override
     public void runOpMode() {
 
         outtake.init(hardwareMap);
+        leftWing = hardwareMap.get(DcMotorEx.class, "Left_Wing");
+        leftWing.setMode(DcMotorEx.RunMode.RUN_WITHOUT_ENCODER);
+        leftWing.setZeroPowerBehavior(DcMotorEx.ZeroPowerBehavior.BRAKE);
+        leftWing.setPower(0);
+
+        rightWing = hardwareMap.get(DcMotorEx.class, "Right_Wing");
+        rightWing.setMode(DcMotorEx.RunMode.RUN_WITHOUT_ENCODER);
+        rightWing.setZeroPowerBehavior(DcMotorEx.ZeroPowerBehavior.BRAKE);
+        rightWing.setPower(0);
+
+
+
 
         while(isStarted()==false && isStopRequested() == false) {
             outtake.switchToINIT();
@@ -61,6 +80,7 @@ public class FNSTest extends LinearOpMode {
         // Atata timp cat OpMode-ul este activ va rula pana la oprire urmatorul cod
         while (opModeIsActive()) {
             double controller = gamepad1.right_stick_y;
+
 
             if(gamepad1.x && stoneNumber == 0){
                 stoneNumber = 1;
@@ -127,6 +147,11 @@ public class FNSTest extends LinearOpMode {
 
             }
 
+            if (gamepad1.y && stoneNumber == 9){
+                stoneNumber = 8;
+
+            }
+
 
 
             if(gamepad1.dpad_up && stoneNumber == 1){
@@ -158,6 +183,9 @@ public class FNSTest extends LinearOpMode {
             }
 
 
+            if(gamepad1.right_stick_y != 0f){
+                outtake.switchToFREE();
+            }
             if(gamepad1.dpad_right){
                 outtake.switchToGETSTONE();
             }
@@ -166,6 +194,19 @@ public class FNSTest extends LinearOpMode {
             }
             if(gamepad1.dpad_down){
                 outtake.switchToRESET();
+            }
+
+
+            if(gamepad2.a){
+                leftWing.setPower(0.5);
+                rightWing.setPower(0.5);
+            }else if(gamepad2.b){
+                leftWing.setPower(-0.5);
+                rightWing.setPower(-0.5);
+
+            }else{
+                leftWing.setPower(0);
+                rightWing.setPower(0);
             }
 
 

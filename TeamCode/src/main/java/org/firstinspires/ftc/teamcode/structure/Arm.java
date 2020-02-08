@@ -38,8 +38,9 @@ public class Arm {
     /* Public OpMode members. */
 
     public DcMotorEx arm = null;
-    public static double CLOSED_POZ = 0.0;
-    public static double OPENED_POZ = 0.5;
+    public static int RESET_POZ = -300;
+    public static int GET_POZ = -100;
+    public static double ARM_POWER = 0.3;
 
     public ArmModes RobotArm = ArmModes.INIT;
 
@@ -72,21 +73,21 @@ public class Arm {
     public void update(int armEncoderCount) {
         switch (RobotArm){
             case INIT:{
-                arm.setTargetPosition(-300);
+                arm.setTargetPosition(RESET_POZ);
                 arm.setMode(DcMotorEx.RunMode.RUN_TO_POSITION);
-                arm.setPower(0.3);
+                arm.setPower(ARM_POWER);
                 break;
             }
             case GET:{
-                arm.setTargetPosition(-100);
+                arm.setTargetPosition(GET_POZ);
                 arm.setMode(DcMotorEx.RunMode.RUN_TO_POSITION);
-                arm.setPower(0.3);
+                arm.setPower(ARM_POWER);
                 break;
             }
             case SCORE:{
                 arm.setTargetPosition(armEncoderCount);
                 arm.setMode(DcMotorEx.RunMode.RUN_TO_POSITION);
-                arm.setPower(0.3);
+                arm.setPower(ARM_POWER);
             }
         }
 

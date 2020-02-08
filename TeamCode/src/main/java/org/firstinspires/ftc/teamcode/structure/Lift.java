@@ -38,6 +38,10 @@ public class Lift {
     /* Public OpMode members. */
 
     public DcMotorEx lift = null;
+    public static double LIFT_POWER = 1.0;
+    public static int INIT_POZ = -30;
+    public static int LEVEL_POZ = -5000;
+
 
 
     public LiftModes RobotLift = LiftModes.INIT;
@@ -71,21 +75,21 @@ public class Lift {
     public void update(int scorePosition, double freePower) {
         switch (RobotLift){
             case INIT:{
-                lift.setTargetPosition(-30);
+                lift.setTargetPosition(INIT_POZ);
                 lift.setMode(DcMotorEx.RunMode.RUN_TO_POSITION);
-                lift.setPower(0.8);
+                lift.setPower(LIFT_POWER);
                 break;
             }
             case LEVEL:{
-                lift.setTargetPosition(-5000);
+                lift.setTargetPosition(LEVEL_POZ);
                 lift.setMode(DcMotorEx.RunMode.RUN_TO_POSITION);
-                lift.setPower(1.0);
+                lift.setPower(LIFT_POWER);
                 break;
             }
             case SCORE:{
                 lift.setTargetPosition(scorePosition);
                 lift.setMode(DcMotorEx.RunMode.RUN_TO_POSITION);
-                lift.setPower(1.0);
+                lift.setPower(LIFT_POWER);
                 break;
             }
             case FREE:{

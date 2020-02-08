@@ -46,8 +46,9 @@ public class Gripper {
     /* Public OpMode members. */
 
     public Servo claw = null;
+
     public static double CLOSED_POZ = 0.1;
-    public static double OPENED_POZ = 0.5;
+    public static double OPENED_POZ = 0.35;
 
     public GripperModes RobotGripper = GripperModes.OPENED;
 
