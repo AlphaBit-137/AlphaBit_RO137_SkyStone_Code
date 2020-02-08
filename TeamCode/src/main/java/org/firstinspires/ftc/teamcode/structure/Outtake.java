@@ -52,6 +52,7 @@ public class Outtake {
         STONE_7,
         STONE_8,
         STONE_9,
+        FREE,
         GETSTONE,
         RESET,
         INIT,
@@ -84,13 +85,63 @@ public class Outtake {
 
             }
 
+            case FREE: {
+                lift.switchToFREE();
+
+                if(stoneNumber == 1) {
+                    armScorePosition = 550;
+                    liftScorePosition = -3000;
+                }
+                if(stoneNumber == 2){
+                    armScorePosition = 550;
+                    liftScorePosition = -4500;
+
+                }
+                if(stoneNumber == 3){
+                    armScorePosition = 550;
+                    liftScorePosition = -6000;
+                }
+                if(stoneNumber == 4) {
+                    armScorePosition = 850;
+                    liftScorePosition = -4800;
+                }
+                if(stoneNumber == 5){
+                    armScorePosition = 950;
+                    liftScorePosition = -4800;
+
+                }
+                if(stoneNumber == 6){
+                    armScorePosition = 1050;
+                    liftScorePosition = -4800;
+                }
+                if(stoneNumber == 7) {
+                    armScorePosition = 1150;
+                    liftScorePosition = -5000;
+                }
+                if(stoneNumber == 8){
+                    armScorePosition = 1150;
+                    liftScorePosition = -6500;
+
+                }
+                if(stoneNumber == 9){
+                    armScorePosition = 1130;
+                    liftScorePosition = -8100;
+                }
+
+                break;
+            }
+
             case STONE_1: {
                 stoneNumber = 1;
                 armScorePosition = 550;
-                liftScorePosition = -2500;
+                liftScorePosition = -3000;
 
                 if(arm.isGET() && lift.isINIT()){
+                    gripper.switchToCLOSED();
+                }
+                if(arm.isGET() && lift.isINIT() && gripper.claw.getPosition() == 0.1){
                     lift.switchToLEVEL();
+
                 }
                 if(lift.isLEVEL() && lift.getLiftEncoder() < -3500){
                     arm.switchToScore();
@@ -107,7 +158,11 @@ public class Outtake {
                 liftScorePosition = -4500;
 
                 if(arm.isGET() && lift.isINIT()){
+                    gripper.switchToCLOSED();
+                }
+                if(arm.isGET() && lift.isINIT() && gripper.claw.getPosition() == 0.1){
                     lift.switchToLEVEL();
+
                 }
                 if(lift.isLEVEL() && lift.getLiftEncoder() < -4500){
                     arm.switchToScore();
@@ -122,9 +177,12 @@ public class Outtake {
                 stoneNumber = 3;
                 armScorePosition = 550;
                 liftScorePosition = -6000;
-
                 if(arm.isGET() && lift.isINIT()){
+                    gripper.switchToCLOSED();
+                }
+                if(arm.isGET() && lift.isINIT() && gripper.claw.getPosition() == 0.1){
                     lift.switchToSCORE();
+
                 }
                 if(lift.isSCORE() && lift.getLiftEncoder() < -4500){
                     arm.switchToScore();
@@ -134,11 +192,127 @@ public class Outtake {
 
             case STONE_4: {
                 stoneNumber = 4;
-                armScorePosition = 700;
-                liftScorePosition = -4000;
+                armScorePosition = 850;
+                liftScorePosition = -4800;
+
 
                 if(arm.isGET() && lift.isINIT()){
+                    gripper.switchToCLOSED();
+                }
+                if(arm.isGET() && lift.isINIT() && gripper.claw.getPosition() == 0.1){
                     lift.switchToLEVEL();
+
+                }
+                if(lift.isLEVEL() && lift.getLiftEncoder() < -4500){
+                    arm.switchToScore();
+                }
+                if(arm.isSCORE() && arm.getArmEncoder() > 350){
+                    lift.switchToSCORE();
+                }
+                break;
+            }
+
+            case STONE_5: {
+                stoneNumber = 5;
+                armScorePosition = 950;
+                liftScorePosition = -4800;
+
+
+                if(arm.isGET() && lift.isINIT()){
+                    gripper.switchToCLOSED();
+                }
+                if(arm.isGET() && lift.isINIT() && gripper.claw.getPosition() == 0.1){
+                    lift.switchToLEVEL();
+
+                }
+                if(lift.isLEVEL() && lift.getLiftEncoder() < -4500){
+                    arm.switchToScore();
+                }
+                if(arm.isSCORE() && arm.getArmEncoder() > 350){
+                    lift.switchToSCORE();
+                }
+                break;
+            }
+
+            case STONE_6: {
+                stoneNumber =6;
+                armScorePosition = 1050;
+                liftScorePosition = -4800;
+
+
+                if(arm.isGET() && lift.isINIT()){
+                    gripper.switchToCLOSED();
+                }
+                if(arm.isGET() && lift.isINIT() && gripper.claw.getPosition() == 0.1){
+                    lift.switchToLEVEL();
+
+                }
+                if(lift.isLEVEL() && lift.getLiftEncoder() < -4500){
+                    arm.switchToScore();
+                }
+                if(arm.isSCORE() && arm.getArmEncoder() > 350){
+                    lift.switchToSCORE();
+                }
+                break;
+            }
+
+            // ii bai
+            case STONE_7: {
+                stoneNumber =7;
+                armScorePosition = 1150;
+                liftScorePosition = -5000;
+
+
+                if(arm.isGET() && lift.isINIT()){
+                    gripper.switchToCLOSED();
+                }
+                if(arm.isGET() && lift.isINIT() && gripper.claw.getPosition() == 0.1){
+                    lift.switchToLEVEL();
+
+                }
+                if(lift.isLEVEL() && lift.getLiftEncoder() < -4500){
+                    arm.switchToScore();
+                }
+                if(arm.isSCORE() && arm.getArmEncoder() > 350){
+                    lift.switchToSCORE();
+                }
+                break;
+            }
+
+            case STONE_8: {
+                stoneNumber =8;
+                armScorePosition = 1150;
+                liftScorePosition = -6500;
+
+
+                if(arm.isGET() && lift.isINIT()){
+                    gripper.switchToCLOSED();
+                }
+                if(arm.isGET() && lift.isINIT() && gripper.claw.getPosition() == 0.1){
+                    lift.switchToLEVEL();
+
+                }
+                if(lift.isLEVEL() && lift.getLiftEncoder() < -4500){
+                    arm.switchToScore();
+                }
+                if(arm.isSCORE() && arm.getArmEncoder() > 350){
+                    lift.switchToSCORE();
+                }
+                break;
+            }
+
+            case STONE_9: {
+                stoneNumber =9;
+                armScorePosition = 1130;
+                liftScorePosition = -8100;
+
+
+                if(arm.isGET() && lift.isINIT()){
+                    gripper.switchToCLOSED();
+                }
+                if(arm.isGET() && lift.isINIT() && gripper.claw.getPosition() == 0.1){
+                    lift.switchToLEVEL();
+
                 }
                 if(lift.isLEVEL() && lift.getLiftEncoder() < -4500){
                     arm.switchToScore();
@@ -152,20 +326,16 @@ public class Outtake {
 
 
 
-
             case GETSTONE: {
-                    arm.switchToGET();
-                if(arm.isGET() && arm.getArmEncoder()< -100){
-                    gripper.switchToCLOSED();
-                }
-
+                arm.switchToGET();
                 break;
             }
+
 
             case RESET:{
                 if(stoneNumber == 1) {
                     armScorePosition = 550;
-                    liftScorePosition = -2500;
+                    liftScorePosition = -3000;
                 }
                 if(stoneNumber == 2){
                     armScorePosition = 550;
@@ -177,33 +347,31 @@ public class Outtake {
                     liftScorePosition = -6000;
                 }
                 if(stoneNumber == 4) {
-                    armScorePosition = 700;
-                    liftScorePosition = -4000;
+                    armScorePosition = 850;
+                    liftScorePosition = -4800;
                 }
                 if(stoneNumber == 5){
-                    armScorePosition = 550;
-                    liftScorePosition = -4500;
+                    armScorePosition = 950;
+                    liftScorePosition = -4800;
 
                 }
                 if(stoneNumber == 6){
-                    armScorePosition = 550;
-                    liftScorePosition = -6000;
+                    armScorePosition = 1050;
+                    liftScorePosition = -4800;
                 }
                 if(stoneNumber == 7) {
-                    armScorePosition = 550;
-                    liftScorePosition = -2500;
+                    armScorePosition = 1150;
+                    liftScorePosition = -5000;
                 }
                 if(stoneNumber == 8){
-                    armScorePosition = 550;
-                    liftScorePosition = -4500;
+                    armScorePosition = 1150;
+                    liftScorePosition = -6500;
 
                 }
                 if(stoneNumber == 9){
-                    armScorePosition = 550;
-                    liftScorePosition = -6000;
+                    armScorePosition = 1130;
+                    liftScorePosition = -8100;
                 }
-
-
 
 
                 if(arm.isSCORE()){
@@ -231,9 +399,12 @@ public class Outtake {
     }
 
 
+
+
     public void switchToINIT(){
         RobotOuttake = OuttakeModes.INIT;
     }
+    public void switchToFREE(){ RobotOuttake = OuttakeModes.FREE; }
     public void switchToSTONE_1(){
         RobotOuttake = OuttakeModes.STONE_1;
     }
