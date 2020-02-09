@@ -3,13 +3,9 @@ package org.firstinspires.ftc.teamcode.drive;
 import com.acmerobotics.dashboard.config.Config;
 import com.acmerobotics.roadrunner.control.PIDCoefficients;
 import com.acmerobotics.roadrunner.trajectory.constraints.DriveConstraints;
-import com.qualcomm.hardware.motors.GoBILDA5202Series;
-import com.qualcomm.hardware.motors.NeveRest20Gearmotor;
-import com.qualcomm.robotcore.hardware.configuration.annotations.MotorType;
 import com.qualcomm.robotcore.hardware.configuration.typecontainers.MotorConfigurationType;
 
-import org.firstinspires.ftc.robotcore.external.navigation.Rotation;
-import org.firstinspires.ftc.teamcode.structure.GoBILDA5202Series_435RPM;
+import org.firstinspires.ftc.teamcode.drive.motors.GoBILDA5202Series_435RPM;
 
 /*
  * Constants shared between multiple drive types.
