@@ -46,8 +46,6 @@ public class FNSTest extends LinearOpMode {
     Outtake outtake = new Outtake();
 
 
-    DcMotorEx leftWing = null;
-    DcMotorEx rightWing = null;
 
     //Constante
 
@@ -55,18 +53,6 @@ public class FNSTest extends LinearOpMode {
     public void runOpMode() {
 
         outtake.init(hardwareMap);
-        leftWing = hardwareMap.get(DcMotorEx.class, "Left_Wing");
-        leftWing.setMode(DcMotorEx.RunMode.RUN_WITHOUT_ENCODER);
-        leftWing.setZeroPowerBehavior(DcMotorEx.ZeroPowerBehavior.BRAKE);
-        leftWing.setPower(0);
-
-        rightWing = hardwareMap.get(DcMotorEx.class, "Right_Wing");
-        rightWing.setMode(DcMotorEx.RunMode.RUN_WITHOUT_ENCODER);
-        rightWing.setZeroPowerBehavior(DcMotorEx.ZeroPowerBehavior.BRAKE);
-        rightWing.setPower(0);
-
-
-
 
         while(isStarted()==false && isStopRequested() == false) {
             outtake.switchToINIT();
@@ -194,19 +180,6 @@ public class FNSTest extends LinearOpMode {
             }
             if(gamepad1.dpad_down){
                 outtake.switchToRESET();
-            }
-
-
-            if(gamepad2.a){
-                leftWing.setPower(0.5);
-                rightWing.setPower(0.5);
-            }else if(gamepad2.b){
-                leftWing.setPower(-0.5);
-                rightWing.setPower(-0.5);
-
-            }else{
-                leftWing.setPower(0);
-                rightWing.setPower(0);
             }
 
 

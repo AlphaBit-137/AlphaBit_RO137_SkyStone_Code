@@ -29,27 +29,32 @@
 
 package org.firstinspires.ftc.teamcode.drive.structure;
 
+import android.provider.DocumentsContract;
+
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.HardwareMap;
+import com.qualcomm.robotcore.robot.Robot;
 
-public class Arm {
+public class Intake {
     /* Public OpMode members. */
 
-    public DcMotorEx arm = null;
-    public static int RESET_POZ = -300;
-    public static int GET_POZ = -100;
-    public static double ARM_POWER = 0.3;
+    public DcMotorEx leftWing = null;
+    public DcMotorEx rightWing = null;
 
-    public ArmModes RobotArm = ArmModes.INIT;
+    public static double NULL_POWER = 0.0;
+    public static double IN_POWER = 0.5;
+    public static double OUT_POWER = -0.5;
 
-    public enum ArmModes {
-        INIT,
-        GET,
-        SCORE,
+    public IntakeModes RobotIntake = IntakeModes.STOP;
+
+    public enum IntakeModes {
+        IN,
+        OUT,
+        STOP,
     }
 
-    public Arm() {
+    public Intake() {
 
     }
 
@@ -60,76 +65,97 @@ public class Arm {
     public void init(HardwareMap ahwMap) {
         // Save reference to Hardware map
         hwMap = ahwMap;
-        // Define and Initialize Motors
-        arm = hwMap.get(DcMotorEx.class, "Arm");
-        arm.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        arm.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        arm.setZeroPowerBehavior(DcMotorEx.ZeroPowerBehavior.BRAKE);
-        arm.setVelocityPIDFCoefficients(6.0, 0.0, 0.0, 11.74);
-        arm.setPositionPIDFCoefficients(5.0);
+        leftWing = hwMap.get(DcMotorEx.class, "Left_Wing");
+        leftWing.setMode(DcMotorEx.RunMode.RUN_WITHOUT_ENCODER);
+        leftWing.setZeroPowerBehavior(DcMotorEx.ZeroPowerBehavior.BRAKE);
+        leftWing.setPower(0);
+
+        rightWing = hwMap.get(DcMotorEx.class, "Right_Wing");
+        rightWing.setMode(DcMotorEx.RunMode.RUN_WITHOUT_ENCODER);
+        rightWing.setZeroPowerBehavior(DcMotorEx.ZeroPowerBehavior.BRAKE);
+        rightWing.setPower(0);
+
     }
 
-    public void update(int armEncoderCount) {
-        switch (RobotArm){
-            case INIT:{
-                arm.setTargetPosition(RESET_POZ);
-                arm.setMode(DcMotorEx.RunMode.RUN_TO_POSITION);
-                arm.setPower(ARM_POWER);
+    public void update() {
+        switch (RobotIntake){
+            case STOP:{
+                leftWing.setPower(0);
+                rightWing.setPower(0);
                 break;
             }
-            case GET:{
-                arm.setTargetPosition(GET_POZ);
-                arm.setMode(DcMotorEx.RunMode.RUN_TO_POSITION);
-                arm.setPower(ARM_POWER);
+            case IN:{
+                leftWing.setPower(-0.5);
+                rightWing.setPower(-0.5);
                 break;
             }
-            case SCORE:{
-                arm.setTargetPosition(armEncoderCount);
-                arm.setMode(DcMotorEx.RunMode.RUN_TO_POSITION);
-                arm.setPower(ARM_POWER);
+            case OUT:{
+                leftWing.setPower(0.5);
+                rightWing.setPower(0.5);
+                break;
             }
         }
 
     }
 
-    public void switchToINIT(){
-        RobotArm = ArmModes.INIT;
+    public void switchToIN(){
+        RobotIntake = IntakeModes.IN;
     }
 
-    public void switchToGET(){
-        RobotArm = ArmModes.GET;
+    public void switchToOUT(){
+        RobotIntake = IntakeModes.OUT;
     }
 
-    public void switchToScore(){RobotArm = ArmModes.SCORE;}
+    public void switchToSTOP(){RobotIntake = IntakeModes.STOP;}
 
-    public int getArmEncoder(){
-        return arm.getCurrentPosition();
-    }
-
-
-    public boolean isINIT(){
-        if(RobotArm == ArmModes.INIT){
+    public boolean isIN(){
+        if(RobotIntake == IntakeModes.IN){
             return true;
-        }else{
+        }
+        else{
             return false;
         }
     }
 
-    public boolean isGET(){
-        if(RobotArm == ArmModes.GET){
+    public boolean isOUT(){
+        if(RobotIntake == IntakeModes.OUT){
             return true;
-        }else{
+        }
+        else{
             return false;
         }
     }
 
-    public boolean isSCORE(){
-        if(RobotArm == ArmModes.SCORE){
+    public boolean isSTOP(){
+        if(RobotIntake == IntakeModes.STOP){
             return true;
-        }else{
+        }
+        else{
             return false;
         }
     }
+
+
+
+
+
+
+    /* EX 2 -> 0 Gheara stanga
+
+        EX 1 -> 5 Gheara dreapta
+
+
+        EX 1 -> 0  -> Right Wing
+        EX 1 -> 1  -> Left Wing
+
+
+        EX 1 -> 2 -> Lift
+
+
+         Gherute
+     */
+
+
 
 
 

@@ -39,7 +39,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 
 @TeleOp(name = "PID_Test", group = "Linear Opmode")
 
-public class PIDTest extends LinearOpMode {
+public class  PIDTest extends LinearOpMode {
 
     // Declaram obiectul robot cu clasa hardware si timpul de rulare
     private ElapsedTime runtime = new ElapsedTime();
