@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode.drive.tuners;
 
+import com.acmerobotics.roadrunner.drive.MecanumDrive;
 import com.acmerobotics.roadrunner.geometry.Pose2d;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
@@ -15,6 +16,7 @@ public class SplineTest extends LinearOpMode {
     @Override
     public void runOpMode() throws InterruptedException {
         SampleMecanumDriveBase drive = new SampleMecanumDriveREV(hardwareMap);
+        drive.setLocalizer(new MecanumDrive.MecanumLocalizer(drive, true));
 
         waitForStart();
 
@@ -23,19 +25,20 @@ public class SplineTest extends LinearOpMode {
 
         drive.followTrajectorySync(
                 drive.trajectoryBuilder()
-                        .splineTo(new Pose2d(48,24,0))
+                        .splineTo(new Pose2d(30,30,0))
                         .build()
         );
 
         sleep(2000);
 
-      /*drive.followTrajectorySync(
+      drive.followTrajectorySync(
                 drive.trajectoryBuilder()
-                        .splineTo(new Pose2d(0, 0, 180))
+                        .reverse()
+                        .splineTo(new Pose2d(0, 0, 0))
                         .build()
         );
 
-    */
+
 
 
     }
