@@ -37,7 +37,7 @@ import static java.lang.Thread.sleep;
 public class Gripper {
     /* Public OpMode members. */
 
-    public Servo claw = null;
+    public Servo grip = null;
 
     public static double CLOSED_POZ = 0.1;
     public static double OPENED_POZ = 0.35;
@@ -61,17 +61,17 @@ public class Gripper {
         // Save reference to Hardware map
         hwMap = ahwMap;
         // Define and Initialize Motors
-        claw = hwMap.get(Servo.class, "Gripper");
+        grip = hwMap.get(Servo.class, "Gripper");
     }
 
     public void update() {
         switch (RobotGripper){
             case OPENED:{
-                claw.setPosition(OPENED_POZ);
+                grip.setPosition(OPENED_POZ);
                 break;
             }
             case CLOSED:{
-                claw.setPosition(CLOSED_POZ);
+                grip.setPosition(CLOSED_POZ);
                 break;
             }
         }

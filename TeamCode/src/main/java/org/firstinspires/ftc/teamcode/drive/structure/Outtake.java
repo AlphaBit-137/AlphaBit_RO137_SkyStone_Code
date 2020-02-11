@@ -36,9 +36,16 @@ public class Outtake {
     public Gripper gripper;
     public Lift lift;
     public Arm arm;
-    int stoneNumber  = 0;
+    //Variabila declarata privat
+    private int stoneNumber  = 0;
 
     public OuttakeModes RobotOuttake = OuttakeModes.RESET;
+    //Functia care returneaza valoarea variabilei
+    public int getStoneNumber() {
+        return stoneNumber;
+    }
+
+
 
     public enum OuttakeModes {
         STONE_1,
@@ -55,6 +62,8 @@ public class Outtake {
         RESET,
         INIT,
     }
+
+
 
     public Outtake() {
         this.gripper = new Gripper();
@@ -74,6 +83,8 @@ public class Outtake {
     public void update(double freePower){
         int armScorePosition = 0;
         int liftScorePosition = 0;
+        //Iar daca vrem sa accesăm valoarea din variabilă pur si simplu apelam functia asa
+        getStoneNumber();
         switch (RobotOuttake){
             case INIT:{
                 lift.switchToINIT();
@@ -137,7 +148,7 @@ public class Outtake {
                 if(arm.isGET() && lift.isINIT()){
                     gripper.switchToCLOSED();
                 }
-                if(arm.isGET() && lift.isINIT() && gripper.claw.getPosition() == 0.1){
+                if(arm.isGET() && lift.isINIT() && gripper.grip.getPosition() == 0.1){
                     lift.switchToLEVEL();
 
                 }
@@ -158,7 +169,7 @@ public class Outtake {
                 if(arm.isGET() && lift.isINIT()){
                     gripper.switchToCLOSED();
                 }
-                if(arm.isGET() && lift.isINIT() && gripper.claw.getPosition() == 0.1){
+                if(arm.isGET() && lift.isINIT() && gripper.grip.getPosition() == 0.1){
                     lift.switchToLEVEL();
 
                 }
@@ -178,7 +189,7 @@ public class Outtake {
                 if(arm.isGET() && lift.isINIT()){
                     gripper.switchToCLOSED();
                 }
-                if(arm.isGET() && lift.isINIT() && gripper.claw.getPosition() == 0.1){
+                if(arm.isGET() && lift.isINIT() && gripper.grip.getPosition() == 0.1){
                     lift.switchToSCORE();
 
                 }
@@ -197,7 +208,7 @@ public class Outtake {
                 if(arm.isGET() && lift.isINIT()){
                     gripper.switchToCLOSED();
                 }
-                if(arm.isGET() && lift.isINIT() && gripper.claw.getPosition() == 0.1){
+                if(arm.isGET() && lift.isINIT() && gripper.grip.getPosition() == 0.1){
                     lift.switchToLEVEL();
 
                 }
@@ -219,7 +230,7 @@ public class Outtake {
                 if(arm.isGET() && lift.isINIT()){
                     gripper.switchToCLOSED();
                 }
-                if(arm.isGET() && lift.isINIT() && gripper.claw.getPosition() == 0.1){
+                if(arm.isGET() && lift.isINIT() && gripper.grip.getPosition() == 0.1){
                     lift.switchToLEVEL();
 
                 }
@@ -241,7 +252,7 @@ public class Outtake {
                 if(arm.isGET() && lift.isINIT()){
                     gripper.switchToCLOSED();
                 }
-                if(arm.isGET() && lift.isINIT() && gripper.claw.getPosition() == 0.1){
+                if(arm.isGET() && lift.isINIT() && gripper.grip.getPosition() == 0.1){
                     lift.switchToLEVEL();
 
                 }
@@ -264,7 +275,7 @@ public class Outtake {
                 if(arm.isGET() && lift.isINIT()){
                     gripper.switchToCLOSED();
                 }
-                if(arm.isGET() && lift.isINIT() && gripper.claw.getPosition() == 0.1){
+                if(arm.isGET() && lift.isINIT() && gripper.grip.getPosition() == 0.1){
                     lift.switchToLEVEL();
 
                 }
@@ -286,7 +297,7 @@ public class Outtake {
                 if(arm.isGET() && lift.isINIT()){
                     gripper.switchToCLOSED();
                 }
-                if(arm.isGET() && lift.isINIT() && gripper.claw.getPosition() == 0.1){
+                if(arm.isGET() && lift.isINIT() && gripper.grip.getPosition() == 0.1){
                     lift.switchToLEVEL();
 
                 }
@@ -308,7 +319,7 @@ public class Outtake {
                 if(arm.isGET() && lift.isINIT()){
                     gripper.switchToCLOSED();
                 }
-                if(arm.isGET() && lift.isINIT() && gripper.claw.getPosition() == 0.1){
+                if(arm.isGET() && lift.isINIT() && gripper.grip.getPosition() == 0.1){
                     lift.switchToLEVEL();
 
                 }

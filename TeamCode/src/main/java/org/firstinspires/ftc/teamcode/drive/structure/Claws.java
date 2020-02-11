@@ -29,27 +29,25 @@
 
 package org.firstinspires.ftc.teamcode.drive.structure;
 
-import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.HardwareMap;
+import com.qualcomm.robotcore.hardware.RobotCoreLynxModule;
+import com.qualcomm.robotcore.hardware.Servo;
 
-public class Arm {
+public class Claws {
     /* Public OpMode members. */
 
-    public DcMotorEx arm = null;
-    public static int RESET_POZ = -300;
-    public static int GET_POZ = -100;
-    public static double ARM_POWER = 0.3;
+    public Servo leftClaw = null;
+    public Servo rightClaw = null;
 
-    public ArmModes RobotArm = ArmModes.INIT;
 
-    public enum ArmModes {
-        INIT,
-        GET,
-        SCORE,
+    public ClawModes RobotClaw= ClawModes.OPENED;
+
+    public enum ClawModes {
+        OPENED,
+        CLOSED,
     }
 
-    public Arm() {
+    public Claws() {
 
     }
 
@@ -61,75 +59,53 @@ public class Arm {
         // Save reference to Hardware map
         hwMap = ahwMap;
         // Define and Initialize Motors
-        arm = hwMap.get(DcMotorEx.class, "Arm");
-        arm.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        arm.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        arm.setZeroPowerBehavior(DcMotorEx.ZeroPowerBehavior.BRAKE);
-        arm.setVelocityPIDFCoefficients(6.0, 0.0, 0.0, 11.74);
-        arm.setPositionPIDFCoefficients(5.0);
+        leftClaw = hwMap.get(Servo.class, "Left_Claw");
+        rightClaw = hwMap.get(Servo.class, "Right_Claw");
     }
 
-    public void update(int armEncoderCount) {
-        switch (RobotArm){
-            case INIT:{
-                arm.setTargetPosition(RESET_POZ);
-                arm.setMode(DcMotorEx.RunMode.RUN_TO_POSITION);
-                arm.setPower(ARM_POWER);
+    public void update() {
+        switch (RobotClaw){
+            case OPENED:{
+                leftClaw.setPosition(1);
+                rightClaw.setPosition(0);
+
                 break;
             }
-            case GET:{
-                arm.setTargetPosition(GET_POZ);
-                arm.setMode(DcMotorEx.RunMode.RUN_TO_POSITION);
-                arm.setPower(ARM_POWER);
+            case CLOSED:{
+                leftClaw.setPosition(0);
+                rightClaw.setPosition(1);
                 break;
             }
-            case SCORE:{
-                arm.setTargetPosition(armEncoderCount);
-                arm.setMode(DcMotorEx.RunMode.RUN_TO_POSITION);
-                arm.setPower(ARM_POWER);
-            }
         }
 
     }
 
-    public void switchToINIT(){
-        RobotArm = ArmModes.INIT;
+    public void switchToOPENED(){
+        RobotClaw = ClawModes.OPENED;
     }
 
-    public void switchToGET(){
-        RobotArm = ArmModes.GET;
+    public void switchToCLOSED(){
+        RobotClaw = ClawModes.CLOSED;
     }
 
-    public void switchToScore(){RobotArm = ArmModes.SCORE;}
-
-    public int getArmEncoder(){
-        return arm.getCurrentPosition();
-    }
-
-
-    public boolean isINIT(){
-        if(RobotArm == ArmModes.INIT){
+    public boolean isCLOSED(){
+        if (RobotClaw == ClawModes.CLOSED){
             return true;
-        }else{
+        }
+        else{
             return false;
         }
     }
 
-    public boolean isGET(){
-        if(RobotArm == ArmModes.GET){
+    public boolean isOPENED(){
+        if (RobotClaw == ClawModes.OPENED){
             return true;
-        }else{
+        }
+        else{
             return false;
         }
     }
 
-    public boolean isSCORE(){
-        if(RobotArm == ArmModes.SCORE){
-            return true;
-        }else{
-            return false;
-        }
-    }
 
 
 
