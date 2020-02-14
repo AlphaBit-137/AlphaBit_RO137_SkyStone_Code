@@ -1,21 +1,32 @@
-package org.firstinspires.ftc.teamcode;
+package org.firstinspires.ftc.teamcode.drive.autonomous;
 
+
+import com.disnodeteam.dogecv.detectors.DogeCVDetector;
 import com.disnodeteam.dogecv.detectors.skystone.SkystoneDetector;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+
+import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
 import org.openftc.easyopencv.OpenCvCamera;
-import org.openftc.easyopencv.OpenCvCameraBase;
 import org.openftc.easyopencv.OpenCvCameraRotation;
 import org.openftc.easyopencv.OpenCvInternalCamera;
 import org.openftc.easyopencv.OpenCvWebcam;
 
 import java.util.Locale;
 
-@TeleOp(name = "Skystone Detector OpMode", group="DogeCV")
+/*
+ * Thanks to EasyOpenCV for the great API (and most of the example)
+ *
+ * Original Work Copright(c) 2019 OpenFTC Team
+ * Derived Work Copyright(c) 2019 DogeDevs
+ */
+@TeleOp(name = "Stone Detector OpMode", group="DogeCV")
 
-public class DogeCV extends LinearOpMode {
-    private OpenCvCamera phoneCam;
-    private SkystoneDetector skyStoneDetector;
+public class StoneDetectorExample extends LinearOpMode {
+    //private OpenCvCamera phoneCam;
+    private OpenCvWebcam webcam;
+
+    private StoneDetector stoneDetector;
 
     @Override
     public void runOpMode() {
@@ -28,7 +39,10 @@ public class DogeCV extends LinearOpMode {
          * single-parameter constructor instead (commented out below)
          */
         int cameraMonitorViewId = hardwareMap.appContext.getResources().getIdentifier("cameraMonitorViewId", "id", hardwareMap.appContext.getPackageName());
-        phoneCam = new OpenCvInternalCamera(OpenCvInternalCamera.CameraDirection.BACK, cameraMonitorViewId);
+       // phoneCam = new OpenCvInternalCamera(OpenCvInternalCamera.CameraDirection.BACK, cameraMonitorViewId);
+        webcam = new OpenCvWebcam(hardwareMap.get(WebcamName.class, "Webcam 1"), cameraMonitorViewId);
+
+
 
         // OR...  Do Not Activate the Camera Monitor View
         //phoneCam = new OpenCvInternalCamera(OpenCvInternalCamera.CameraDirection.BACK);
@@ -36,15 +50,20 @@ public class DogeCV extends LinearOpMode {
         /*
          * Open the connection to the camera device
          */
-        phoneCam.openCameraDevice();
+       // phoneCam.openCameraDevice();
+        webcam.openCameraDevice();
+
+
 
         /*
          * Specify the image processing pipeline we wish to invoke upon receipt
          * of a frame from the camera. Note that switching pipelines on-the-fly
          * (while a streaming session is in flight) *IS* supported.
          */
-        skyStoneDetector = new SkystoneDetector();
-        phoneCam.setPipeline(skyStoneDetector);
+        stoneDetector = new StoneDetector();
+
+       // phoneCam.setPipeline(stoneDetector);
+        webcam.setPipeline(stoneDetector);
 
         /*
          * Tell the camera to start streaming images to us! Note that you must make sure
@@ -57,23 +76,31 @@ public class DogeCV extends LinearOpMode {
          * For a rear facing camera or a webcam, rotation is defined assuming the camera is facing
          * away from the user.
          */
-        phoneCam.startStreaming(320, 240, OpenCvCameraRotation.SIDEWAYS_LEFT);
+      //  phoneCam.startStreaming(320, 240, OpenCvCameraRotation.UPRIGHT);
+        webcam.startStreaming(640, 480, OpenCvCameraRotation.UPRIGHT);
 
+
+        /*
+         * Wait for the user to press start on the Driver Station
+         */
         waitForStart();
 
         while (opModeIsActive())
         {
-
-            telemetry.addData("Stone Position X", skyStoneDetector.getScreenPosition().x);
-            telemetry.addData("Stone Position Y", skyStoneDetector.getScreenPosition().y);
-            telemetry.addData("Frame Count", phoneCam.getFrameCount());
-            telemetry.addData("FPS", String.format(Locale.US, "%.2f", phoneCam.getFps()));
-            telemetry.addData("Total frame time ms", phoneCam.getTotalFrameTimeMs());
-            telemetry.addData("Pipeline time ms", phoneCam.getPipelineTimeMs());
-            telemetry.addData("Overhead time ms", phoneCam.getOverheadTimeMs());
-            telemetry.addData("Theoretical max FPS", phoneCam.getCurrentPipelineMaxFps());
+            /*
+             * Send some stats to the telemetry
+             */
+            if(stoneDetector.isDetected()){
+                try {
+                    for (int i = 0; i < stoneDetector.foundRectangles().size(); i++) {
+                        telemetry.addData("Stone X " + (i + 1), stoneDetector.foundRectangles().get(i).x);
+                        telemetry.addData("Stone Y" + (i + 1), stoneDetector.foundRectangles().get(i).y);
+                    }
+                }catch (Exception e){
+                    telemetry.addData("Stones", "Not Detected");
+                }
+            }
             telemetry.update();
-
 
             /*
              * NOTE: stopping the stream from the camera early (before the end of the OpMode
@@ -101,7 +128,7 @@ public class DogeCV extends LinearOpMode {
                  * time. Of course, this comment is irrelevant in light of the use case described in
                  * the above "important note".
                  */
-                phoneCam.stopStreaming();
+               // phoneCam.stopStreaming();
                 //webcam.closeCameraDevice();
             }
 
@@ -118,10 +145,10 @@ public class DogeCV extends LinearOpMode {
              * and resume the viewport if the "Y" button on gamepad1 is pressed.
              */
             else if(gamepad1.x) {
-                phoneCam.pauseViewport();
+              //  phoneCam.pauseViewport();
             }
             else if(gamepad1.y) {
-                phoneCam.resumeViewport();
+             //   phoneCam.resumeViewport();
             }
         }
     }
