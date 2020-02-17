@@ -81,7 +81,7 @@ public class BLUE_BS_3STONES extends LinearOpMode {
 
                     drive.trajectoryBuilder()
                             .setReversed(false)
-                            .splineTo(new Pose2d(-37, 30, Math.toRadians(270)), new SplineInterpolator(Math.toRadians(270), Math.toRadians(200)))
+                            .splineTo(new Pose2d(-31, 27, Math.toRadians(270)), new SplineInterpolator(Math.toRadians(270), Math.toRadians(200)))
                             .build()
             );
 
