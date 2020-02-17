@@ -29,9 +29,10 @@
 
 package org.firstinspires.ftc.teamcode.drive.structure;
 
+import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
-public class Outtake {
+public class Outtake{
     /* Public OpMode members. */
     public Gripper gripper;
     public Lift lift;
@@ -61,6 +62,7 @@ public class Outtake {
         GETSTONE,
         RESET,
         INIT,
+        AUTO,
     }
 
 
@@ -141,6 +143,7 @@ public class Outtake {
             }
 
             case STONE_1: {
+
                 stoneNumber = 1;
                 armScorePosition = 550;
                 liftScorePosition = -3000;
@@ -396,6 +399,51 @@ public class Outtake {
                 }
                 break;
             }
+            case AUTO: {
+
+                stoneNumber = 4;
+                armScorePosition = 850;
+                liftScorePosition = -4800;
+
+
+                if(arm.isGET() && lift.isINIT()){
+                    gripper.switchToCLOSED();
+                }
+                if(arm.isGET() && lift.isINIT() && gripper.grip.getPosition() == 0.1){
+                    lift.switchToLEVEL();
+
+                }
+                if(lift.isLEVEL() && lift.getLiftEncoder() < -4500){
+                    arm.switchToScore();
+                }
+                if(arm.isSCORE() && arm.getArmEncoder() > 350){
+                    lift.switchToSCORE();
+                }
+
+                if(lift.isSCORE() && arm.getArmEncoder()> 600){
+                    gripper.switchToOPENED();
+                }
+                if(lift.isSCORE() && arm.isSCORE() && gripper.grip.getPosition() == 0.35){
+                    this.switchToRESET();
+                }
+
+
+
+                /*if(arm.isSCORE()){
+                    lift.switchToLEVEL();
+                }
+                if(lift.isLEVEL() && lift.getLiftEncoder() < -3500){
+                    arm.switchToINIT();
+                }
+                if(arm.isINIT() && arm.getArmEncoder() <100){
+                    this.switchToINIT();
+
+                }*/
+
+
+                break;
+
+            }
 
 
 
@@ -443,6 +491,7 @@ public class Outtake {
     }
     public void switchToRESET(){ RobotOuttake = OuttakeModes.RESET; }
     public void switchToGETSTONE(){ RobotOuttake = OuttakeModes.GETSTONE;}
+    public void switchToAUTO(){ RobotOuttake = OuttakeModes.AUTO;}
 
     public boolean isINIT(){
         if(RobotOuttake == OuttakeModes.INIT){
@@ -533,6 +582,8 @@ public class Outtake {
             return false;
         }
     }
+
+
 
 
 
