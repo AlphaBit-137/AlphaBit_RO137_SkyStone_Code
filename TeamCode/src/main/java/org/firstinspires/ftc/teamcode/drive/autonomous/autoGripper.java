@@ -29,6 +29,9 @@
 
 package org.firstinspires.ftc.teamcode.drive.autonomous;
 
+import android.view.animation.LinearInterpolator;
+
+import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.HardwareMap;
@@ -36,7 +39,7 @@ import com.qualcomm.robotcore.hardware.Servo;
 
 import org.firstinspires.ftc.teamcode.drive.opmode.Hardware;
 
-public class autoGripper {
+public class autoGripper extends LinearOpMode {
     /* Public OpMode members. */
 
     public Servo grip = null;
@@ -90,12 +93,22 @@ public class autoGripper {
 
         lift.setZeroPowerBehavior(DcMotorEx.ZeroPowerBehavior.BRAKE);
 
+    }
+
+    public void initpoz(HardwareMap ahwMap){
         motorCollectDR.setPower(0.5);
         motorCollectST.setPower(-0.5);
         arm.setTargetPosition(ARM_INIT_POZ);
         arm.setMode(DcMotorEx.RunMode.RUN_TO_POSITION);
         arm.setPower(ARM_POWER);
         grip.setPosition(OPENED_POZ);
+    }
+
+    public void armINIT(HardwareMap ahwMap){
+        arm.setTargetPosition(ARM_INIT_POZ);
+        arm.setMode(DcMotorEx.RunMode.RUN_TO_POSITION);
+        arm.setPower(ARM_POWER);
+
     }
 
 
@@ -107,13 +120,24 @@ public class autoGripper {
         grip.setPosition(CLOSED_POZ);
     }
 
+    public void armDown(HardwareMap ahwMap) {
+        arm.setTargetPosition(DOWN_POZ);
+        arm.setMode(DcMotorEx.RunMode.RUN_TO_POSITION);
+        arm.setPower(ARM_POWER);
+
+    }
+
     public void startCollect(HardwareMap ahwMap) {
-        motorCollectDR.setPower(0.5);
-        motorCollectST.setPower(-0.5);
+        motorCollectDR.setPower(0.6);
+        motorCollectST.setPower(-0.6);
     }
     public void stopCollect(HardwareMap ahwMap){
         motorCollectDR.setPower(0);
         motorCollectST.setPower(0);
+    }
+    public void outCollect(HardwareMap ahwMap){
+        motorCollectDR.setPower(-0.3);
+        motorCollectST.setPower(0.3);
     }
 
 
@@ -151,6 +175,10 @@ public class autoGripper {
      }
 
     }
+
+
+    @Override
+    public void runOpMode() {}
 
     public void gripDOWN(HardwareMap ahwMap) {
         grip.setPosition(OPENED_POZ);

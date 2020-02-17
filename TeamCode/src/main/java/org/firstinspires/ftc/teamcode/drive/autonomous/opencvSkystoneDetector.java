@@ -3,6 +3,7 @@ package org.firstinspires.ftc.teamcode.drive.autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
@@ -35,96 +36,60 @@ import java.util.List;
  * monitor: 640 x 480
  *YES
  */
-@Autonomous(name= "opencvSkystoneDetector", group="Sky autonomous")
 
 public class opencvSkystoneDetector extends LinearOpMode {
     private ElapsedTime runtime = new ElapsedTime();
 
     //0 means skystone, 1 means yellow stone
     //-1 for debug, but we can keep it like this because if it works, it should change to either 0 or 255
-    private static int valMid = -1;
-    private static int valLeft = -1;
-    private static int valRight = -1;
-    private static int possibleVal = 255;
+    public static int valMid = -1;
+    public static int valLeft = -1;
+    public static int valRight = -1;
+    public static int possibleVal = 255;
 
-    public int x = -1;
 
-    private static float rectHeight = .6f/8f;
-    private static float rectWidth = 1.5f/8f;
 
-    private static float offsetX = 0f/8f;//changing this moves the three rects and the three circles left or right, range : (-2, 2) not inclusive
-    private static float offsetY = 0f/8f;//changing this moves the three rects and circles up or down, range: (-4, 4) not inclusive
+    public static float rectHeight = .6f/8f;
+    public static float rectWidth = 1.5f/8f;
 
-    private static float[] midPos = {4f/8f+offsetX, 4f/8f+offsetY};//0 = col, 1 = row
-    private static float[] leftPos = {2f/8f+offsetX, 4f/8f+offsetY};
-    private static float[] rightPos = {6f/8f+offsetX, 4f/8f+offsetY};
+    public static float offsetX = 0f/8f;//changing this moves the three rects and the three circles left or right, range : (-2, 2) not inclusive
+    public static float offsetY = 0f/8f;//changing this moves the three rects and circles up or down, range: (-4, 4) not inclusive
+
+    public static float[] midPos = {4f/8f+offsetX, 4f/8f+offsetY};//0 = col, 1 = row
+    public static float[] leftPos = {2f/8f+offsetX, 4f/8f+offsetY};
+    public static float[] rightPos = {6f/8f+offsetX, 4f/8f+offsetY};
     //moves all rectangles right or left by amount. units are in ratio to monitor
 
-    private final int rows = 640;
-    private final int cols = 480;
-
+    public final int rows = 640;
+    public final int cols = 480;
     //OpenCvCamera phoneCam;
 
     OpenCvWebcam webcam;
+    HardwareMap hwMap = null;
 
     @Override
     public void runOpMode() throws InterruptedException {
 
-        int cameraMonitorViewId = hardwareMap.appContext.getResources().getIdentifier("cameraMonitorViewId", "id", hardwareMap.appContext.getPackageName());
-        webcam = new OpenCvWebcam(hardwareMap.get(WebcamName.class, "Webcam 1"), cameraMonitorViewId);
-        //P.S. if you're using the latest version of easyopencv, you might need to change the next line to the following:
-        //phoneCam = OpenCvCameraFactory.getInstance().createInternalCamera(OpenCvInternalCamera.CameraDirection.BACK, cameraMonitorViewId);
-      //  phoneCam = new OpenCvInternalCamera(OpenCvInternalCamera.CameraDirection.BACK, cameraMonitorViewId);//remove this
-
-        webcam.openCameraDevice();
-        webcam.setPipeline(new StageSwitchingPipeline());
-        webcam.startStreaming(640, 480, OpenCvCameraRotation.UPRIGHT);
-
-        //width, height
-        //width = height in this case, because camera is in portrait mode.
-
-        waitForStart();
-        runtime.reset();
-        while (opModeIsActive()) {
-            telemetry.addData("Values", valLeft+"   "+valMid+"   "+valRight);
-            telemetry.addData("Height", rows);
-            telemetry.addData("Width", cols);
-            telemetry.update();
-
-
-            if(valRight == 255 && valMid == 255 && valLeft == 0){
-                telemetry.addData("SkyStone", "Left");
-
-                x = -1;
-            } else if(valLeft == 255 && valMid == 255 && valRight == 0){
-                telemetry.addData("SkyStone", "Right");
-                x = 0;
-
-            }else if(valLeft == 255 && valRight == 255 && valMid==255){
-                telemetry.addData("SkyStone", "Center");
-                x = 1;
-
-            }
-
-
-            telemetry.update();
-
-            sleep(100);
-            //call movement functions
-//            strafe(0.4, 200);
-//            moveDistance(0.4, 700);
-
-        }
     }
 
 
-    public void detectionLeft(){
-        if(valRight == 255 && valMid == 255){
-            telemetry.addData("SkyStone", "Left");
-            telemetry.update();
-        }
-    }
+        public void Init(HardwareMap ahwMap){
+            hwMap = ahwMap;
+            int cameraMonitorViewId = hwMap.appContext.getResources().getIdentifier("cameraMonitorViewId", "id", hwMap.appContext.getPackageName());
+            webcam = new OpenCvWebcam(hwMap.get(WebcamName.class, "Webcam 1"), cameraMonitorViewId);
+            //P.S. if you're using the latest version of easyopencv, you might need to change the next line to the following:
+            //phoneCam = OpenCvCameraFactory.getInstance().createInternalCamera(OpenCvInternalCamera.CameraDirection.BACK, cameraMonitorViewId);
+            //  phoneCam = new OpenCvInternalCamera(OpenCvInternalCamera.CameraDirection.BACK, cameraMonitorViewId);//remove this
 
+            webcam.openCameraDevice();
+            webcam.setPipeline(new StageSwitchingPipeline());
+            webcam.startStreaming(640, 480, OpenCvCameraRotation.UPRIGHT);
+
+        }
+
+public void stopCamera(HardwareMap ahwMap){
+        webcam.stopStreaming();
+}
 
 
     //detection pipeline
