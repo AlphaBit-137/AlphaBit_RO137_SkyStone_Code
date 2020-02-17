@@ -36,20 +36,20 @@ public class RED_BS_3STONES extends LinearOpMode {
        auto.init(hardwareMap);
         SampleMecanumDriveBase drive = new SampleMecanumDriveREV(hardwareMap);
        drive.setPoseEstimate(new Pose2d(-30.0, -72.0, Math.toRadians(90.0)));
-        opencvSkystoneDetector sdetector = new opencvSkystoneDetector();
-        sdetector.Init(hardwareMap);
+        red_opencvSkystoneDetector rdetector = new red_opencvSkystoneDetector();
+        rdetector.Init(hardwareMap);
 
        while (!isStarted()) {
-           if (sdetector.valRight == 255 && sdetector.valMid == 255 && sdetector.valLeft == 0) {
+           if (rdetector.valRight == 255 && rdetector.valMid == 255 && rdetector.valLeft == 0) {
                telemetry.addData("SkyStone", "Left");
                telemetry.update();
                caz = 1;
-           } else if (sdetector.valLeft == 255 && sdetector.valMid == 255 && sdetector.valRight == 0) {
+           } else if (rdetector.valLeft == 255 && rdetector.valMid == 255 && rdetector.valRight == 0) {
                telemetry.addData("SkyStone", "Right");
                telemetry.update();
                caz = 3;
 
-           } else if (sdetector.valLeft == 255 && sdetector.valRight == 255 && sdetector.valMid == 0) {
+           } else if (rdetector.valLeft == 255 && rdetector.valRight == 255 && rdetector.valMid == 0) {
                telemetry.addData("SkyStone", "Center");
                telemetry.update();
                caz = 2;
@@ -61,7 +61,7 @@ public class RED_BS_3STONES extends LinearOpMode {
 
 
        waitForStart();
-       sdetector.stopCamera(hardwareMap);
+       rdetector.stopCamera(hardwareMap);
        auto.initpoz(hardwareMap);
        sleep(1000);
 
