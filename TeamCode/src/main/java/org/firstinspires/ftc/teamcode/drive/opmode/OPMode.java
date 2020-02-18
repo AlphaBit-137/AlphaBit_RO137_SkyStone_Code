@@ -42,6 +42,8 @@ import org.firstinspires.ftc.teamcode.drive.structure.Outtake;
 @TeleOp(name="Op_Mode", group="Linear Opmode")
 
 public class OPMode extends LinearOpMode {
+//codul specific clasei
+
 
     // Declaram obiectul robot cu clasa hardware si timpul de rulare
 

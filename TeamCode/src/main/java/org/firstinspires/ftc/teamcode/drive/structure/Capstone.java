@@ -29,31 +29,31 @@
 
 package org.firstinspires.ftc.teamcode.drive.structure;
 
-import com.qualcomm.robotcore.hardware.HardwareMap;
-import com.qualcomm.robotcore.hardware.RobotCoreLynxModule;
-import com.qualcomm.robotcore.hardware.Servo;
+import android.provider.DocumentsContract;
 
-public class Claws {
+import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorEx;
+import com.qualcomm.robotcore.hardware.HardwareMap;
+import com.qualcomm.robotcore.hardware.Servo;
+import com.qualcomm.robotcore.robot.Robot;
+
+public class Capstone {
     /* Public OpMode members. */
 
-    public Servo leftClaw = null;
-    public Servo rightClaw = null;
+    public Servo capstone = null;
+
+    public static double SAFE_POZ = 0d;
+    public static double PUT_POZ = 0d;
 
 
-    private double leftClawOpen = 1.0;
-    private double rightClawOpen = 0;
-    private double leftClawClosed = 0;
-    private double rightClawClosed = 1.0;
+    public CapstoneModes RobotCapstone = CapstoneModes.SAFE;
 
-
-    public ClawModes RobotClaw= ClawModes.OPENED;
-
-    public enum ClawModes {
-        OPENED,
-        CLOSED,
+    public enum CapstoneModes {
+        SAFE,
+        PUT,
     }
 
-    public Claws() {
+    public Capstone() {
 
     }
 
@@ -64,38 +64,31 @@ public class Claws {
     public void init(HardwareMap ahwMap) {
         // Save reference to Hardware map
         hwMap = ahwMap;
-        // Define and Initialize Motors
-        leftClaw = hwMap.get(Servo.class, "Left_Claw");
-        rightClaw = hwMap.get(Servo.class, "Right_Claw");
+
+        capstone = hwMap.get(Servo.class, "Capstone");
+
     }
 
     public void update() {
-        switch (RobotClaw){
-            case OPENED:{
-                leftClaw.setPosition(leftClawOpen);
-                rightClaw.setPosition(rightClawOpen);
-
+        switch (RobotCapstone){
+            case SAFE:{
+                capstone.setPosition(SAFE_POZ);
                 break;
             }
-            case CLOSED:{
-                leftClaw.setPosition(leftClawClosed);
-                rightClaw.setPosition(rightClawClosed);
+            case PUT:{
+                capstone.setPosition(PUT_POZ);
                 break;
             }
         }
 
     }
 
-    public void switchToOPENED(){
-        RobotClaw = ClawModes.OPENED;
+    public void switchToPUT(){
+        RobotCapstone = RobotCapstone.PUT;
     }
 
-    public void switchToCLOSED(){
-        RobotClaw = ClawModes.CLOSED;
-    }
-
-    public boolean isCLOSED(){
-        if (RobotClaw == ClawModes.CLOSED){
+    public boolean isSAFE(){
+        if(RobotCapstone == RobotCapstone.SAFE){
             return true;
         }
         else{
@@ -103,17 +96,26 @@ public class Claws {
         }
     }
 
-    public boolean isOPENED(){
-        if (RobotClaw == ClawModes.OPENED){
-            return true;
-        }
-        else{
-            return false;
-        }
-    }
+
+    /* EX 2 -> 0 Gheara stanga
+
+        EX 1 -> 5 Gheara dreapta
+
+
+        EX 1 -> 0  -> Right Wing
+        EX 1 -> 1  -> Left Wing
+
+
+        EX 1 -> 2 -> Lift
+
+
+         Gherute
+     */
+
 
 
 
 
 }
+
 
