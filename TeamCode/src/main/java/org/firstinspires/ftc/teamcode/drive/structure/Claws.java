@@ -40,6 +40,12 @@ public class Claws {
     public Servo rightClaw = null;
 
 
+    private double leftClawOpen = 1.0;
+    private double rightClawOpen = 0;
+    private double leftClawClosed = 0;
+    private double rightClawClosed = 1.0;
+
+
     public ClawModes RobotClaw= ClawModes.OPENED;
 
     public enum ClawModes {
@@ -66,14 +72,14 @@ public class Claws {
     public void update() {
         switch (RobotClaw){
             case OPENED:{
-                leftClaw.setPosition(1);
-                rightClaw.setPosition(0);
+                leftClaw.setPosition(leftClawOpen);
+                rightClaw.setPosition(rightClawOpen);
 
                 break;
             }
             case CLOSED:{
-                leftClaw.setPosition(0);
-                rightClaw.setPosition(1);
+                leftClaw.setPosition(leftClawClosed);
+                rightClaw.setPosition(rightClawClosed);
                 break;
             }
         }
