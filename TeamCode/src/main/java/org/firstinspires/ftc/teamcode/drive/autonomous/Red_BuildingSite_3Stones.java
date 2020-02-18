@@ -1,31 +1,17 @@
 package org.firstinspires.ftc.teamcode.drive.autonomous;
 
-import android.graphics.Interpolator;
-
-import com.acmerobotics.dashboard.canvas.Spline;
-import com.acmerobotics.roadrunner.drive.MecanumDrive;
 import com.acmerobotics.roadrunner.geometry.Pose2d;
 import com.acmerobotics.roadrunner.geometry.Vector2d;
 import com.acmerobotics.roadrunner.path.heading.LinearInterpolator;
 import com.acmerobotics.roadrunner.path.heading.SplineInterpolator;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.DcMotorSimple;
-import com.qualcomm.robotcore.hardware.HardwareMap;
 
-import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
 import org.firstinspires.ftc.teamcode.drive.mecanum.SampleMecanumDriveBase;
 import org.firstinspires.ftc.teamcode.drive.mecanum.SampleMecanumDriveREV;
-import org.firstinspires.ftc.teamcode.drive.opmode.Hardware;
-import org.openftc.easyopencv.OpenCvCameraRotation;
-import org.openftc.easyopencv.OpenCvWebcam;
-/*
- * This is an example of a more complex path to really test the tuning.
- */
-@Autonomous(name="RED_BS_3STONES", group = "RED")
-public class RED_BS_3STONES extends LinearOpMode {
 
+@Autonomous(name="Red_BuildingSite_3Stones", group = "RED")
+public class Red_BuildingSite_3Stones extends LinearOpMode {
 
     public int caz = -1;
 
@@ -55,25 +41,19 @@ public class RED_BS_3STONES extends LinearOpMode {
                caz = 2;
            }
        }
+
         //opencvSkystoneDetector detector = new opencvSkystoneDetector();
      //  drive.setLocalizer(new MecanumDrive.MecanumLocalizer(drive, true));
 
 
-
        waitForStart();
+
        rdetector.stopCamera(hardwareMap);
        auto.initpoz(hardwareMap);
+
        sleep(1000);
 
        if (isStopRequested()) return;
-
-
-       // LinearInterpolator interp = new LinearInterpolator(Math.toRadians(90), Math.toRadians(50));
-        //CUB 3 - Colectare cub
-
-
-
-
 
        //CAZ STANGA
        if(caz == 1) {
