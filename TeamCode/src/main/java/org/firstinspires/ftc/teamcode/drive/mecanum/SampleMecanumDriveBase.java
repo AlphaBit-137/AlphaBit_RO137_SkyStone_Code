@@ -47,12 +47,21 @@ public abstract class SampleMecanumDriveBase extends MecanumDrive {
     public static PIDCoefficients TRANSLATIONAL_PID = new PIDCoefficients(0, 0, 0);
     public static PIDCoefficients HEADING_PID = new PIDCoefficients(4, 1, 0.4318); //4 ,1 ,0.4318
 
+    Outtake outtake = new Outtake();
+    Intake intake = new Intake();
+
+    public void autoArm(){
+
+    }
+
 
     public enum Mode {
         IDLE,
         TURN,
         FOLLOW_TRAJECTORY
     }
+
+
 
     private FtcDashboard dashboard;
     private NanoClock clock;

@@ -9,12 +9,16 @@ import com.acmerobotics.roadrunner.geometry.Pose2d;
 import com.acmerobotics.roadrunner.localization.Localizer;
 import com.acmerobotics.roadrunner.localization.ThreeTrackingWheelLocalizer;
 import com.qualcomm.hardware.bosch.BNO055IMU;
+import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.PIDFCoefficients;
 
+import com.qualcomm.robotcore.hardware.PwmControl;
+import com.qualcomm.robotcore.hardware.Servo;
+import com.qualcomm.robotcore.hardware.ServoImplEx;
 import com.qualcomm.robotcore.hardware.configuration.LynxConstants;
 
 import org.firstinspires.ftc.robotcore.external.navigation.AxesOrder;
@@ -40,8 +44,10 @@ import static org.firstinspires.ftc.teamcode.drive.DriveConstants.getMotorVeloci
  */
 public class SampleMecanumDriveREV extends SampleMecanumDriveBase {
     public DcMotorEx leftFront, leftRear, rightRear, rightFront;
+    public DcMotor motorColectSt, motorColectDr;
     private List<DcMotorEx> motors;
     private BNO055IMU imu;
+
 
     public SampleMecanumDriveREV(HardwareMap hardwareMap) {
         super();
@@ -61,6 +67,8 @@ public class SampleMecanumDriveREV extends SampleMecanumDriveBase {
         leftRear = hardwareMap.get(DcMotorEx.class, "Back_Left");
         rightRear = hardwareMap.get(DcMotorEx.class, "Back_Right");
         rightFront = hardwareMap.get(DcMotorEx.class, "Front_Right");
+        motorColectDr = hardwareMap.get(DcMotor.class, "Right_Wing");
+        motorColectSt = hardwareMap.get(DcMotor.class, "Left_Wing");
 
 
         motors = Arrays.asList(leftFront, leftRear, rightRear, rightFront);
@@ -81,10 +89,15 @@ public class SampleMecanumDriveREV extends SampleMecanumDriveBase {
         leftFront.setDirection(DcMotor.Direction.REVERSE);
         rightRear.setDirection(DcMotor.Direction.FORWARD);
         rightFront.setDirection(DcMotor.Direction.FORWARD);
+        motorColectDr.setDirection(DcMotor.Direction.FORWARD);
+        motorColectSt.setDirection(DcMotor.Direction.REVERSE);
         // TODO: if desired, use setLocalizer() to change the localization method
         // for instance, setLocalizer(new ThreeTrackingWheelLocalizer(...));
 
     }
+
+
+
 
     @Override
     public PIDCoefficients getPIDCoefficients(DcMotor.RunMode runMode) {
@@ -126,6 +139,12 @@ public class SampleMecanumDriveREV extends SampleMecanumDriveBase {
         leftRear.setPower(v1);
         rightRear.setPower(v2);
         rightFront.setPower(v3);
+    }
+
+
+    void intakeIN(double ms, double md){
+        motorColectSt.setPower(ms);
+        motorColectDr.setPower(md);
     }
 
     @Override
