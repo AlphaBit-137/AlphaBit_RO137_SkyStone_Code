@@ -47,11 +47,14 @@ public class autoGripper extends LinearOpMode {
     public DcMotorEx lift = null;
     public DcMotor motorCollectDR = null;
     public DcMotor motorCollectST = null;
+    public Servo ClawST = null;
+    public Servo ClawDR = null;
 
     public static double ARM_POWER = 0.3;
     public static double DOWN_ARM_POWER = 0.7;
     public static int ARM_INIT_POZ = -400;
     public static int DOWN_POZ = -50;
+
 
     // 550
     public static int DOWN_POZ_1 = 550;
@@ -76,6 +79,8 @@ public class autoGripper extends LinearOpMode {
         lift = hwMap.get(DcMotorEx.class, "Lift");
         motorCollectDR = hwMap.get(DcMotor.class, "Right_Wing"); // stanga
         motorCollectST = hwMap.get(DcMotor.class, "Left_Wing"); // dreapta
+        ClawST = hwMap.get(Servo.class, "Left_Claw");
+        ClawDR = hwMap.get(Servo.class, "Right_Claw");
 
 
         lift.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
@@ -102,6 +107,17 @@ public class autoGripper extends LinearOpMode {
         arm.setMode(DcMotorEx.RunMode.RUN_TO_POSITION);
         arm.setPower(ARM_POWER);
         grip.setPosition(OPENED_POZ);
+        ClawDR.setPosition(0);
+        ClawST.setPosition(1);
+    }
+
+    public void initplate(HardwareMap ahwMap){
+        arm.setTargetPosition(ARM_INIT_POZ);
+        arm.setMode(DcMotorEx.RunMode.RUN_TO_POSITION);
+        arm.setPower(ARM_POWER);
+        grip.setPosition(OPENED_POZ);
+        ClawDR.setPosition(1);
+        ClawST.setPosition(0);
     }
 
     public void armINIT(HardwareMap ahwMap){
@@ -176,9 +192,15 @@ public class autoGripper extends LinearOpMode {
 
     }
 
+    public void ClawDown(HardwareMap ahwMap){
+        ClawST.setPosition(1);
+        ClawDR.setPosition(0);
 
-    @Override
-    public void runOpMode() {}
+    }
+    public void ClawUp(HardwareMap ahwMap){
+        ClawST.setPosition(0);
+        ClawDR.setPosition(1);
+    }
 
     public void gripDOWN(HardwareMap ahwMap) {
         grip.setPosition(OPENED_POZ);
@@ -199,7 +221,8 @@ public class autoGripper extends LinearOpMode {
     }
 
 
-
+    @Override
+    public void runOpMode() {}
 
 
 }
