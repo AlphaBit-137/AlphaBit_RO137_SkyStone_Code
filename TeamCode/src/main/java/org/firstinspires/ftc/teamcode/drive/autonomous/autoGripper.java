@@ -96,8 +96,8 @@ public class autoGripper extends LinearOpMode {
     }
 
     public void initpoz(HardwareMap ahwMap){
-        motorCollectDR.setPower(0.5);
-        motorCollectST.setPower(-0.5);
+        motorCollectDR.setPower(0.6);
+        motorCollectST.setPower(-0.6);
         arm.setTargetPosition(ARM_INIT_POZ);
         arm.setMode(DcMotorEx.RunMode.RUN_TO_POSITION);
         arm.setPower(ARM_POWER);
@@ -128,8 +128,8 @@ public class autoGripper extends LinearOpMode {
     }
 
     public void startCollect(HardwareMap ahwMap) {
-        motorCollectDR.setPower(0.6);
-        motorCollectST.setPower(-0.6);
+        motorCollectDR.setPower(0.4);
+        motorCollectST.setPower(-0.4);
     }
     public void stopCollect(HardwareMap ahwMap){
         motorCollectDR.setPower(0);

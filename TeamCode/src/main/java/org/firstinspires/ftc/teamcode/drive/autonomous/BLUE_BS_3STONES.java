@@ -50,7 +50,7 @@ public class BLUE_BS_3STONES extends LinearOpMode {
                 caz = 3;
 
             } else if (bdetector.valLeft == 255 && bdetector.valRight == 255 && bdetector.valMid == 0) {
-                telemetry.addData("SkyStone", "Center");
+                telemetry.addData("SkyStone", "Centre");
                 telemetry.update();
                 caz = 2;
             }
@@ -81,7 +81,7 @@ public class BLUE_BS_3STONES extends LinearOpMode {
 
                     drive.trajectoryBuilder()
                             .setReversed(false)
-                            .splineTo(new Pose2d(-37, 30, Math.toRadians(270)), new SplineInterpolator(Math.toRadians(270), Math.toRadians(200)))
+                            .splineTo(new Pose2d(-33.2, 26, Math.toRadians(270)), new SplineInterpolator(Math.toRadians(270), Math.toRadians(200)))
                             .build()
             );
 
@@ -89,8 +89,8 @@ public class BLUE_BS_3STONES extends LinearOpMode {
 
                     drive.trajectoryBuilder()
                             .setReversed(true)
-                            .splineTo(new Pose2d(0, 48, Math.toRadians(180)))
-                            .lineTo(new Vector2d(15, 48), new LinearInterpolator(Math.toRadians(0), Math.toRadians(180)))
+                            .splineTo(new Pose2d(0, 44, Math.toRadians(180)))
+                            .lineTo(new Vector2d(50, 44), new LinearInterpolator(Math.toRadians(0), Math.toRadians(180)))
                             .build()
             );
 
@@ -99,7 +99,7 @@ public class BLUE_BS_3STONES extends LinearOpMode {
             drive.followTrajectorySync(
                     drive.trajectoryBuilder()
                             .setReversed(false)
-                            .lineTo(new Vector2d(0, 48), new LinearInterpolator(Math.toRadians(0), Math.toRadians(180)))
+                            .lineTo(new Vector2d(-10, 44), new LinearInterpolator(Math.toRadians(0), Math.toRadians(180)))
                             .build()
             );
 
@@ -107,15 +107,16 @@ public class BLUE_BS_3STONES extends LinearOpMode {
 
             drive.followTrajectorySync(
                     drive.trajectoryBuilder()
-                            .splineTo(new Pose2d(-68, 30, Math.toRadians(180)), new SplineInterpolator(Math.toRadians(180), Math.toRadians(230)))
+                            .setReversed(false)
+                            .splineTo(new Pose2d(-69, 21, Math.toRadians(270)), new SplineInterpolator(Math.toRadians(180), Math.toRadians(210)))
                             .build()
             );
 
             drive.followTrajectorySync(
                     drive.trajectoryBuilder()
                             .setReversed(true)
-                            .splineTo(new Pose2d(0, 43, Math.toRadians(180)), new SplineInterpolator(Math.toRadians(180), Math.toRadians(230)))
-                            .lineTo(new Vector2d(20, 43), new LinearInterpolator(Math.toRadians(0), Math.toRadians(180)))
+                            .splineTo(new Pose2d(15, 38, Math.toRadians(180)))
+                            .lineTo(new Vector2d(50, 38), new LinearInterpolator(Math.toRadians(0), Math.toRadians(180)))
                             .build()
             );
 
@@ -124,7 +125,7 @@ public class BLUE_BS_3STONES extends LinearOpMode {
             drive.followTrajectorySync(
                     drive.trajectoryBuilder()
                             .setReversed(true)
-                            .lineTo(new Vector2d(0, 43))
+                            .splineTo(new Pose2d(-6,38,Math.toRadians(0)), new SplineInterpolator(Math.toRadians(0),Math.toRadians(0)))
                             .build()
             );
 
@@ -172,7 +173,7 @@ public class BLUE_BS_3STONES extends LinearOpMode {
 
                     drive.trajectoryBuilder()
                             .setReversed(false)
-                            .splineTo(new Pose2d(-27, 33, Math.toRadians(90)), new SplineInterpolator(Math.toRadians(90), Math.toRadians(120)))
+                            .splineTo(new Pose2d(-22, 27, Math.toRadians(270)), new SplineInterpolator(Math.toRadians(270), Math.toRadians(210)))
                             .build()
             );
 
@@ -180,8 +181,8 @@ public class BLUE_BS_3STONES extends LinearOpMode {
 
                     drive.trajectoryBuilder()
                             .setReversed(true)
-                            .splineTo(new Pose2d(10, 52, Math.toRadians(180)))
-                            .lineTo(new Vector2d(45, 52), new LinearInterpolator(Math.toRadians(0), Math.toRadians(180)))
+                            .splineTo(new Pose2d(-10, 51, Math.toRadians(180)))
+                            .lineTo(new Vector2d(45, 51), new LinearInterpolator(Math.toRadians(0), Math.toRadians(180)))
                             .build()
             );
 
@@ -190,7 +191,7 @@ public class BLUE_BS_3STONES extends LinearOpMode {
             drive.followTrajectorySync(
                     drive.trajectoryBuilder()
                             .setReversed(false)
-                            .lineTo(new Vector2d(0, 52), new LinearInterpolator(Math.toRadians(0), Math.toRadians(180)))
+                            .lineTo(new Vector2d(0, 51), new LinearInterpolator(Math.toRadians(0), Math.toRadians(180)))
                             .build()
             );
 
@@ -199,14 +200,14 @@ public class BLUE_BS_3STONES extends LinearOpMode {
             drive.followTrajectorySync(
 
                     drive.trajectoryBuilder()
-                            .splineTo(new Pose2d(-58.9, 13, Math.toRadians(90)), new SplineInterpolator(Math.toRadians(180), Math.toRadians(150)))
+                            .splineTo(new Pose2d(-53, 13, Math.toRadians(270)), new SplineInterpolator(Math.toRadians(180), Math.toRadians(210)))
                             .build()
             );
             drive.followTrajectorySync(
                     drive.trajectoryBuilder()
                             .setReversed(true)
-                            .splineTo(new Pose2d(0, 42, Math.toRadians(180)), new SplineInterpolator(Math.toRadians(180), Math.toRadians(150)))
-                            .lineTo(new Vector2d(50, 42), new LinearInterpolator(Math.toRadians(0), Math.toRadians(180)))
+                            .splineTo(new Pose2d(0, 43, Math.toRadians(180)))
+                            .lineTo(new Vector2d(60, 43), new LinearInterpolator(Math.toRadians(0), Math.toRadians(180)))
                             .build()
             );
 
@@ -215,7 +216,7 @@ public class BLUE_BS_3STONES extends LinearOpMode {
             drive.followTrajectorySync(
                     drive.trajectoryBuilder()
                             .setReversed(false)
-                            .lineTo(new Vector2d(0, 42), new LinearInterpolator(Math.toRadians(0), Math.toRadians(180)))
+                            .lineTo(new Vector2d(-15, 43), new LinearInterpolator(Math.toRadians(0), Math.toRadians(180)))
                             .build()
             );
 
@@ -223,15 +224,15 @@ public class BLUE_BS_3STONES extends LinearOpMode {
 
             drive.followTrajectorySync(
                     drive.trajectoryBuilder()
-                            .splineTo(new Pose2d(-70.9, 5, Math.toRadians(90)), new SplineInterpolator(Math.toRadians(180), Math.toRadians(150)))
+                            .splineTo(new Pose2d(-57, 12, Math.toRadians(270)), new SplineInterpolator(Math.toRadians(180), Math.toRadians(230)))
                             .build()
             );
 
             drive.followTrajectorySync(
                     drive.trajectoryBuilder()
                             .setReversed(true)
-                            .splineTo(new Pose2d(0, 31, Math.toRadians(180)), new SplineInterpolator(Math.toRadians(180), Math.toRadians(150)))
-                            .lineTo(new Vector2d(65, 31), new LinearInterpolator(Math.toRadians(0), Math.toRadians(180)))
+                            .splineTo(new Pose2d(0, 40, Math.toRadians(180)))
+                            .lineTo(new Vector2d(65, 40), new LinearInterpolator(Math.toRadians(0), Math.toRadians(180)))
                             .build()
             );
 
@@ -240,7 +241,7 @@ public class BLUE_BS_3STONES extends LinearOpMode {
             drive.followTrajectorySync(
                     drive.trajectoryBuilder()
                             .setReversed(true)
-                            .lineTo(new Vector2d(5, 31))
+                            .splineTo(new Pose2d(-5,40,Math.toRadians(0)), new SplineInterpolator(Math.toRadians(0),Math.toRadians(0)))
                             .build()
             );
         }
@@ -257,7 +258,7 @@ public class BLUE_BS_3STONES extends LinearOpMode {
 
                     drive.trajectoryBuilder()
                             .setReversed(false)
-                            .splineTo(new Pose2d(-20, 33, Math.toRadians(90)), new SplineInterpolator(Math.toRadians(90), Math.toRadians(120)))
+                            .splineTo(new Pose2d(-15.5, 31, Math.toRadians(270)), new SplineInterpolator(Math.toRadians(270), Math.toRadians(230)))
                             .build()
             );
 
@@ -266,8 +267,8 @@ public class BLUE_BS_3STONES extends LinearOpMode {
 
                     drive.trajectoryBuilder()
                             .setReversed(true)
-                            .splineTo(new Pose2d(10, 52, Math.toRadians(180)))
-                            .lineTo(new Vector2d(45, 52), new LinearInterpolator(Math.toRadians(0), Math.toRadians(180)))
+                            .splineTo(new Pose2d(10, 46, Math.toRadians(180)))
+                            .lineTo(new Vector2d(45, 46), new LinearInterpolator(Math.toRadians(0), Math.toRadians(180)))
                             .build()
             );
 
@@ -276,7 +277,7 @@ public class BLUE_BS_3STONES extends LinearOpMode {
             drive.followTrajectorySync(
                     drive.trajectoryBuilder()
                             .setReversed(false)
-                            .lineTo(new Vector2d(0, 52), new LinearInterpolator(Math.toRadians(0), Math.toRadians(180)))
+                            .lineTo(new Vector2d(0, 46), new LinearInterpolator(Math.toRadians(0), Math.toRadians(180)))
                             .build()
             );
 
@@ -285,15 +286,15 @@ public class BLUE_BS_3STONES extends LinearOpMode {
             drive.followTrajectorySync(
 
                     drive.trajectoryBuilder()
-                            .splineTo(new Pose2d(-48, 14, Math.toRadians(90)), new SplineInterpolator(Math.toRadians(180), Math.toRadians(150)))
+                            .splineTo(new Pose2d(-55, 14, Math.toRadians(270)), new SplineInterpolator(Math.toRadians(180), Math.toRadians(210)))
                             .build()
             );
 
             drive.followTrajectorySync(
                     drive.trajectoryBuilder()
                             .setReversed(true)
-                            .splineTo(new Pose2d(0, 47, Math.toRadians(180)), new SplineInterpolator(Math.toRadians(180), Math.toRadians(150)))
-                            .lineTo(new Vector2d(50, 47), new LinearInterpolator(Math.toRadians(0), Math.toRadians(180)))
+                            .splineTo(new Pose2d(0, 43, Math.toRadians(180)))
+                            .lineTo(new Vector2d(50, 43), new LinearInterpolator(Math.toRadians(0), Math.toRadians(180)))
                             .build()
             );
 
@@ -302,7 +303,7 @@ public class BLUE_BS_3STONES extends LinearOpMode {
             drive.followTrajectorySync(
                     drive.trajectoryBuilder()
                             .setReversed(false)
-                            .lineTo(new Vector2d(0, 47), new LinearInterpolator(Math.toRadians(0), Math.toRadians(180)))
+                            .lineTo(new Vector2d(0, 43), new LinearInterpolator(Math.toRadians(0), Math.toRadians(180)))
                             .build()
             );
 
@@ -310,15 +311,15 @@ public class BLUE_BS_3STONES extends LinearOpMode {
 
             drive.followTrajectorySync(
                     drive.trajectoryBuilder()
-                            .splineTo(new Pose2d(-69, 6, Math.toRadians(90)), new SplineInterpolator(Math.toRadians(180), Math.toRadians(150)))
+                            .splineTo(new Pose2d(-71, 11, Math.toRadians(270)), new SplineInterpolator(Math.toRadians(180), Math.toRadians(210)))
                             .build()
             );
 
             drive.followTrajectorySync(
                     drive.trajectoryBuilder()
                             .setReversed(true)
-                            .splineTo(new Pose2d(0, 37, Math.toRadians(180)), new SplineInterpolator(Math.toRadians(180), Math.toRadians(150)))
-                            .lineTo(new Vector2d(65, 37), new LinearInterpolator(Math.toRadians(0), Math.toRadians(180)))
+                            .splineTo(new Pose2d(0, 38, Math.toRadians(180)))
+                            .lineTo(new Vector2d(65, 38), new LinearInterpolator(Math.toRadians(0), Math.toRadians(180)))
                             .build()
             );
 
@@ -327,7 +328,7 @@ public class BLUE_BS_3STONES extends LinearOpMode {
             drive.followTrajectorySync(
                     drive.trajectoryBuilder()
                             .setReversed(true)
-                            .lineTo(new Vector2d(5, 37))
+                            .splineTo(new Pose2d(-3,38,Math.toRadians(0)), new SplineInterpolator(Math.toRadians(0),Math.toRadians(0)))
                             .build()
             );
         }
