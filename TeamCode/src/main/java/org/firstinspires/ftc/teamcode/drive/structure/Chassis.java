@@ -84,8 +84,6 @@ public class Chassis
         LeftFront.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         RightBack.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
-
-
         // Set all motors to zero power
         LeftBack.setPower(0);
         RightFront.setPower(0);
@@ -118,15 +116,15 @@ public class Chassis
                     break;
                 }
                 case SLOW: {
-                    LeftFrontPower = Range.clip(D1, -0.4, 0.4);
-                    LeftBackPower = Range.clip(D2, -0.4, 0.4);
-                    RightBackPower = Range.clip(D3, -0.4, 0.4);
-                    RightFrontPower = Range.clip(D4, -0.4,0.4);
+                    LeftFrontPower = Range.clip(D1, -0.2, 0.2);
+                    LeftBackPower = Range.clip(D2, -0.2, 0.2);
+                    RightBackPower = Range.clip(D3, -0.2, 0.2);
+                    RightFrontPower = Range.clip(D4, -0.2,0.2);
                     MotorSetter(LeftFrontPower, LeftBackPower, RightBackPower, RightFrontPower);
                     break;
 
                 }
-            }
+        }
     }
 
     public void switchToFast(){

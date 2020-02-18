@@ -29,27 +29,31 @@
 
 package org.firstinspires.ftc.teamcode.drive.structure;
 
+import android.provider.DocumentsContract;
+
+import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.HardwareMap;
-import com.qualcomm.robotcore.hardware.*;
+import com.qualcomm.robotcore.hardware.Servo;
+import com.qualcomm.robotcore.robot.Robot;
 
-import static java.lang.Thread.sleep;
-
-public class Gripper {
+public class Capstone {
     /* Public OpMode members. */
 
-    public Servo grip = null;
+    public Servo capstone = null;
 
-    public static double CLOSED_POZ = 0.15;
-    public static double OPENED_POZ = 0.35;
+    public static double SAFE_POZ = 0d;
+    public static double PUT_POZ = 0d;
 
-    public GripperModes RobotGripper = GripperModes.OPENED;
 
-    public enum GripperModes {
-        OPENED,
-        CLOSED,
+    public CapstoneModes RobotCapstone = CapstoneModes.SAFE;
+
+    public enum CapstoneModes {
+        SAFE,
+        PUT,
     }
 
-    public Gripper() {
+    public Capstone() {
 
     }
 
@@ -60,34 +64,31 @@ public class Gripper {
     public void init(HardwareMap ahwMap) {
         // Save reference to Hardware map
         hwMap = ahwMap;
-        // Define and Initialize Motors
-        grip = hwMap.get(Servo.class, "Gripper");
+
+        capstone = hwMap.get(Servo.class, "Capstone");
+
     }
 
     public void update() {
-        switch (RobotGripper){
-            case OPENED:{
-                grip.setPosition(OPENED_POZ);
+        switch (RobotCapstone){
+            case SAFE:{
+                capstone.setPosition(SAFE_POZ);
                 break;
             }
-            case CLOSED:{
-                grip.setPosition(CLOSED_POZ);
+            case PUT:{
+                capstone.setPosition(PUT_POZ);
                 break;
             }
         }
 
     }
 
-    public void switchToOPENED(){
-        RobotGripper = GripperModes.OPENED;
+    public void switchToPUT(){
+        RobotCapstone = RobotCapstone.PUT;
     }
 
-    public void switchToCLOSED(){
-        RobotGripper = GripperModes.CLOSED;
-    }
-
-    public boolean isCLOSED(){
-        if (RobotGripper == GripperModes.CLOSED){
+    public boolean isSAFE(){
+        if(RobotCapstone == RobotCapstone.SAFE){
             return true;
         }
         else{
@@ -95,17 +96,26 @@ public class Gripper {
         }
     }
 
-    public boolean isOPENED(){
-        if (RobotGripper == GripperModes.OPENED){
-            return true;
-        }
-        else{
-            return false;
-        }
-    }
+
+    /* EX 2 -> 0 Gheara stanga
+
+        EX 1 -> 5 Gheara dreapta
+
+
+        EX 1 -> 0  -> Right Wing
+        EX 1 -> 1  -> Left Wing
+
+
+        EX 1 -> 2 -> Lift
+
+
+         Gherute
+     */
+
 
 
 
 
 }
+
 

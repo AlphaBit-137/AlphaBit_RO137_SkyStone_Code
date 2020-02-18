@@ -26,10 +26,17 @@ import com.acmerobotics.roadrunner.trajectory.constraints.DriveConstraints;
 import com.acmerobotics.roadrunner.trajectory.constraints.MecanumConstraints;
 import com.acmerobotics.roadrunner.util.NanoClock;
 import com.qualcomm.robotcore.hardware.DcMotor;
+
+import org.firstinspires.ftc.teamcode.drive.structure.Intake;
+import org.firstinspires.ftc.teamcode.drive.structure.Outtake;
 import org.firstinspires.ftc.teamcode.util.DashboardUtil;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import io.reactivex.Completable;
+import io.reactivex.Observable;
+import io.reactivex.schedulers.Schedulers;
 
 /*
  * Base class with shared functionality for sample mecanum drives. All hardware-specific details are
@@ -108,6 +115,31 @@ public abstract class SampleMecanumDriveBase extends MecanumDrive {
 
     public void followTrajectorySync(Trajectory trajectory) {
         followTrajectory(trajectory);
+        waitForIdle();
+    }
+
+    public void followTrajectory1Sync(Trajectory trajectory, Intake intake) {
+//        followTrajectory(trajectory);
+//        outtake.switchToGETSTONE();
+//        outtake.update(0);
+        // forteaza executia followTrajectory pe un newThread
+        Observable trajectoryObs =
+                Completable.fromAction(() -> followTrajectory(trajectory))
+                        .toObservable()
+                        .subscribeOn(Schedulers.newThread());
+
+        // forteaza executia metodelor outtake
+        Observable intakeObs =
+                Completable.fromAction(() -> {
+                    intake.switchToIN();
+                    intake.update();
+                })
+                        .toObservable()
+                        .subscribeOn(Schedulers.newThread());
+
+        Observable.zip(trajectoryObs, intakeObs, (a, b) -> Boolean.TRUE)
+                .subscribe();
+
         waitForIdle();
     }
 
@@ -212,7 +244,8 @@ public abstract class SampleMecanumDriveBase extends MecanumDrive {
         List<Double> positions = getWheelPositions();
         double currentTimestamp = clock.seconds();
 
-        List<Double> velocities = new ArrayList<>(positions.size());;
+        List<Double> velocities = new ArrayList<>(positions.size());
+        ;
         if (lastWheelPositions != null) {
             double dt = currentTimestamp - lastTimestamp;
             for (int i = 0; i < positions.size(); i++) {

@@ -7,12 +7,18 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 import org.firstinspires.ftc.teamcode.drive.mecanum.SampleMecanumDriveBase;
 import org.firstinspires.ftc.teamcode.drive.mecanum.SampleMecanumDriveREV;
+import org.firstinspires.ftc.teamcode.drive.structure.Intake;
+import org.firstinspires.ftc.teamcode.drive.structure.Outtake;
 
 /*
  * This is an example of a more complex path to really test the tuning.
  */
 @Autonomous(group = "BluePlate")
 public class BluePlate extends LinearOpMode {
+
+
+    Outtake outtake = new Outtake();
+    Intake intake = new Intake();
     @Override
     public void runOpMode() throws InterruptedException {
         SampleMecanumDriveBase drive = new SampleMecanumDriveREV(hardwareMap);
@@ -26,6 +32,11 @@ public class BluePlate extends LinearOpMode {
         //sleep(24000);
 
         //Trajectory 1
+
+
+        outtake.switchToSTONE_3();
+        outtake.update(0);
+
         drive.followTrajectorySync(
 
                 drive.trajectoryBuilder()
