@@ -29,15 +29,11 @@
 
 package org.firstinspires.ftc.teamcode.drive.autonomous;
 
-import android.view.animation.LinearInterpolator;
-
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
-
-import org.firstinspires.ftc.teamcode.drive.opmode.Hardware;
 
 public class autoGripper extends LinearOpMode {
     /* Public OpMode members. */
@@ -73,6 +69,7 @@ public class autoGripper extends LinearOpMode {
     public void init(HardwareMap ahwMap) {
         // Save reference to Hardware map
         hwMap = ahwMap;
+
         // Define and Initialize Motors
         grip = hwMap.get(Servo.class, "Gripper");
         arm = hwMap.get(DcMotorEx.class, "Arm");
@@ -81,7 +78,6 @@ public class autoGripper extends LinearOpMode {
         motorCollectST = hwMap.get(DcMotor.class, "Left_Wing"); // dreapta
         ClawST = hwMap.get(Servo.class, "Left_Claw");
         ClawDR = hwMap.get(Servo.class, "Right_Claw");
-
 
         lift.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         lift.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
@@ -220,10 +216,8 @@ public class autoGripper extends LinearOpMode {
         }
     }
 
-
     @Override
     public void runOpMode() {}
-
 
 }
 

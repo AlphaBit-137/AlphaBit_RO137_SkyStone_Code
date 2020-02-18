@@ -10,11 +10,8 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import org.firstinspires.ftc.teamcode.drive.mecanum.SampleMecanumDriveBase;
 import org.firstinspires.ftc.teamcode.drive.mecanum.SampleMecanumDriveREV;
 
-/*
- * This is an example of a more complex path to really test the tuning.
- */
-@Autonomous(name="BLUE_PLATE", group = "BLUE")
-public class BLUE_PLATE extends LinearOpMode {
+@Autonomous(name="Blue_Plate", group = "BLUE")
+public class Blue_Plate extends LinearOpMode {
 
     @Override
     public void runOpMode(){
@@ -31,15 +28,13 @@ public class BLUE_PLATE extends LinearOpMode {
 
         if (isStopRequested()) return;
 
-
-        // LinearInterpolator interp = new LinearInterpolator(Math.toRadians(90), Math.toRadians(50));
-        //BLUE
             drive.followTrajectorySync(
                     drive.trajectoryBuilder()
                             .setReversed(false)
                             .splineTo(new Pose2d(46,28, Math.toRadians(270)), new SplineInterpolator(Math.toRadians(270),Math.toRadians(95)))
                             .build()
             );
+
         auto.ClawDown(hardwareMap);
         sleep(1000);
 
@@ -55,16 +50,11 @@ public class BLUE_PLATE extends LinearOpMode {
 
             auto.ClawUp(hardwareMap);
 
-
             drive.followTrajectorySync(
                     drive.trajectoryBuilder()
                     .splineTo(new Pose2d(0,65,Math.toRadians(270)), new SplineInterpolator(Math.toRadians(180),Math.toRadians(180)))
                     .build()
             );
-
-
-
-
 
     }
 }
