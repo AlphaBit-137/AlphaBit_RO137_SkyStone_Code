@@ -42,8 +42,8 @@ public class Capstone {
 
     public Servo capstone = null;
 
-    public static double SAFE_POZ = 0d;
-    public static double PUT_POZ = 0d;
+    public static double SAFE_POZ = 1.0;
+    public static double PUT_POZ = 0.55;
 
 
     public CapstoneModes RobotCapstone = CapstoneModes.SAFE;
@@ -67,6 +67,7 @@ public class Capstone {
 
         capstone = hwMap.get(Servo.class, "Capstone");
 
+
     }
 
     public void update() {
@@ -77,18 +78,34 @@ public class Capstone {
             }
             case PUT:{
                 capstone.setPosition(PUT_POZ);
+                if(capstone.getPosition() == 0.55){
+                    this.switchToSAFE();
+                }
                 break;
             }
         }
 
     }
 
+    public void switchToSAFE(){
+        RobotCapstone = RobotCapstone.SAFE;
+    }
     public void switchToPUT(){
         RobotCapstone = RobotCapstone.PUT;
     }
 
     public boolean isSAFE(){
         if(RobotCapstone == RobotCapstone.SAFE){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+
+    public boolean isPUT(){
+        if(RobotCapstone == RobotCapstone.PUT){
             return true;
         }
         else{

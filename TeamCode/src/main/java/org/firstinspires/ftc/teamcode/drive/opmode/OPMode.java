@@ -33,6 +33,8 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.util.ElapsedTime;
 import com.qualcomm.robotcore.util.Range;
+
+import org.firstinspires.ftc.teamcode.drive.structure.Capstone;
 import org.firstinspires.ftc.teamcode.drive.structure.Chassis;
 import org.firstinspires.ftc.teamcode.drive.structure.Claws;
 import org.firstinspires.ftc.teamcode.drive.structure.Intake;
@@ -52,6 +54,8 @@ public class OPMode extends LinearOpMode {
     Claws claws = new Claws();
     Outtake outtake = new Outtake();
     Intake intake = new Intake();
+    Capstone capstone = new Capstone();
+
 
     //Constante
     private static double MAX_POWER = 1.0, MIN_POWER = -1.0, NULL_POWER = 0.0;
@@ -62,13 +66,13 @@ public class OPMode extends LinearOpMode {
         claws.init(hardwareMap);
         outtake.init(hardwareMap);
         intake.init(hardwareMap);
+        capstone.init(hardwareMap);
 
         while(isStarted()==false && isStopRequested() == false) {
             outtake.switchToINIT();
             intake.switchToSTOP();
             claws.switchToOPENED();
-
-
+            capstone.switchToSAFE();
 
             outtake.update(0);
             intake.update();
@@ -134,6 +138,7 @@ public class OPMode extends LinearOpMode {
             if(gamepad1.right_bumper){
                 claws.switchToCLOSED();
             }
+
 
 
             //Driver 2 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -328,10 +333,18 @@ public class OPMode extends LinearOpMode {
             }
 
 
+            //Capstone
+            if(gamepad2.a){
+                capstone.switchToPUT();
+            }
+
+
+
             telemetry.update();
             claws.update();
             outtake.update(secondController);
             intake.update();
+            capstone.update();
         }
     }
 
