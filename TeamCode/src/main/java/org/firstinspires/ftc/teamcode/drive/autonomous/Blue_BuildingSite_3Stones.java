@@ -23,8 +23,8 @@ import org.openftc.easyopencv.OpenCvWebcam;
 /*
  * This is an example of a more complex path to really test the tuning.
  */
-@Autonomous(name="BLUE_BS_3STONES", group = "BLUE")
-public class BLUE_BS_3STONES extends LinearOpMode {
+@Autonomous(name="Blue_BuildingSite_3Stones", group = "BLUE")
+public class Blue_BuildingSite_3Stones extends LinearOpMode {
 
 
     public int caz = -1;
@@ -58,22 +58,13 @@ public class BLUE_BS_3STONES extends LinearOpMode {
         //opencvSkystoneDetector detector = new opencvSkystoneDetector();
         //  drive.setLocalizer(new MecanumDrive.MecanumLocalizer(drive, true));
 
-
-
         waitForStart();
+
         bdetector.stopCamera(hardwareMap);
         auto.initpoz(hardwareMap);
         sleep(1000);
 
         if (isStopRequested()) return;
-
-
-        // LinearInterpolator interp = new LinearInterpolator(Math.toRadians(90), Math.toRadians(50));
-        //CUB 3 - Colectare cub
-
-
-
-
 
         //CAZ DREAPTA
         if(caz == 3) {
