@@ -29,13 +29,8 @@
 
 package org.firstinspires.ftc.teamcode.drive.structure;
 
-import com.qualcomm.robotcore.eventloop.opmode.OpModeManager;
 import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.Gamepad;
 import com.qualcomm.robotcore.hardware.HardwareMap;
-import com.qualcomm.robotcore.hardware.Servo;
-import com.qualcomm.robotcore.robot.Robot;
-import com.qualcomm.robotcore.util.ElapsedTime;
 import com.qualcomm.robotcore.util.Range;
 
 
@@ -108,6 +103,12 @@ public class Chassis
 
         switch (RobotChasis) {
                 case FAST: {
+
+                    LeftBack.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+                    RightFront.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+                    LeftFront.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+                    RightBack.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+
                    LeftFrontPower = Range.clip(D1, -1, 1);
                    LeftBackPower = Range.clip(D2, -1, 1);
                    RightBackPower = Range.clip(D3, -1, 1);
@@ -116,10 +117,16 @@ public class Chassis
                     break;
                 }
                 case SLOW: {
-                    LeftFrontPower = Range.clip(D1, -0.2, 0.2);
-                    LeftBackPower = Range.clip(D2, -0.2, 0.2);
-                    RightBackPower = Range.clip(D3, -0.2, 0.2);
-                    RightFrontPower = Range.clip(D4, -0.2,0.2);
+
+                    LeftBack.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
+                    RightFront.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
+                    LeftFront.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
+                    RightBack.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
+
+                    LeftFrontPower = Range.clip(D1, -0.3, 0.3);
+                    LeftBackPower = Range.clip(D2, -0.3, 0.3);
+                    RightBackPower = Range.clip(D3, -0.3, 0.3);
+                    RightFrontPower = Range.clip(D4, -0.3,0.3);
                     MotorSetter(LeftFrontPower, LeftBackPower, RightBackPower, RightFrontPower);
                     break;
 
