@@ -40,10 +40,10 @@ public class Claws {
     public Servo rightClaw = null;
 
 
-    private double leftClawOpen = 1.0;
-    private double rightClawOpen = 0;
-    private double leftClawClosed = 0;
-    private double rightClawClosed = 1.0;
+    private double leftClawOpen = 0.0; //
+    private double rightClawOpen = 1.0;
+    private double leftClawClosed = 1.0;
+    private double rightClawClosed = 0.0;
 
 
     public ClawModes RobotClaw= ClawModes.OPENED;
