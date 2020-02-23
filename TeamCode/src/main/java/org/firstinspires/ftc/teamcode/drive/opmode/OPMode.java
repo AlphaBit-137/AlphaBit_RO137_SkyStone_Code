@@ -132,10 +132,10 @@ public class OPMode extends LinearOpMode {
             }
 
             //Claws
-            if(gamepad1.right_bumper){
+            if(gamepad1.left_bumper){
                 claws.switchToOPENED();
             }
-            if(gamepad1.left_bumper){
+            if(gamepad1.right_bumper){
                 claws.switchToCLOSED();
             }
 
