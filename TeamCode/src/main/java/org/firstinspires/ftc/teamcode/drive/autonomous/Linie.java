@@ -24,17 +24,9 @@ import java.util.concurrent.ExecutorService;
 public class Linie extends LinearOpMode {
 
      Intake intake = new Intake();
-    SampleMecanumDriveBase drive;
-    public ExecutorService driveUpdateExecutor;
-    public Runnable driveUpdateRunnable = () -> {
-        while(!Thread.currentThread().isInterrupted()){
-            drive.update();
-        }
-    };
      @Override
     public void runOpMode() throws InterruptedException {
         telemetry = new MultipleTelemetry(telemetry, FtcDashboard.getInstance().getTelemetry());
-        driveUpdateExecutor = ThreadPool.newSingleThreadExecutor("drive update");
          SampleMecanumDriveBase drive = new SampleMecanumDriveREV(hardwareMap);
 
 
@@ -44,20 +36,18 @@ public class Linie extends LinearOpMode {
             telemetry.addData("X", drive.getPoseEstimate().getX());
             telemetry.addData("Y", drive.getPoseEstimate().getY());
             telemetry.addData("Heading", drive.getPoseEstimate().getHeading());
+
             telemetry.update();
             drive.updatePoseEstimate();
         }
-
+        intake.init(hardwareMap);
         waitForStart();
+        if(isStopRequested()) return;
 
-        while(opModeIsActive()){
-            driveUpdateExecutor.submit(driveUpdateRunnable);
-            Trajectory testTrajectory = drive.trajectoryBuilder()
-                    .lineTo(new Vector2d(-30.00,0.0))
-                    .build();
-            drive.followTrajectory(testTrajectory);
-        }
-
+            drive.followTrajectoryIntakeSync(
+                    drive.trajectoryBuilder()
+                            .lineTo(new Vector2d(-30.00, 0.0))
+                            .build(),intake);
 
 
     }

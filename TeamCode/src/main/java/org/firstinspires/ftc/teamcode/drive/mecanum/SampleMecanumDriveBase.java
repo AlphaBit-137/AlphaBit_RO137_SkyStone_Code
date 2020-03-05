@@ -124,11 +124,18 @@ public abstract class SampleMecanumDriveBase extends MecanumDrive {
         waitForIdle();
     }
 
+    public void followTrajectoryTestIntakeSync(Trajectory trajectory, Intake intake){
+        followTrajectory(trajectory);
+        intake.switchToIN();
+        intake.update();
+        waitForIdle();
+    }
+
 
     public void followTrajectoryIntakeSync(Trajectory trajectory, Intake intake) {
-//        followTrajectory(trajectory);
-//        outtake.switchToGETSTONE();
-//        outtake.update(0);
+        followTrajectory(trajectory);
+        intake.switchToIN();
+        intake.update();
         // forteaza executia followTrajectory pe un newThread
         Observable trajectoryObs =
                 Completable.fromAction(() -> followTrajectory(trajectory))
