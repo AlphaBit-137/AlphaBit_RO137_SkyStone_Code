@@ -44,11 +44,8 @@ import io.reactivex.schedulers.Schedulers;
  */
 @Config
 public abstract class SampleMecanumDriveBase extends MecanumDrive {
-    public static PIDCoefficients TRANSLATIONAL_PID = new PIDCoefficients(0, 0, 0);
-    public static PIDCoefficients HEADING_PID = new PIDCoefficients(4, 1, 0.4318); //4 ,1 ,0.4318
-
-    Outtake outtake = new Outtake();
-    Intake intake = new Intake();
+    public static PIDCoefficients TRANSLATIONAL_PID = new PIDCoefficients(5, 0, 0); //5, 0, 0
+    public static PIDCoefficients HEADING_PID = new PIDCoefficients(5, 0, 0.48); //5 ,0 ,0.48
 
     public void autoArm(){
 
@@ -127,10 +124,18 @@ public abstract class SampleMecanumDriveBase extends MecanumDrive {
         waitForIdle();
     }
 
-    public void followTrajectory1Sync(Trajectory trajectory, Intake intake) {
-//        followTrajectory(trajectory);
-//        outtake.switchToGETSTONE();
-//        outtake.update(0);
+    public void followTrajectoryTestIntakeSync(Trajectory trajectory, Intake intake){
+        followTrajectory(trajectory);
+        intake.switchToIN();
+        intake.update();
+        waitForIdle();
+    }
+
+
+    public void followTrajectoryIntakeSync(Trajectory trajectory, Intake intake) {
+        followTrajectory(trajectory);
+        intake.switchToIN();
+        intake.update();
         // forteaza executia followTrajectory pe un newThread
         Observable trajectoryObs =
                 Completable.fromAction(() -> followTrajectory(trajectory))
