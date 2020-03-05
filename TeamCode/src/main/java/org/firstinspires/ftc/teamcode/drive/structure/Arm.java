@@ -39,7 +39,7 @@ public class Arm {
     public DcMotorEx arm = null;
     public static int RESET_POZ = -300;
     public static int GET_POZ = -50;
-    public static double ARM_POWER = 0.5;
+    public static double ARM_POWER = 0.6;
     public static double RESET_ARM__POWER = 1.0;
 
     public ArmModes RobotArm = ArmModes.INIT;

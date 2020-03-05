@@ -334,7 +334,7 @@ public class OPMode extends LinearOpMode {
 
 
             //Capstone
-            if(gamepad2.a){
+            if(gamepad2.a && capstone.isSAFE()){
                 capstone.switchToPUT();
             }
 

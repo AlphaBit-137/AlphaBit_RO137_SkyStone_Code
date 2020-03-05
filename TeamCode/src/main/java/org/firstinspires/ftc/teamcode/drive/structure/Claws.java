@@ -42,7 +42,7 @@ public class Claws {
 
     private double leftClawOpen = 0.0; //
     private double rightClawOpen = 1.0;
-    private double leftClawClosed = 1.0;
+    private double leftClawClosed =1.0;
     private double rightClawClosed = 0.0;
 
 
