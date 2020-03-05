@@ -37,7 +37,7 @@ public class Outtake{
     public Gripper gripper;
     public Lift lift;
     public Arm arm;
-    public static double CLOSED_POZ = 0.15;
+    public static double CLOSED_POZ = 0.55;
     //Variabila declarata privat
     private int stoneNumber  = 0;
 
