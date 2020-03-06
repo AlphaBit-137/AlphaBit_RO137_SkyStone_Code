@@ -34,6 +34,7 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.util.ElapsedTime;
 import com.qualcomm.robotcore.util.Range;
 import org.firstinspires.ftc.teamcode.drive.structure.Chassis;
+import org.firstinspires.ftc.teamcode.drive.structure.Outtake;
 
 
 @TeleOp(name="Op_Mode_Test", group="Linear Opmode")
@@ -44,6 +45,7 @@ public class OPModeTest extends LinearOpMode {
 
     private ElapsedTime runtime = new ElapsedTime();
     Chassis DriveTrain = new Chassis();
+
 
     //Constante
     private static double MAX_POWER = 1.0, MIN_POWER = -1.0, NULL_POWER = 0.0;
@@ -102,6 +104,11 @@ public class OPModeTest extends LinearOpMode {
             }
             if(DriveTrain.RobotChasis == Chassis.ChassisModes.FAST){
                 telemetry.addData("Chassis", "FAST");
+            }
+
+
+            if(gamepad2.a){
+
             }
 
             telemetry.update();

@@ -33,46 +33,53 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
+import com.qualcomm.robotcore.hardware.PIDFCoefficients;
+import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
-import com.qualcomm.robotcore.util.Range;
 
-@TeleOp(name = "Brat_Test", group = "Linear Opmode")
+import org.firstinspires.ftc.teamcode.drive.structure.Lift;
 
-public class BratTest extends LinearOpMode {
+@TeleOp(name = "Lift_PID", group = "Linear Opmode")
+
+public class LiftPID extends LinearOpMode {
 
     // Declaram obiectul robot cu clasa hardware si timpul de rulare
     private ElapsedTime runtime = new ElapsedTime();
 
-    public DcMotorEx arm = null;
-    public DcMotorEx lift = null;
+    public Lift lift = new Lift();
 
+    private static PIDFCoefficients Coefs = new PIDFCoefficients(1.179, 0.1179, 0, 11.79);
 
     //Constante
 
     @Override
     public void runOpMode() {
 
-        lift = hardwareMap.get(DcMotorEx.class, "Lift");
+        lift.init(hardwareMap);
 
-        lift.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        while(isStarted()==false && isStopRequested() == false) {
+            lift.switchToINIT();
+            telemetry.addData("Encoder Count", lift.getLiftEncoder());
+            telemetry.update();
 
-        lift.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        }
 
-        lift.setZeroPowerBehavior(DcMotorEx.ZeroPowerBehavior.BRAKE);
-
-        lift.setVelocityPIDFCoefficients(1.174, 0.1174, 0, 11.74);
-        lift.setPositionPIDFCoefficients(5.0);
-
+        //arm.setTargetPosition();
         waitForStart();
 
         // Atata timp cat OpMode-ul este activ va rula pana la oprire urmatorul cod
         while (opModeIsActive()) {
-            double power = Range.clip(gamepad1.left_stick_y, -1, 1);
-            lift.setPower(power);
 
-            telemetry.addData("Lift", lift.getCurrentPosition());
+           if(gamepad1.a){
+               lift.switchToINIT();
+           }
+           if(gamepad1.b){
+               lift.switchToLEVEL();
+           }
 
-            telemetry.update();
+           lift.update(0,0);
+           telemetry.addData("Encoder Count", lift.getLiftEncoder());
+           telemetry.update();
         }
     }
 

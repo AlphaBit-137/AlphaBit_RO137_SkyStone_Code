@@ -38,8 +38,8 @@ public class Lift {
 
     public DcMotorEx lift = null;
     public static double LIFT_POWER = 1.0;
-    public static int INIT_POZ = -30;
-    public static int LEVEL_POZ = -5000;
+    public static int INIT_POZ = 0;
+    public static int LEVEL_POZ = -3350; //-5000
 
 
 
@@ -68,6 +68,10 @@ public class Lift {
         lift.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         lift.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         lift.setZeroPowerBehavior(DcMotorEx.ZeroPowerBehavior.BRAKE);
+
+        lift.setVelocityPIDFCoefficients(1.0, 0.0, 0.0, 11.79);
+        lift.setPositionPIDFCoefficients(5.0);
+
 
     }
 

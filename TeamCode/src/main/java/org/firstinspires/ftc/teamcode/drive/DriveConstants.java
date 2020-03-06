@@ -95,6 +95,6 @@ public class DriveConstants {
 
     public static double getMotorVelocityF() {
         // see https://docs.google.com/document/d/1tyWrXDfMidwYyP_5H4mZyVgaEswhOC35gvdmP-V-5hA/edit#heading=h.61g9ixenznbx
-        return 32767 / getTicksPerSec(); //F 11.782
+        return 32767 / getTicksPerSec(); //F 11.782 for chasis ; F 11.79 for lift
     }
 }

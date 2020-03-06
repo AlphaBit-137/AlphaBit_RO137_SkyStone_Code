@@ -27,6 +27,7 @@ import com.acmerobotics.roadrunner.trajectory.constraints.MecanumConstraints;
 import com.acmerobotics.roadrunner.util.NanoClock;
 import com.qualcomm.robotcore.hardware.DcMotor;
 
+import org.firstinspires.ftc.teamcode.drive.structure.Gripper;
 import org.firstinspires.ftc.teamcode.drive.structure.Intake;
 import org.firstinspires.ftc.teamcode.drive.structure.Outtake;
 import org.firstinspires.ftc.teamcode.util.DashboardUtil;
@@ -124,14 +125,6 @@ public abstract class SampleMecanumDriveBase extends MecanumDrive {
         waitForIdle();
     }
 
-    public void followTrajectoryTestIntakeSync(Trajectory trajectory, Intake intake){
-        followTrajectory(trajectory);
-        intake.switchToIN();
-        intake.update();
-        waitForIdle();
-    }
-
-
     public void followTrajectoryIntakeSync(Trajectory trajectory, Intake intake) {
         followTrajectory(trajectory);
         intake.switchToIN();
@@ -156,6 +149,96 @@ public abstract class SampleMecanumDriveBase extends MecanumDrive {
 
         waitForIdle();
     }
+
+    public void followTrajectoryPlaceStoneSync(Trajectory trajectory, Outtake outtake) {
+        followTrajectory(trajectory);
+        outtake.switchToAUTO();
+        outtake.update(0);
+
+        // forteaza executia followTrajectory pe un newThread
+        Observable trajectoryObs =
+                Completable.fromAction(() -> followTrajectory(trajectory))
+                        .toObservable()
+                        .subscribeOn(Schedulers.newThread());
+
+        // forteaza executia metodelor outtake
+        Observable intakeObs =
+                Completable.fromAction(() -> {
+                    outtake.switchToAUTO();
+                    outtake.update(0);
+                })
+                        .toObservable()
+                        .subscribeOn(Schedulers.newThread());
+
+        Observable.zip(trajectoryObs, intakeObs, (a, b) -> Boolean.TRUE)
+                .subscribe();
+
+        waitForIdle();
+    }
+
+    public void followTrajectoryGetStoneSync(Trajectory trajectory, Outtake outtake) {
+        followTrajectory(trajectory);
+        outtake.switchToGETSTONE();
+        outtake.update(0);
+        // forteaza executia followTrajectory pe un newThread
+        Observable trajectoryObs =
+                Completable.fromAction(() -> followTrajectory(trajectory))
+                        .toObservable()
+                        .subscribeOn(Schedulers.newThread());
+
+        // forteaza executia metodelor outtake
+        Observable intakeObs =
+                Completable.fromAction(() -> {
+                    outtake.switchToGETSTONE();
+                    outtake.update(0);
+                })
+                        .toObservable()
+                        .subscribeOn(Schedulers.newThread());
+
+        Observable.zip(trajectoryObs, intakeObs, (a, b) -> Boolean.TRUE)
+                .subscribe();
+
+        waitForIdle();
+    }
+
+
+    public void followTrajectoryOuttakeResetSync(Trajectory trajectory, Outtake outtake) {
+        followTrajectory(trajectory);
+        outtake.switchToAUTO_RESET();
+        outtake.update(0);
+
+        // forteaza executia followTrajectory pe un newThread
+        Observable trajectoryObs =
+                Completable.fromAction(() -> followTrajectory(trajectory))
+                        .toObservable()
+                        .subscribeOn(Schedulers.newThread());
+
+        // forteaza executia metodelor outtake
+        Observable intakeObs =
+                Completable.fromAction(() -> {
+                    outtake.switchToAUTO_RESET();
+                    outtake.update(0);
+
+                })
+                        .toObservable()
+                        .subscribeOn(Schedulers.newThread());
+
+        Observable.zip(trajectoryObs, intakeObs, (a, b) -> Boolean.TRUE)
+                .subscribe();
+
+        waitForIdle();
+    }
+
+
+
+
+
+
+
+
+
+
+
 
     public Pose2d getLastError() {
         switch (mode) {

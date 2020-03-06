@@ -32,12 +32,13 @@ package org.firstinspires.ftc.teamcode.drive.structure;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
+import static org.firstinspires.ftc.teamcode.drive.structure.Gripper.GRIPPER_CLOSED_POZ;
+
 public class Outtake{
     /* Public OpMode members. */
     public Gripper gripper;
     public Lift lift;
     public Arm arm;
-    public static double CLOSED_POZ = 0.55;
     //Variabila declarata privat
     private int stoneNumber  = 0;
 
@@ -66,6 +67,7 @@ public class Outtake{
         RESET,
         INIT,
         AUTO,
+        AUTO_RESET,
     }
 
 
@@ -153,11 +155,11 @@ public class Outtake{
                 if(arm.isGET() && lift.isINIT()){
                     gripper.switchToCLOSED();
                 }
-                if(arm.isGET() && lift.isINIT() && gripper.grip.getPosition() == CLOSED_POZ){
+                if(arm.isGET() && lift.isINIT() && gripper.grip.getPosition() == GRIPPER_CLOSED_POZ){
                     lift.switchToLEVEL();
 
                 }
-                if(lift.isLEVEL() && lift.getLiftEncoder() < -3500){
+                if(lift.isLEVEL() && lift.getLiftEncoder() < -3150){
                     arm.switchToScore();
                 }
                 if(arm.isSCORE() && arm.getArmEncoder() > 350){
@@ -174,7 +176,7 @@ public class Outtake{
                 if(arm.isGET() && lift.isINIT()){
                     gripper.switchToCLOSED();
                 }
-                if(arm.isGET() && lift.isINIT() && gripper.grip.getPosition() == CLOSED_POZ){
+                if(arm.isGET() && lift.isINIT() && gripper.grip.getPosition() == GRIPPER_CLOSED_POZ){
                     lift.switchToLEVEL();
 
                 }
@@ -194,7 +196,7 @@ public class Outtake{
                 if(arm.isGET() && lift.isINIT()){
                     gripper.switchToCLOSED();
                 }
-                if(arm.isGET() && lift.isINIT() && gripper.grip.getPosition() == CLOSED_POZ){
+                if(arm.isGET() && lift.isINIT() && gripper.grip.getPosition() == GRIPPER_CLOSED_POZ){
                     lift.switchToSCORE();
 
                 }
@@ -213,7 +215,7 @@ public class Outtake{
                 if(arm.isGET() && lift.isINIT()){
                     gripper.switchToCLOSED();
                 }
-                if(arm.isGET() && lift.isINIT() && gripper.grip.getPosition() == CLOSED_POZ){
+                if(arm.isGET() && lift.isINIT() && gripper.grip.getPosition() == GRIPPER_CLOSED_POZ){
                     lift.switchToLEVEL();
 
                 }
@@ -235,7 +237,7 @@ public class Outtake{
                 if(arm.isGET() && lift.isINIT()){
                     gripper.switchToCLOSED();
                 }
-                if(arm.isGET() && lift.isINIT() && gripper.grip.getPosition() == CLOSED_POZ){
+                if(arm.isGET() && lift.isINIT() && gripper.grip.getPosition() == GRIPPER_CLOSED_POZ){
                     lift.switchToLEVEL();
 
                 }
@@ -257,7 +259,7 @@ public class Outtake{
                 if(arm.isGET() && lift.isINIT()){
                     gripper.switchToCLOSED();
                 }
-                if(arm.isGET() && lift.isINIT() && gripper.grip.getPosition() == CLOSED_POZ){
+                if(arm.isGET() && lift.isINIT() && gripper.grip.getPosition() == GRIPPER_CLOSED_POZ){
                     lift.switchToLEVEL();
 
                 }
@@ -280,7 +282,7 @@ public class Outtake{
                 if(arm.isGET() && lift.isINIT()){
                     gripper.switchToCLOSED();
                 }
-                if(arm.isGET() && lift.isINIT() && gripper.grip.getPosition() == CLOSED_POZ){
+                if(arm.isGET() && lift.isINIT() && gripper.grip.getPosition() == GRIPPER_CLOSED_POZ){
                     lift.switchToLEVEL();
 
                 }
@@ -302,7 +304,7 @@ public class Outtake{
                 if(arm.isGET() && lift.isINIT()){
                     gripper.switchToCLOSED();
                 }
-                if(arm.isGET() && lift.isINIT() && gripper.grip.getPosition() == CLOSED_POZ){
+                if(arm.isGET() && lift.isINIT() && gripper.grip.getPosition() == GRIPPER_CLOSED_POZ){
                     lift.switchToLEVEL();
 
                 }
@@ -324,7 +326,7 @@ public class Outtake{
                 if(arm.isGET() && lift.isINIT()){
                     gripper.switchToCLOSED();
                 }
-                if(arm.isGET() && lift.isINIT() && gripper.grip.getPosition() == CLOSED_POZ){
+                if(arm.isGET() && lift.isINIT() && gripper.grip.getPosition() == GRIPPER_CLOSED_POZ){
                     lift.switchToLEVEL();
 
                 }
@@ -391,7 +393,7 @@ public class Outtake{
                 if(arm.isSCORE()){
                     lift.switchToLEVEL();
                 }
-                if(lift.isLEVEL() && lift.getLiftEncoder() < -3500){
+                if(lift.isLEVEL() && lift.getLiftEncoder() < -3150){
                     arm.switchToINIT();
                 }
                 if(arm.isINIT() && arm.getArmEncoder() <100){
@@ -406,48 +408,36 @@ public class Outtake{
             }
             case AUTO: {
 
-                stoneNumber = 4;
-                armScorePosition = 850;
-                liftScorePosition = -4800;
 
+                stoneNumber = 1;
+                armScorePosition = 800;
+                liftScorePosition = -3000;
 
                 if(arm.isGET() && lift.isINIT()){
                     gripper.switchToCLOSED();
                 }
-                if(arm.isGET() && lift.isINIT() && gripper.grip.getPosition() == 0.1){
+                if(arm.isGET() && lift.isINIT() && gripper.grip.getPosition() == GRIPPER_CLOSED_POZ){
                     lift.switchToLEVEL();
 
                 }
-                if(lift.isLEVEL() && lift.getLiftEncoder() < -4500){
+                if(lift.isLEVEL() && lift.getLiftEncoder() < -3150){
                     arm.switchToScore();
                 }
-                if(arm.isSCORE() && arm.getArmEncoder() > 350){
-                    lift.switchToSCORE();
-                }
+                break;
 
-                if(lift.isSCORE() && arm.getArmEncoder()> 600){
-                    gripper.switchToOPENED();
-                }
-                if(lift.isSCORE() && arm.isSCORE() && gripper.grip.getPosition() == 0.35){
-                    this.switchToRESET();
-                }
+            }
 
+            case AUTO_RESET:{
 
-
-                /*if(arm.isSCORE()){
-                    lift.switchToLEVEL();
-                }
-                if(lift.isLEVEL() && lift.getLiftEncoder() < -3500){
+                if(arm.isSCORE() && lift.getLiftEncoder() < -3150){
                     arm.switchToINIT();
                 }
                 if(arm.isINIT() && arm.getArmEncoder() <100){
-                    this.switchToINIT();
+                    lift.switchToINIT();
+                    gripper.switchToOPENED();
 
-                }*/
-
-
+                }
                 break;
-
             }
 
 
@@ -497,6 +487,7 @@ public class Outtake{
     public void switchToRESET(){ RobotOuttake = OuttakeModes.RESET; }
     public void switchToGETSTONE(){ RobotOuttake = OuttakeModes.GETSTONE;}
     public void switchToAUTO(){ RobotOuttake = OuttakeModes.AUTO;}
+    public void switchToAUTO_RESET(){RobotOuttake = OuttakeModes.AUTO_RESET;}
 
     public boolean isINIT(){
         if(RobotOuttake == OuttakeModes.INIT){
@@ -587,6 +578,8 @@ public class Outtake{
             return false;
         }
     }
+
+
 
 
 

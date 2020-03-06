@@ -39,8 +39,8 @@ public class Gripper {
 
     public Servo grip = null;
 
-    public static double CLOSED_POZ = 0.55;
-    public static double OPENED_POZ = 0.35;
+    public static double GRIPPER_CLOSED_POZ = 1.0;
+    public static double GRIPPER_OPENED_POZ = 0.7;
 
     public GripperModes RobotGripper = GripperModes.OPENED;
 
@@ -67,11 +67,11 @@ public class Gripper {
     public void update() {
         switch (RobotGripper){
             case OPENED:{
-                grip.setPosition(OPENED_POZ);
+                grip.setPosition(GRIPPER_OPENED_POZ);
                 break;
             }
             case CLOSED:{
-                grip.setPosition(CLOSED_POZ);
+                grip.setPosition(GRIPPER_CLOSED_POZ);
                 break;
             }
         }
