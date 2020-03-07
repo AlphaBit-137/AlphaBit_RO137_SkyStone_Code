@@ -176,7 +176,7 @@ public class autoGripper extends LinearOpMode {
             arm.setPower(ARM_POWER);
         }
         if(arm.getCurrentPosition()> 400){
-            grip.setPosition(OPENED_POZ);
+            grip.setPosition(GRIPPER_OPENED_POZ);
         }*/
 
      if(lift.getCurrentPosition() < -4500) {
