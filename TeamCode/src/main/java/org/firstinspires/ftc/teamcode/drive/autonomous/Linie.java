@@ -17,7 +17,6 @@ import org.firstinspires.ftc.teamcode.drive.structure.Gripper;
 import org.firstinspires.ftc.teamcode.drive.structure.Intake;
 import org.firstinspires.ftc.teamcode.drive.structure.Outtake;
 
-import java.util.concurrent.ExecutorService;
 
 /*
  * This is an example of a more complex path to really test the tuning.
@@ -25,18 +24,20 @@ import java.util.concurrent.ExecutorService;
 @Autonomous(group = "Linie")
 public class Linie extends LinearOpMode {
 
+
      Intake intake = new Intake();
      Outtake outtake = new Outtake();
      Gripper gripper = new Gripper();
+
      @Override
     public void runOpMode() throws InterruptedException {
         telemetry = new MultipleTelemetry(telemetry, FtcDashboard.getInstance().getTelemetry());
-         SampleMecanumDriveBase drive = new SampleMecanumDriveREV(hardwareMap);
-
+        SampleMecanumDriveBase drive = new SampleMecanumDriveREV(hardwareMap);
 
          intake.init(hardwareMap);
          outtake.init(hardwareMap);
          gripper.init(hardwareMap);
+
 
 
 
@@ -54,13 +55,13 @@ public class Linie extends LinearOpMode {
         }
 
         waitForStart();
+
         sleep(2000);
         if(isStopRequested()) return;
 
-            drive.followTrajectoryIntakeSync(
-                    drive.trajectoryBuilder()
-                            .lineTo(new Vector2d(-30.00, 0.0))
-                            .build(),intake);
+
+        );
+
 
 
 
@@ -88,10 +89,10 @@ public class Linie extends LinearOpMode {
 
 
 
-
-
-
-
      }
 
-}
+
+
+    }
+
+

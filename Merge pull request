@@ -1,0 +1,546 @@
+[33mcommit 8658394c46b64c75b9943139e6e0cccf6eee5c34[m[33m ([m[1;36mHEAD -> [m[1;32mPisti[m[33m, [m[1;31morigin/Pisti[m[33m)[m
+Merge: 9fcc91d 136f98f
+Author: Huszar Istvan <44548937+xDeimen@users.noreply.github.com>
+Date:   Sat Feb 22 08:24:21 2020 +0200
+
+    Merge pull request #32 from AlphaBit-137/master
+    
+    Test
+
+[33mcommit 136f98f195209e8a76f0a53de76fc0e077ce866d[m[33m ([m[1;32mmaster[m[33m)[m
+Merge: 196a1c7 9fcc91d
+Author: Huszar Istvan <44548937+xDeimen@users.noreply.github.com>
+Date:   Sat Feb 22 08:14:31 2020 +0200
+
+    Merge pull request #31 from AlphaBit-137/Pisti
+    
+    Regio Timisoara
+
+[33mcommit 9fcc91d37f866eb89553b777e41ba69903024762[m
+Author: Huszar Istvan <44548937+xDeimen@users.noreply.github.com>
+Date:   Sat Feb 22 08:11:59 2020 +0200
+
+    Regio Timisoara
+
+[33mcommit 18a200cc2a289c77a4c6c30d9e98a29a66a48bc1[m
+Author: Huszar Istvan <44548937+xDeimen@users.noreply.github.com>
+Date:   Sat Feb 22 08:09:52 2020 +0200
+
+    Regio Timisoara
+
+[33mcommit 196a1c73dcebf072402809308623b30da6fe25e2[m
+Merge: 820643a ffad425
+Author: Tron404 <44510110+Tron404@users.noreply.github.com>
+Date:   Tue Feb 18 22:22:02 2020 +0200
+
+    Merge pull request #30 from AlphaBit-137/Tron
+    
+    Aranjare
+
+[33mcommit ffad42566a1c71f2646a2544ea077696c6e02c30[m
+Author: Tron404 <edi.raul@yahoo.com>
+Date:   Tue Feb 18 22:21:33 2020 +0200
+
+    Aranjare
+
+[33mcommit 820643a7752b3fa60b38e3d6f86581dceccef3be[m
+Author: Grappwiiy <GrappwiiyOP@gmail.com>
+Date:   Tue Feb 18 19:27:38 2020 +0200
+
+    Plate
+
+[33mcommit b6a93ca5df9719051936d0c5c917291fa6685917[m
+Merge: d5f2b17 989eeb3
+Author: Tron404 <44510110+Tron404@users.noreply.github.com>
+Date:   Tue Feb 18 13:53:02 2020 +0200
+
+    Merge pull request #29 from AlphaBit-137/Tron
+    
+    Tron
+
+[33mcommit 989eeb36e2ddda3ffabd15fbe5b7eb22b5aaea12[m
+Merge: ec5d5d7 d391b78
+Author: Huszar Istvan <44548937+xDeimen@users.noreply.github.com>
+Date:   Tue Feb 18 13:52:06 2020 +0200
+
+    Merge pull request #28 from AlphaBit-137/Pisti
+    
+    Pisti
+
+[33mcommit d391b78780a613432fb41b070a359d98a2f5c21e[m
+Merge: 89850e5 64c2caa
+Author: Huszar Istvan <44548937+xDeimen@users.noreply.github.com>
+Date:   Tue Feb 18 13:50:48 2020 +0200
+
+    Hope this works x2
+
+[33mcommit 89850e5393320d3af462d6f3fac9581d9dcd3552[m
+Author: Huszar Istvan <44548937+xDeimen@users.noreply.github.com>
+Date:   Tue Feb 18 13:44:19 2020 +0200
+
+    Deleted IchimPistiBLue
+
+[33mcommit 64c2caa871b2465194c61cb51ecf1ece3093c105[m
+Merge: 3d2e6f0 d5f2b17
+Author: Tron404 <44510110+Tron404@users.noreply.github.com>
+Date:   Tue Feb 18 13:40:26 2020 +0200
+
+    Merge branch 'master' into Pisti
+
+[33mcommit ec5d5d76a010e714afc1cf05254a236192202aaa[m
+Author: Tron404 <edi.raul@yahoo.com>
+Date:   Tue Feb 18 13:36:37 2020 +0200
+
+    Autonom_BuildingSite_Complet
+
+[33mcommit 3d2e6f0c15691c4be30f625aa65d103273354bee[m
+Author: Huszar Istvan <44548937+xDeimen@users.noreply.github.com>
+Date:   Tue Feb 18 12:15:05 2020 +0200
+
+    Codul bun, bafta la merge edi
+
+[33mcommit d81e1f25158a3722be8ea99a0b307cde3a2cc80f[m
+Author: Tron404 <edi.raul@yahoo.com>
+Date:   Tue Feb 18 08:19:37 2020 +0200
+
+    Auto
+
+[33mcommit 033a4d13d28c9fd06cde2b299db2bcf143ad7cb8[m
+Merge: a3e4403 d5f2b17
+Author: Tron404 <edi.raul@yahoo.com>
+Date:   Mon Feb 17 13:06:40 2020 +0200
+
+    Merge branch 'master' of https://github.com/AlphaBit-137/AlphaBit_RO137_SkyStone_Code
+
+[33mcommit a3e4403dcf91c5545ef825f4630d5d64cbbfdab8[m
+Author: Tron404 <edi.raul@yahoo.com>
+Date:   Mon Feb 17 13:06:36 2020 +0200
+
+    3BS
+
+[33mcommit d5f2b179de6dfea4dfa98f12e2ca481202d66acc[m
+Merge: 2f4a586 b9abdf3
+Author: Tron404 <44510110+Tron404@users.noreply.github.com>
+Date:   Mon Feb 17 13:03:41 2020 +0200
+
+    Merge pull request #24 from AlphaBit-137/Grappwiiy
+    
+    Grappwiiy
+
+[33mcommit b9abdf331056a7061d204189c6975f6b8fda9ba5[m[33m ([m[1;31morigin/Grappwiiy[m[33m)[m
+Merge: 97b9fc9 a7d5204
+Author: Grappwiiy <GrappwiiyOP@gmail.com>
+Date:   Mon Feb 17 13:02:53 2020 +0200
+
+    Detectors
+
+[33mcommit 97b9fc9b38f6022b4622898c4ee3c4b48d5fcaa0[m
+Author: Grappwiiy <GrappwiiyOP@gmail.com>
+Date:   Mon Feb 17 12:58:58 2020 +0200
+
+    new detector
+
+[33mcommit 2f4a586b777da16d595246e988ab9596303d0699[m
+Merge: ede2b6b a7d5204
+Author: Tron404 <44510110+Tron404@users.noreply.github.com>
+Date:   Mon Feb 17 11:47:11 2020 +0200
+
+    Merge pull request #23 from AlphaBit-137/Grappwiiy
+    
+    Autonom
+
+[33mcommit a7d52049425b6d53cddc5f577c93409729b3072a[m
+Merge: 2aa9f19 ede2b6b
+Author: Tron404 <edi.raul@yahoo.com>
+Date:   Mon Feb 17 11:46:42 2020 +0200
+
+    New Auto
+
+[33mcommit 2aa9f1930b01c8f810216b76acc656da99dc8a44[m
+Author: Grappwiiy <GrappwiiyOP@gmail.com>
+Date:   Mon Feb 17 11:36:14 2020 +0200
+
+    Un autonom de belea
+
+[33mcommit cacf262edf288c3d9850c11d5ee88618a2c5d6be[m
+Author: Grappwiiy <GrappwiiyOP@gmail.com>
+Date:   Fri Feb 14 16:34:47 2020 +0200
+
+    Autonom
+
+[33mcommit ede2b6b0eed32ad49a460d8a61505ae1bc5ecfc6[m
+Author: Tron404 <edi.raul@yahoo.com>
+Date:   Tue Feb 11 23:06:08 2020 +0200
+
+    Umm...Broken
+
+[33mcommit 13f96041a935929bc3349448c5fbe899cd7704bd[m
+Merge: 576d282 ea93cc5
+Author: Tron404 <44510110+Tron404@users.noreply.github.com>
+Date:   Tue Feb 11 10:57:00 2020 +0200
+
+    Merge pull request #22 from AlphaBit-137/Tron
+    
+    PID and Enhancements
+
+[33mcommit ea93cc5eb8b46c0e8a646fcb7655668b9413d34f[m
+Merge: 9128c0b e5be302
+Author: Huszar Istvan <44548937+xDeimen@users.noreply.github.com>
+Date:   Tue Feb 11 10:46:44 2020 +0200
+
+    Merge pull request #21 from AlphaBit-137/Pisti
+    
+    Mergining PID with Enhancements
+
+[33mcommit e5be302da4574229d87e1f2d051bd50a6e315393[m
+Merge: ce371e6 9128c0b
+Author: Huszar Istvan <44548937+xDeimen@users.noreply.github.com>
+Date:   Tue Feb 11 10:46:32 2020 +0200
+
+    Merge branch 'Tron' into Pisti
+
+[33mcommit ce371e62ee4fc0ed6664717d39a7e4cb4491ba37[m
+Author: Huszar Istvan <44548937+xDeimen@users.noreply.github.com>
+Date:   Tue Feb 11 10:44:32 2020 +0200
+
+    Mergining PID with Enhancements
+
+[33mcommit 9128c0b690d7687a88acb1a3ea2b7990846bb955[m
+Author: Tron404 <edi.raul@yahoo.com>
+Date:   Mon Feb 10 16:59:47 2020 +0200
+
+    PID
+
+[33mcommit 576d282c9573afd8129efe722406719d7d4f5b49[m
+Merge: e90bcd4 5076f0c
+Author: Huszar Istvan <44548937+xDeimen@users.noreply.github.com>
+Date:   Sun Feb 9 14:49:18 2020 +0200
+
+    Merge pull request #19 from AlphaBit-137/Pisti
+    
+    Rearrange
+
+[33mcommit 5076f0c2ed2a8f254196557a3e2a52a5f7c4521e[m
+Author: Huszar Istvan <44548937+xDeimen@users.noreply.github.com>
+Date:   Sun Feb 9 14:47:03 2020 +0200
+
+    Rearrange
+
+[33mcommit e90bcd448a0490ce663af110fb7f753472699775[m
+Merge: ec074af 1ebe82e
+Author: Huszar Istvan <44548937+xDeimen@users.noreply.github.com>
+Date:   Sat Feb 8 21:54:51 2020 +0200
+
+    Merge pull request #18 from AlphaBit-137/Pisti
+    
+    Pisti
+
+[33mcommit 1ebe82e7b0c3738529fe06fc498a72cb0846f6c4[m
+Merge: ff47798 ec074af
+Author: Huszar Istvan <44548937+xDeimen@users.noreply.github.com>
+Date:   Sat Feb 8 21:51:56 2020 +0200
+
+    Merge branch 'master' into Pisti
+
+[33mcommit ff47798ac823afc29a71b70133b27ef66d819383[m
+Author: Huszar Istvan <44548937+xDeimen@users.noreply.github.com>
+Date:   Sat Feb 8 21:49:40 2020 +0200
+
+    Finished second driver enhancement
+
+[33mcommit ec074af39cc2408745112431e5ab15d9655b11cd[m
+Merge: 9a944f6 b01b946
+Author: Huszar Istvan <44548937+xDeimen@users.noreply.github.com>
+Date:   Fri Feb 7 09:59:30 2020 +0200
+
+    Merge pull request #17 from AlphaBit-137/Pisti
+    
+    Pisti
+
+[33mcommit b01b9466c01b985e07391a9b03b10e2e205eec4c[m
+Merge: ae92f2a 9a944f6
+Author: Huszar Istvan <44548937+xDeimen@users.noreply.github.com>
+Date:   Fri Feb 7 09:59:14 2020 +0200
+
+    Merge branch 'master' into Pisti
+
+[33mcommit ae92f2af741ee6acd1f4aa52cfac03972780a05e[m
+Author: Huszar Istvan <44548937+xDeimen@users.noreply.github.com>
+Date:   Fri Feb 7 09:32:56 2020 +0200
+
+    Outtake - good luck boys
+
+[33mcommit 9a944f6382e2c7bb16e043c4f38358b8e5545b2b[m
+Merge: a00fa5f 5f65aca
+Author: Tron404 <44510110+Tron404@users.noreply.github.com>
+Date:   Sun Jan 19 21:35:33 2020 +0200
+
+    Merge pull request #16 from AlphaBit-137/Tron
+    
+    Tron
+
+[33mcommit 5f65acaaa80632e1ce7a7b1cf9ae46429b09d9d2[m
+Author: Tron404 <edi.raul@yahoo.com>
+Date:   Sun Jan 19 21:26:00 2020 +0200
+
+    Curbele_lui_Ichim
+
+[33mcommit ab926d0f58ca5e0c1059c6d1305119c284dbeab0[m
+Author: Tron404 <edi.raul@yahoo.com>
+Date:   Sat Jan 18 01:36:36 2020 +0200
+
+    NU_DAM_MERGE
+
+[33mcommit a00fa5f7db7b507776dcc4e4521342daceb86d5b[m
+Merge: f0f6543 beeda06
+Author: Tron404 <44510110+Tron404@users.noreply.github.com>
+Date:   Tue Jan 14 22:24:15 2020 +0200
+
+    Merge pull request #15 from AlphaBit-137/Tron
+    
+    Working...somehow
+
+[33mcommit beeda06ec219173d3e7c5dec22ab4353740dce36[m
+Author: Tron404 <edi.raul@yahoo.com>
+Date:   Tue Jan 14 22:23:45 2020 +0200
+
+    Working...somehow
+
+[33mcommit 863fe8d2222d56f8fb143a6356109ce1b9e18f16[m
+Author: Huszar Istvan <44548937+xDeimen@users.noreply.github.com>
+Date:   Sun Jan 12 21:13:23 2020 +0200
+
+    Restructure + Pliz don't merge
+
+[33mcommit f0f65438180e407e7c456b544a47a1e639499ad4[m[33m ([m[1;31morigin/Boddiy[m[33m, [m[1;32mBoddiy[m[33m)[m
+Merge: 0f9390f a2834c7
+Author: Huszar Istvan <44548937+xDeimen@users.noreply.github.com>
+Date:   Sat Jan 11 08:53:30 2020 +0200
+
+    Merge pull request #14 from AlphaBit-137/Pisti
+    
+    Op Mode Bucharest restore + FSM
+
+[33mcommit a2834c75f8515d2205af9c8d993b780b14bfcd00[m
+Merge: 6d42324 0f9390f
+Author: Huszar Istvan <44548937+xDeimen@users.noreply.github.com>
+Date:   Sat Jan 11 08:53:19 2020 +0200
+
+    Merge branch 'master' into Pisti
+
+[33mcommit 0f9390fbb090dce4137b990bfd52ecea68d3fc49[m
+Author: Huszar Istvan <44548937+xDeimen@users.noreply.github.com>
+Date:   Sat Jan 11 08:51:00 2020 +0200
+
+    Demo Hunedoara
+
+[33mcommit e24f2980b7e0d2c49ca39c3f883d21ab3585662d[m
+Author: Huszar Istvan <44548937+xDeimen@users.noreply.github.com>
+Date:   Fri Jan 10 20:58:14 2020 +0200
+
+    Auto ++
+
+[33mcommit 9c8ddf01dfef14264699b4a34f546c3daacd1fca[m
+Author: Huszar Istvan <44548937+xDeimen@users.noreply.github.com>
+Date:   Fri Jan 10 20:57:56 2020 +0200
+
+    Auto
+
+[33mcommit e2ed8fb248a27b0636da3466c5aca4424ebb760a[m
+Merge: 45e1798 42735af
+Author: Tron404 <44510110+Tron404@users.noreply.github.com>
+Date:   Thu Jan 9 21:47:02 2020 +0200
+
+    Merge pull request #13 from AlphaBit-137/Tron
+    
+    Competent Auto
+
+[33mcommit 42735af3d5263418c4e9d250a6ec21f866c87506[m
+Author: Tron404 <edi.raul@yahoo.com>
+Date:   Thu Jan 9 21:46:00 2020 +0200
+
+    Auto competent
+
+[33mcommit 6d423240b0ffcd9ce94916d7277372c14022bbff[m
+Author: Huszar Istvan <44548937+xDeimen@users.noreply.github.com>
+Date:   Thu Jan 9 14:24:55 2020 +0200
+
+    Op Mode Bucharest restore + FSM
+
+[33mcommit 45e1798839efe78dce1a572cedbf9c918bfcb498[m
+Merge: bd1749b e704273
+Author: Huszar Istvan <44548937+xDeimen@users.noreply.github.com>
+Date:   Thu Jan 9 12:55:16 2020 +0200
+
+    Merge pull request #12 from AlphaBit-137/Pisti
+    
+    First Splines
+
+[33mcommit bd1749babc469a11cad190c16d90361abbeff143[m
+Merge: 742b2b5 ddf6c38
+Author: Tron404 <44510110+Tron404@users.noreply.github.com>
+Date:   Wed Jan 8 22:29:08 2020 +0200
+
+    Merge pull request #11 from AlphaBit-137/Pisti
+    
+    Pisti
+
+[33mcommit e7042737f50a9c1fc3535a3b5cfe62e5c72d96ca[m
+Author: Huszar Istvan <44548937+xDeimen@users.noreply.github.com>
+Date:   Wed Jan 8 15:48:33 2020 +0200
+
+    First Splines
+
+[33mcommit ddf6c38270eed7307a53570f91622dc3165fbc21[m
+Author: Huszar Istvan <44548937+xDeimen@users.noreply.github.com>
+Date:   Wed Jan 8 09:54:51 2020 +0200
+
+    Motor Setup + other things
+
+[33mcommit f5e060ca00d05ea410761e5c0caa68af8dcb9c80[m
+Author: Huszar Istvan <44548937+xDeimen@users.noreply.github.com>
+Date:   Wed Dec 18 08:16:06 2019 +0200
+
+    Chassis Test
+
+[33mcommit 742b2b54b76142e8b9cc227e1723b157aac8edb3[m[33m ([m[1;31morigin/Dragos[m[33m, [m[1;32mDragos[m[33m)[m
+Merge: e2f9e63 32c856b
+Author: Tron404 <44510110+Tron404@users.noreply.github.com>
+Date:   Mon Dec 16 16:48:11 2019 +0200
+
+    Merge pull request #10 from AlphaBit-137/Boddiy
+    
+    Test2
+
+[33mcommit 32c856b0c45e0d30a4550862d4aa121d432e1c4d[m
+Author: Grappwiiy <GrappwiiyOP@gmail.com>
+Date:   Mon Dec 16 16:47:42 2019 +0200
+
+    Test2
+
+[33mcommit e2f9e638fcded1016d530098517af1ab6f81076f[m
+Merge: b077d06 0f72592
+Author: Tron404 <44510110+Tron404@users.noreply.github.com>
+Date:   Mon Dec 16 16:47:25 2019 +0200
+
+    Merge pull request #9 from AlphaBit-137/Boddiy
+    
+    Test
+
+[33mcommit 0f72592d794d79e454b67f77fd981415a38b320b[m
+Author: Grappwiiy <GrappwiiyOP@gmail.com>
+Date:   Mon Dec 16 16:46:32 2019 +0200
+
+    Test
+
+[33mcommit b077d061c16d3b4bc2e0e3730afeeb3f3169394a[m
+Merge: b79d372 d179103
+Author: Tron404 <44510110+Tron404@users.noreply.github.com>
+Date:   Tue Dec 10 15:05:42 2019 +0200
+
+    Merge pull request #8 from AlphaBit-137/Tron
+    
+    Tron
+
+[33mcommit d179103d5000382c4e999184e81cad7db43de104[m
+Merge: 4d68b1b b79d372
+Author: Tron404 <edi.raul@yahoo.com>
+Date:   Tue Dec 10 15:00:07 2019 +0200
+
+    Merge branch 'master' of https://github.com/AlphaBit-137/AlphaBit_RO137_SkyStone_Code
+
+[33mcommit 4d68b1b0dbe714c2e551412c83c9955193bc4c02[m
+Author: Tron404 <edi.raul@yahoo.com>
+Date:   Tue Dec 10 14:59:25 2019 +0200
+
+    Don't know
+
+[33mcommit b79d3726eca6993ae4964784420c12bd7e164ebc[m
+Merge: c7eb19a 491d727
+Author: Huszar Istvan <44548937+xDeimen@users.noreply.github.com>
+Date:   Tue Dec 10 14:29:35 2019 +0200
+
+    Merge pull request #7 from AlphaBit-137/Pisti
+    
+    Updated: Legacy opmode RoverRuckus
+
+[33mcommit 491d7275bbb8150f7ddb660d57a1fb2615ffb159[m
+Author: Huszar Istvan <44548937+xDeimen@users.noreply.github.com>
+Date:   Tue Dec 10 14:27:25 2019 +0200
+
+    Updated: Legacy opmode RoverRuckus
+
+[33mcommit c7eb19a4a47485af71e7340d5d6eaa39c0767cfb[m
+Merge: 170b945 bd1a350
+Author: Huszar Istvan <44548937+xDeimen@users.noreply.github.com>
+Date:   Tue Dec 10 12:40:44 2019 +0200
+
+    Merge pull request #6 from AlphaBit-137/Pisti
+    
+    Hardware Config Modifications
+
+[33mcommit bd1a3508479c27f326ca45d3594feb196a3a01e3[m
+Author: Huszar Istvan <44548937+xDeimen@users.noreply.github.com>
+Date:   Tue Dec 10 12:37:01 2019 +0200
+
+    VES
+
+[33mcommit 170b9457278315c7958145c19f5a66114bc71bed[m
+Merge: 4acd503 5db8e14
+Author: Tron404 <44510110+Tron404@users.noreply.github.com>
+Date:   Tue Nov 26 19:02:24 2019 +0200
+
+    Merge pull request #5 from AlphaBit-137/Tron
+    
+    Final_test_hopefully
+
+[33mcommit 5db8e14dc15505ec555a765a647157474d27680d[m
+Author: Tron404 <edi.raul@yahoo.com>
+Date:   Tue Nov 26 19:01:50 2019 +0200
+
+    Final_test_hopefully
+
+[33mcommit 4acd5035e52c02e8a6e522633219f3affbdd0039[m
+Merge: 23d6361 5ddf0fb
+Author: Tron404 <44510110+Tron404@users.noreply.github.com>
+Date:   Tue Nov 26 18:50:07 2019 +0200
+
+    Merge pull request #4 from AlphaBit-137/Tron
+    
+    Test
+
+[33mcommit 5ddf0fb2f6ee46af441d3a665aa010d0630943fc[m
+Author: Tron404 <edi.raul@yahoo.com>
+Date:   Tue Nov 26 18:49:38 2019 +0200
+
+    Test
+
+[33mcommit 23d6361d748ba95851855b7cf1efc93d788db48f[m
+Merge: 5683584 7172fb1
+Author: Tron404 <44510110+Tron404@users.noreply.github.com>
+Date:   Tue Nov 26 18:40:01 2019 +0200
+
+    Merge pull request #3 from AlphaBit-137/Tron
+    
+    Tron
+
+[33mcommit 7172fb130844d99e47dd37ba439055f027ceca14[m
+Merge: 5683584 cf82a9d
+Author: Tron404 <44510110+Tron404@users.noreply.github.com>
+Date:   Tue Nov 26 18:33:11 2019 +0200
+
+    Merge pull request #1 from AlphaBit-137/master
+    
+    Update README.md
+
+[33mcommit cf82a9da87ab83e66396e4d97fb97281aee28d03[m
+Author: Tron404 <44510110+Tron404@users.noreply.github.com>
+Date:   Tue Nov 26 18:28:31 2019 +0200
+
+    Update README.md
+
+[33mcommit 568358421e7414cd9ae79814ee7e4c1a80ead6e2[m
+Author: Tron404 <edi.raul@yahoo.com>
+Date:   Tue Nov 26 18:24:15 2019 +0200
+
+    First

@@ -125,7 +125,10 @@ public abstract class SampleMecanumDriveBase extends MecanumDrive {
         waitForIdle();
     }
 
+
     public void followTrajectoryIntakeSync(Trajectory trajectory, Intake intake) {
+
+  
         followTrajectory(trajectory);
         intake.switchToIN();
         intake.update();
@@ -200,6 +203,28 @@ public abstract class SampleMecanumDriveBase extends MecanumDrive {
 
         waitForIdle();
     }
+   /* public void followTrajectoryPutStoneSync(Trajectory trajectory, Outtake outtake) {
+        Observable trajectoryObs =
+                Completable.fromAction(() -> followTrajectory(trajectory))
+                        .toObservable()
+                        .subscribeOn(Schedulers.newThread());
+
+        // forteaza executia metodelor outtake
+        Observable intakeObs =
+                Completable.fromAction(() -> {
+                    outtake.switch();
+                    intake.update();
+                })
+                        .toObservable()
+                        .subscribeOn(Schedulers.newThread());
+
+        Observable.zip(trajectoryObs, intakeObs, (a, b) -> Boolean.TRUE)
+                .subscribe();
+
+        waitForIdle();
+    }*/
+
+
 
 
     public void followTrajectoryOuttakeResetSync(Trajectory trajectory, Outtake outtake) {
