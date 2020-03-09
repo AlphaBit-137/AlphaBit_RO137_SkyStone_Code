@@ -223,7 +223,7 @@ public class OPMode extends LinearOpMode {
                 outtake.switchToSTONE_1();
             }
             if(gamepad2.dpad_up && stoneNumber == 2){
-                outtake.switchToSTONE_2();
+                outtake.switchToAUTO();
             }
             if(gamepad2.dpad_up && stoneNumber == 3){
                 outtake.switchToSTONE_3();
@@ -338,7 +338,7 @@ public class OPMode extends LinearOpMode {
                 capstone.switchToPUT();
             }
 
-
+            telemetry.addData("Arm Encoder Count", outtake.arm.getArmEncoder());
 
 
 

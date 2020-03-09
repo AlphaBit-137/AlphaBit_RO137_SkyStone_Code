@@ -126,11 +126,12 @@ public abstract class SampleMecanumDriveBase extends MecanumDrive {
     }
 
 
-    public void followTrajectoryIntakeSync(Trajectory trajectory, Intake intake) {
+    public void followTrajectoryIntakeSync(Trajectory trajectory, Intake intake, Outtake outtake) {
 
-  
         followTrajectory(trajectory);
         intake.switchToIN();
+        outtake.switchToINIT();
+        outtake.update(0);
         intake.update();
         // forteaza executia followTrajectory pe un newThread
         Observable trajectoryObs =
@@ -142,6 +143,8 @@ public abstract class SampleMecanumDriveBase extends MecanumDrive {
         Observable intakeObs =
                 Completable.fromAction(() -> {
                     intake.switchToIN();
+                    outtake.switchToINIT();
+                    outtake.update(0);
                     intake.update();
                 })
                         .toObservable()
@@ -169,6 +172,7 @@ public abstract class SampleMecanumDriveBase extends MecanumDrive {
                 Completable.fromAction(() -> {
                     outtake.switchToAUTO();
                     outtake.update(0);
+
                 })
                         .toObservable()
                         .subscribeOn(Schedulers.newThread());
@@ -203,28 +207,6 @@ public abstract class SampleMecanumDriveBase extends MecanumDrive {
 
         waitForIdle();
     }
-   /* public void followTrajectoryPutStoneSync(Trajectory trajectory, Outtake outtake) {
-        Observable trajectoryObs =
-                Completable.fromAction(() -> followTrajectory(trajectory))
-                        .toObservable()
-                        .subscribeOn(Schedulers.newThread());
-
-        // forteaza executia metodelor outtake
-        Observable intakeObs =
-                Completable.fromAction(() -> {
-                    outtake.switch();
-                    intake.update();
-                })
-                        .toObservable()
-                        .subscribeOn(Schedulers.newThread());
-
-        Observable.zip(trajectoryObs, intakeObs, (a, b) -> Boolean.TRUE)
-                .subscribe();
-
-        waitForIdle();
-    }*/
-
-
 
 
     public void followTrajectoryOuttakeResetSync(Trajectory trajectory, Outtake outtake) {
@@ -253,16 +235,6 @@ public abstract class SampleMecanumDriveBase extends MecanumDrive {
 
         waitForIdle();
     }
-
-
-
-
-
-
-
-
-
-
 
 
     public Pose2d getLastError() {

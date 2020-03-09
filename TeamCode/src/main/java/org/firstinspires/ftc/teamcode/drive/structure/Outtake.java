@@ -90,8 +90,6 @@ public class Outtake{
     public void update(double freePower){
         int armScorePosition = 0;
         int liftScorePosition = 0;
-        //Iar daca vrem sa accesăm valoarea din variabilă pur si simplu apelam functia asa
-        getStoneNumber();
         switch (RobotOuttake){
             case INIT:{
                 lift.switchToINIT();
@@ -104,12 +102,12 @@ public class Outtake{
                 lift.switchToFREE();
 
                 if(stoneNumber == 1) {
-                    armScorePosition = 550;
-                    liftScorePosition = -3000;
+                    armScorePosition = 650;
+                    liftScorePosition = -2500;
                 }
                 if(stoneNumber == 2){
                     armScorePosition = 550;
-                    liftScorePosition = -4500;
+                    liftScorePosition = -2500;
 
                 }
                 if(stoneNumber == 3){
@@ -118,7 +116,7 @@ public class Outtake{
                 }
                 if(stoneNumber == 4) {
                     armScorePosition = 850;
-                    liftScorePosition = -4800;
+                    liftScorePosition = -3500;
                 }
                 if(stoneNumber == 5){
                     armScorePosition = 950;
@@ -126,7 +124,7 @@ public class Outtake{
 
                 }
                 if(stoneNumber == 6){
-                    armScorePosition = 1050;
+                    armScorePosition = 1100;
                     liftScorePosition = -4800;
                 }
                 if(stoneNumber == 7) {
@@ -149,8 +147,8 @@ public class Outtake{
             case STONE_1: {
 
                 stoneNumber = 1;
-                armScorePosition = 550;
-                liftScorePosition = -3000;
+                armScorePosition = 650;
+                liftScorePosition = -2500;
 
                 if(arm.isGET() && lift.isINIT()){
                     gripper.switchToCLOSED();
@@ -171,7 +169,7 @@ public class Outtake{
             case STONE_2: {
                 stoneNumber = 2;
                 armScorePosition = 550;
-                liftScorePosition = -4500;
+                liftScorePosition = -2500;
 
                 if(arm.isGET() && lift.isINIT()){
                     gripper.switchToCLOSED();
@@ -180,7 +178,7 @@ public class Outtake{
                     lift.switchToLEVEL();
 
                 }
-                if(lift.isLEVEL() && lift.getLiftEncoder() < -4500){
+                if(lift.isLEVEL() && lift.getLiftEncoder() < -3150){
                     arm.switchToScore();
                 }
                 if(arm.isSCORE() && arm.getArmEncoder() > 350){
@@ -209,7 +207,7 @@ public class Outtake{
             case STONE_4: {
                 stoneNumber = 4;
                 armScorePosition = 850;
-                liftScorePosition = -4800;
+                liftScorePosition = -3500;
 
 
                 if(arm.isGET() && lift.isINIT()){
@@ -219,7 +217,7 @@ public class Outtake{
                     lift.switchToLEVEL();
 
                 }
-                if(lift.isLEVEL() && lift.getLiftEncoder() < -4500){
+                if(lift.isLEVEL() && lift.getLiftEncoder() < -3150){
                     arm.switchToScore();
                 }
                 if(arm.isSCORE() && arm.getArmEncoder() > 350){
@@ -237,9 +235,8 @@ public class Outtake{
                 if(arm.isGET() && lift.isINIT()){
                     gripper.switchToCLOSED();
                 }
-                if(arm.isGET() && lift.isINIT() && gripper.grip.getPosition() == GRIPPER_CLOSED_POZ){
+                if(arm.isGET() && lift.isINIT() && gripper.grip.getPosition()==1.0){
                     lift.switchToLEVEL();
-
                 }
                 if(lift.isLEVEL() && lift.getLiftEncoder() < -4500){
                     arm.switchToScore();
@@ -252,7 +249,7 @@ public class Outtake{
 
             case STONE_6: {
                 stoneNumber =6;
-                armScorePosition = 1050;
+                armScorePosition = 1100;
                 liftScorePosition = -4800;
 
 
@@ -263,7 +260,7 @@ public class Outtake{
                     lift.switchToLEVEL();
 
                 }
-                if(lift.isLEVEL() && lift.getLiftEncoder() < -4500){
+                if(lift.isLEVEL() && lift.getLiftEncoder() < -3150){
                     arm.switchToScore();
                 }
                 if(arm.isSCORE() && arm.getArmEncoder() > 350){
@@ -340,8 +337,6 @@ public class Outtake{
             }
 
 
-
-
             case GETSTONE: {
                 arm.switchToGET();
                 break;
@@ -350,12 +345,12 @@ public class Outtake{
 
             case RESET:{
                 if(stoneNumber == 1) {
-                    armScorePosition = 550;
-                    liftScorePosition = -3000;
+                    armScorePosition = 650;
+                    liftScorePosition = -2500;
                 }
                 if(stoneNumber == 2){
                     armScorePosition = 550;
-                    liftScorePosition = -4500;
+                    liftScorePosition = -2500;
 
                 }
                 if(stoneNumber == 3){
@@ -364,7 +359,7 @@ public class Outtake{
                 }
                 if(stoneNumber == 4) {
                     armScorePosition = 850;
-                    liftScorePosition = -4800;
+                    liftScorePosition = -3500;
                 }
                 if(stoneNumber == 5){
                     armScorePosition = 950;
@@ -372,8 +367,8 @@ public class Outtake{
 
                 }
                 if(stoneNumber == 6){
-                    armScorePosition = 1050;
-                    liftScorePosition = -4800;
+                    armScorePosition = 1100;
+                    liftScorePosition = -4000;
                 }
                 if(stoneNumber == 7) {
                     armScorePosition = 1150;
@@ -408,11 +403,6 @@ public class Outtake{
             }
             case AUTO: {
 
-
-                stoneNumber = 1;
-                armScorePosition = 800;
-                liftScorePosition = -3000;
-
                 if(arm.isGET() && lift.isINIT()){
                     gripper.switchToCLOSED();
                 }
@@ -421,7 +411,7 @@ public class Outtake{
 
                 }
                 if(lift.isLEVEL() && lift.getLiftEncoder() < -3150){
-                    arm.switchToScore();
+                    arm.switchToAutoScore();
                 }
                 break;
 

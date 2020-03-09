@@ -86,12 +86,12 @@ public class Intake {
             }
             case IN:{
                 leftWing.setPower(-0.5);
-                rightWing.setPower(0.5);
+                rightWing.setPower(-0.5);
                 break;
             }
             case OUT:{
-                leftWing.setPower(0.2);
-                rightWing.setPower(-0.2);
+                leftWing.setPower(0.5);
+                rightWing.setPower(0.5);
                 break;
             }
         }

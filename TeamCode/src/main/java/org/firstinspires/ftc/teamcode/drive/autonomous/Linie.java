@@ -60,32 +60,33 @@ public class Linie extends LinearOpMode {
         if(isStopRequested()) return;
 
 
-        );
+         drive.followTrajectoryIntakeSync(
+                 drive.trajectoryBuilder()
+                         .lineTo(new Vector2d(-30.0, 0.00))
+                         .build(), intake,outtake);
 
 
-
-
-
-         drive.setPoseEstimate(new Pose2d(-30.00, 0.0, Math.toRadians(90)));
+         drive.setPoseEstimate(new Pose2d(-30.00, 0.00, Math.toRadians(90)));
          drive.updatePoseEstimate();
-            sleep(2000);
 
 
             drive.followTrajectoryGetStoneSync(
                     drive.trajectoryBuilder()
                             .setReversed(true)
-                            .lineTo(new Vector2d(-30.0, 20.00))
+                            .lineTo(new Vector2d(-30.0, -1.00))
                             .build(), outtake);
+            gripper.switchToCLOSED();
+            gripper.update();
 
+         drive.setPoseEstimate(new Pose2d(-30.00, -1.00, Math.toRadians(90)));
+         drive.updatePoseEstimate();
 
-            sleep(2000);
 
          drive.followTrajectoryPlaceStoneSync(
                  drive.trajectoryBuilder()
                          .setReversed(true)
-                         .lineTo(new Vector2d(-30.0, 72.00))
+                         .lineTo(new Vector2d(-30.0, -72.00))
                          .build(), outtake);
-
 
 
 
