@@ -39,7 +39,7 @@ public class Arm {
     public DcMotorEx arm = null;
     public static int RESET_POZ = -300;
     public static int GET_POZ = -30;
-    public static double ARM_POWER = 0.6;
+    public static double ARM_POWER = 0.7;
     public static double RESET_ARM__POWER = 0.7;
 
     public ArmModes RobotArm = ArmModes.INIT;
@@ -48,6 +48,7 @@ public class Arm {
         INIT,
         GET,
         SCORE,
+        AUTO_SCORE,
     }
 
     public Arm() {
@@ -66,7 +67,8 @@ public class Arm {
         arm.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         arm.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         arm.setZeroPowerBehavior(DcMotorEx.ZeroPowerBehavior.BRAKE);
-        arm.setVelocityPIDFCoefficients(6.0, 0.0, 0.0, 11.74);
+        arm.setVelocityPIDFCoefficients(0.5, 0.0, 0.0, 11.74);
+
         arm.setPositionPIDFCoefficients(5.0);
     }
 
@@ -89,6 +91,12 @@ public class Arm {
                 arm.setMode(DcMotorEx.RunMode.RUN_TO_POSITION);
                 arm.setPower(ARM_POWER);
             }
+            case AUTO_SCORE:{
+                arm.setTargetPosition(800);
+                arm.setMode(DcMotorEx.RunMode.RUN_TO_POSITION);
+                arm.setPower(ARM_POWER);
+            }
+
         }
 
     }
@@ -102,6 +110,7 @@ public class Arm {
     }
 
     public void switchToScore(){RobotArm = ArmModes.SCORE;}
+    public void switchToAutoScore(){RobotArm = ArmModes.AUTO_SCORE;}
 
     public int getArmEncoder(){
         return arm.getCurrentPosition();
@@ -131,6 +140,8 @@ public class Arm {
             return false;
         }
     }
+
+
 
 
 

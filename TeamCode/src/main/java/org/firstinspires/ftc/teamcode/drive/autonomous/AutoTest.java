@@ -23,7 +23,7 @@ import org.openftc.easyopencv.OpenCvWebcam;
 /*
  * This is an example of a more complex path to really test the tuning.
  */
-@Autonomous(name="Blue_BuildingSite_3Stones", group = "BLUE")
+@Autonomous(name="AutoTest", group = "BLUE")
 public class AutoTest extends LinearOpMode {
 
     @Override
