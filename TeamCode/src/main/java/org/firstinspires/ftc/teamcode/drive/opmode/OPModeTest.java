@@ -34,7 +34,6 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.util.ElapsedTime;
 import com.qualcomm.robotcore.util.Range;
 import org.firstinspires.ftc.teamcode.drive.structure.Chassis;
-import org.firstinspires.ftc.teamcode.drive.structure.Outtake;
 
 
 @TeleOp(name="Op_Mode_Test", group="Linear Opmode")
