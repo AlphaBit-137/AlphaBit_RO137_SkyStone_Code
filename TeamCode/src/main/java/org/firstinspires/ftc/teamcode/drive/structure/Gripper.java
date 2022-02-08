@@ -30,9 +30,7 @@
 package org.firstinspires.ftc.teamcode.drive.structure;
 
 import com.qualcomm.robotcore.hardware.HardwareMap;
-import com.qualcomm.robotcore.hardware.*;
-
-import static java.lang.Thread.sleep;
+import com.qualcomm.robotcore.hardware.Servo;
 
 public class Gripper {
     /* Public OpMode members. */

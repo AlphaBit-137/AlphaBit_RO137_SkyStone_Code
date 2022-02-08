@@ -30,7 +30,6 @@
 package org.firstinspires.ftc.teamcode.drive.structure;
 
 import com.qualcomm.robotcore.hardware.HardwareMap;
-import com.qualcomm.robotcore.hardware.RobotCoreLynxModule;
 import com.qualcomm.robotcore.hardware.Servo;
 
 public class Claws {

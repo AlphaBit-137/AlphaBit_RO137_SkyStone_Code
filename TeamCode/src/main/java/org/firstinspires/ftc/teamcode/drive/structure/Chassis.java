@@ -33,9 +33,6 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.util.Range;
 
-
-import java.security.KeyStore;
-
 public class Chassis
 {
     /* Public OpMode members. */
@@ -135,10 +132,10 @@ public class Chassis
     }
 
     public void switchToFast(){
-        RobotChasis=ChassisModes.FAST;
+        RobotChasis= ChassisModes.FAST;
     }
     public void switchToSlow(){
-        RobotChasis=ChassisModes.SLOW;
+        RobotChasis= ChassisModes.SLOW;
     }
 
 

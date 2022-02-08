@@ -29,12 +29,8 @@
 
 package org.firstinspires.ftc.teamcode.drive.structure;
 
-import android.provider.DocumentsContract;
-
-import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.HardwareMap;
-import com.qualcomm.robotcore.robot.Robot;
 
 public class Intake {
     /* Public OpMode members. */
